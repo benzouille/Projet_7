@@ -1,0 +1,7 @@
+package fr.biblioc.bibliocbibliotheque.web.exceptions;
+
+public class BibliothequeNotFoundException extends RuntimeException {
+    public BibliothequeNotFoundException(String message) {
+        super(message);
+    }
+}
