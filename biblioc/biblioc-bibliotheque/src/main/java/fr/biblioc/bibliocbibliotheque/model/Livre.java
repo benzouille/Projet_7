@@ -16,7 +16,7 @@ public class Livre {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int id_livre;
 
     @NotNull
     @Max(50)
@@ -71,12 +71,12 @@ public class Livre {
     }
 //------------------------- GETTER/SETTER -------------------------
 
-    public int getId() {
-        return id;
+    public int getid_livre() {
+        return id_livre;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setid_livre(int id_livre) {
+        this.id_livre = id_livre;
     }
 
     public String getIsbn13() {
@@ -140,7 +140,7 @@ public class Livre {
     @Override
     public String toString() {
         return "Livre{" +
-                "id=" + id +
+                "id_livre=" + id_livre +
                 ", isbn13='" + isbn13 + '\'' +
                 ", id_genre=" + id_genre +
                 ", titre='" + titre + '\'' +

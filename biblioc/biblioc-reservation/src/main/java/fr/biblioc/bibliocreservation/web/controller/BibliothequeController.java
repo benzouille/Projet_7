@@ -1,7 +1,7 @@
-package fr.biblioc.bibliocbibliotheque.web.controller;
+package fr.biblioc.bibliocreservation.web.controller;
 
-import fr.biblioc.bibliocbibliotheque.dao.BibliothequeDao;
-import fr.biblioc.bibliocbibliotheque.model.Bibliotheque;
+import fr.biblioc.bibliocreservation.dao.BibliothequeDao;
+import fr.biblioc.bibliocreservation.model.Bibliotheque;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.BibliothequeNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

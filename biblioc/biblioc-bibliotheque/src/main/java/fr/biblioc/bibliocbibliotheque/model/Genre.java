@@ -16,7 +16,7 @@ public class Genre {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int id_genre;
 
     @NotNull
     @Max(100)
@@ -32,22 +32,22 @@ public class Genre {
 
     /**
      * constructeur avec parametres
-     * @param id int
+     * @param id_genre int
      * @param genre string
      */
-    public Genre(int id, @NotNull @Max(100) String genre) {
-        this.id = id;
+    public Genre(int id_genre, @NotNull @Max(100) String genre) {
+        this.id_genre = id_genre;
         this.genre = genre;
     }
 
     //------------------------- GETTER/SETTER -------------------------
 
-    public int getId() {
-        return id;
+    public int getid_genre() {
+        return id_genre;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setid_genre(int id_genre) {
+        this.id_genre = id_genre;
     }
 
     public String getGenre() {
@@ -63,7 +63,7 @@ public class Genre {
     @Override
     public String toString() {
         return "Genre{" +
-                "id=" + id +
+                "id_genre=" + id_genre +
                 ", genre='" + genre + '\'' +
                 '}';
     }

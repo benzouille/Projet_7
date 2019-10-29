@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocbibliotheque.model;
+package fr.biblioc.bibliocauthentification.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,62 +7,62 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
- * Bean editeur
+ * Bean Role representant la table role de la bdd
  */
 @Entity
-public class Editeur {
+public class Role {
 
     //------------------------- ATTRIBUTS -------------------------
 
     @Id
     @GeneratedValue
-    private int id_editeur;
+    private int id_role;
 
     @NotNull
     @Max(100)
-    private String nom;
+    private String role;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
      * constructeur
      */
-    public Editeur() {
+    protected Role() {
     }
 
     /**
-     * constructeur avec parametres
-     * @param nom string
+     * constructeur avec parametre
+     * @param role String
      */
-    public Editeur(@NotNull @Max(100) String nom) {
-        this.nom = nom;
+    public Role(@NotNull @Max(100) String role) {
+        this.role = role;
     }
 
     //------------------------- GETTER/SETTER -------------------------
 
-    public int getid_editeur() {
-        return id_editeur;
+    public int getId_role() {
+        return id_role;
     }
 
-    public void setid_editeur(int id_editeur) {
-        this.id_editeur = id_editeur;
+    public void setId_role(int id_role) {
+        this.id_role = id_role;
     }
 
-    public String getNom() {
-        return nom;
+    public String getRole() {
+        return role;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     //------------------------- TO_STRING -------------------------
 
     @Override
     public String toString() {
-        return "Editeur{" +
-                "id_editeur=" + id_editeur +
-                ", nom='" + nom + '\'' +
+        return "Role{" +
+                "id_role=" + id_role +
+                ", role='" + role + '\'' +
                 '}';
     }
 }

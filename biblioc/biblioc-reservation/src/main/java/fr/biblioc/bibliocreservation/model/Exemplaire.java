@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocbibliotheque.model;
+package fr.biblioc.bibliocreservation.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,13 +15,13 @@ public class Exemplaire {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int id_exemplaire;
 
     @NotNull
     private int id_livre;
 
     @NotNull
-    private int id_bibliotheque;
+    private int id_biblio;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
@@ -34,21 +34,21 @@ public class Exemplaire {
     /**
      * Constructeur avec paramètres
      * @param id_livre id livre
-     * @param id_bibliotheque id bibliothèque
+     * @param id_biblio id bibliothèque
      */
-    public Exemplaire(@NotNull int id_livre, @NotNull int id_bibliotheque) {
+    public Exemplaire(@NotNull int id_livre, @NotNull int id_biblio) {
         this.id_livre = id_livre;
-        this.id_bibliotheque = id_bibliotheque;
+        this.id_biblio = id_biblio;
     }
 
     //------------------------- GETTER/SETTER -------------------------
 
-    public int getId() {
-        return id;
+    public int getid_exemplaire() {
+        return id_exemplaire;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setid_exemplaire(int id_exemplaire) {
+        this.id_exemplaire = id_exemplaire;
     }
 
     public int getId_livre() {
@@ -59,12 +59,12 @@ public class Exemplaire {
         this.id_livre = id_livre;
     }
 
-    public int getId_bibliotheque() {
-        return id_bibliotheque;
+    public int getId_biblio() {
+        return id_biblio;
     }
 
-    public void setId_bibliotheque(int id_bibliotheque) {
-        this.id_bibliotheque = id_bibliotheque;
+    public void setId_biblio(int id_bibliotheque) {
+        this.id_biblio = id_biblio;
     }
 
     //------------------------- TO_STRING -------------------------
@@ -72,9 +72,9 @@ public class Exemplaire {
     @Override
     public String toString() {
         return "Exemplaire{" +
-                "id=" + id +
+                "id_exemplaire=" + id_exemplaire +
                 ", id_livre=" + id_livre +
-                ", id_bibliotheque=" + id_bibliotheque +
+                ", id_biblio=" + id_biblio +
                 '}';
     }
 }

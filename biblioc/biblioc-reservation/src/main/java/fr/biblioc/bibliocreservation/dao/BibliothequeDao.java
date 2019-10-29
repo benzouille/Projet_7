@@ -1,6 +1,6 @@
-package fr.biblioc.bibliocbibliotheque.dao;
+package fr.biblioc.bibliocreservation.dao;
 
-import fr.biblioc.bibliocbibliotheque.model.Bibliotheque;
+import fr.biblioc.bibliocreservation.model.Bibliotheque;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

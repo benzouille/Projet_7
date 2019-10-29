@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocbibliotheque.model;
+package fr.biblioc.bibliocreservation.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
- * Bean bibliothèque avec un nom et un bean adresse
+ * Bean Bibliothèque representant la table bibliotheque de la bdd
  */
 @Entity
 public class Bibliotheque {
@@ -16,41 +16,41 @@ public class Bibliotheque {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int id_biblio;
 
     @NotNull
     @Max(100)
     private String nom;
 
     @NotNull
-    private int id_addresse;
+    private int id_adresse;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
      * constructeur
      */
-    public Bibliotheque() {
+    protected Bibliotheque() {
     }
 
     /**
      * Constructeur avec paramètres
      * @param nom String nom
-     * @param id_addresse int id_adresse
+     * @param id_adresse int id_adresse
      */
-    public Bibliotheque(@NotNull @Max(100) String nom, @NotNull int id_addresse) {
+    public Bibliotheque(@NotNull @Max(100) String nom, @NotNull int id_adresse) {
         this.nom = nom;
-        this.id_addresse = id_addresse;
+        this.id_adresse = id_adresse;
     }
 
     //------------------------- GETTER/SETTER -------------------------
 
-    public int getId() {
-        return id;
+    public int getid_biblio() {
+        return id_biblio;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setid_biblio(int id_biblio) {
+        this.id_biblio = id_biblio;
     }
 
     public String getNom() {
@@ -61,12 +61,12 @@ public class Bibliotheque {
         this.nom = nom;
     }
 
-    public int getId_addresse() {
-        return id_addresse;
+    public int getId_adresse() {
+        return id_adresse;
     }
 
-    public void setId_addresse(int id_addresse) {
-        this.id_addresse = id_addresse;
+    public void setId_adresse(int id_adresse) {
+        this.id_adresse = id_adresse;
     }
 
     //------------------------- TO_STRING -------------------------
@@ -74,9 +74,9 @@ public class Bibliotheque {
     @Override
     public String toString() {
         return "Bibliotheque{" +
-                "id=" + id +
+                "id_biblio=" + id_biblio +
                 ", nom='" + nom + '\'' +
-                ", id_addresse=" + id_addresse +
+                ", id_adresse=" + id_adresse +
                 '}';
     }
 }

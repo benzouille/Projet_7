@@ -1,8 +1,8 @@
-package fr.biblioc.bibliocreservation.web.controller;
+package fr.biblioc.bibliocauthentification.web.controller;
 
-import fr.biblioc.bibliocreservation.dao.AdresseDao;
-import fr.biblioc.bibliocreservation.model.Adresse;
-import fr.biblioc.bibliocbibliotheque.web.exceptions.AdresseNotFoundException;
+import fr.biblioc.bibliocauthentification.web.exceptions.AdresseNotFoundException;
+import fr.biblioc.bibliocauthentification.dao.AdresseDao;
+import fr.biblioc.bibliocauthentification.model.Adresse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

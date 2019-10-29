@@ -2,7 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28291b7d-7f07-4250-95c8-d6d977d42d0a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/AdresseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/RoleDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/UtilisateurDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Adresse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Utilisateur.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/controller/AdresseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/exceptions/AdresseNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ReservationDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-authentification/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-authentification/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/BibliocAuthentificationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/BibliocAuthentificationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-authentification/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Editeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Editeur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/BibliocReservationApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/BibliocReservationApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/AdresseDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/AdresseDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/BibliothequeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/BibliothequeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ExemplaireDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ExemplaireDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Adresse.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Adresse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Bibliotheque.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Bibliotheque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Exemplaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Exemplaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/AdresseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/AdresseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/BibliothequeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/BibliothequeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ExemplaireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ExemplaireController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../script_bdd/mpd_projet_7.architect" beforeDir="false" afterPath="$PROJECT_DIR$/../script_bdd/mpd_projet_7.architect" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/biblioc-server/biblioc-model/target/" />
     <ignored path="$PROJECT_DIR$/biblioc-server/biblioc-business/target/" />
@@ -23,7 +54,85 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ReservationDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/AdresseDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="67" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/RoleDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/UtilisateurDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/AdresseController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="34" column="35" lean-forward="true" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/controller/AdresseController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1088">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/exceptions/AdresseNotFoundException.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -40,10 +149,19 @@
       <find>private</find>
       <find>;</find>
       <find>eur</find>
+      <find>id</find>
+      <find>cp</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
       <replace>=</replace>
+      <replace>id_editeur</replace>
+      <replace>id_genre</replace>
+      <replace>id_livre</replace>
+      <replace>id_adresse</replace>
+      <replace>id_exemplaire</replace>
+      <replace>id_biblio</replace>
+      <replace>code_postal</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\OC_DAJ\projet_7\biblioc\biblioc-server</dir>
@@ -55,21 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/biblioc-server/pom.xml" />
-        <option value="$PROJECT_DIR$/config-server/src/main/java/fr/biblioc/configserver/ConfigServerApplication.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/beans.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/DaoLivre.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Editeur.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Addresse.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Adresse.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/GenreController.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/AuteurNotFoundException.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/AdresseDao.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/AdresseNotFoundException.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/AdresseController.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/BibliothequeDao.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/EditeurDao.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/ExemplaireDao.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/GenreDao.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/BibliothequeNotFoundException.java" />
@@ -81,19 +184,46 @@
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Bibliotheque.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/dto/LivreDto.java" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java" />
         <option value="$PROJECT_DIR$/eureka-server/src/main/java/fr/biblioc/eurekaserver/EurekaServerApplication.java" />
         <option value="$PROJECT_DIR$/eureka-server/pom.xml" />
         <option value="$PROJECT_DIR$/config-server/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/eureka-server/src/main/resources/bootstrap.properties" />
-        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/BibliocBibliothequeApplication.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/resources/bootstrap.properties" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/pom.xml" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/configurations/SleuthConfig.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/AuteurDao.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/AuteurController.java" />
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Auteur.java" />
+        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Editeur.java" />
+        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java" />
+        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/AdresseDao.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/BibliothequeDao.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ExemplaireDao.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/AdresseController.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/BibliothequeController.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/resources/bootstrap.properties" />
+        <option value="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/BibliocBibliothequeApplication.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/BibliocReservationApplication.java" />
         <option value="$PROJECT_DIR$/biblioc-reservation/pom.xml" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Adresse.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Exemplaire.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/BibliocAuthentificationApplication.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/pom.xml" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Bibliotheque.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Role.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Utilisateur.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Adresse.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Reservation.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ReservationDao.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ReservationController.java" />
+        <option value="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ExemplaireController.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/AdresseDao.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/RoleDao.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/UtilisateurDao.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/controller/AdresseController.java" />
+        <option value="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/exceptions/AdresseNotFoundException.java" />
       </list>
     </option>
   </component>
@@ -121,10 +251,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="2034" />
+    <option name="y" value="153" />
+    <option name="width" value="1549" />
+    <option name="height" value="838" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -142,6 +272,40 @@
             <path>
               <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
               <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-authentification" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-authentification" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-authentification" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-authentification" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-authentification" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
               <item name="biblioc-bibliotheque" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -173,6 +337,36 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bibliocbibliotheque" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocbibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="configurations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocbibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocbibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
@@ -183,6 +377,36 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bibliocbibliotheque" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocbibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocbibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-bibliotheque" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
@@ -227,7 +451,49 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="bibliocreservation" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-reservation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocreservation" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-reservation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocreservation" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-reservation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocreservation" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biblioc" type="462c0819:PsiDirectoryNode" />
+              <item name="biblioc-reservation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bibliocreservation" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="biblioc" type="b2602c69:ProjectViewProjectNode" />
@@ -294,7 +560,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572125456009" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572383944908" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/biblioc-authentification" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -304,6 +570,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="fr.biblioc.bibliocauthentification.web.exceptions" />
+      <recent name="fr.biblioc.bibliocbibliotheque.web.exceptions" />
+      <recent name="fr.biblioc.bibliocauthentification.web.controller" />
+      <recent name="fr.biblioc.bibliocauthentification.dao" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fr.biblioc.bibliocbibliotheque.web.exceptions" />
       <recent name="fr.biblioc.bibliocbibliotheque.model" />
@@ -325,7 +597,7 @@
         </RuleState>
       </list>
     </option>
-    <option name="contentProportion" value="0.15367965" />
+    <option name="contentProportion" value="0.17478354" />
   </component>
   <component name="RunManager" selected="Spring Boot.BibliocBibliothequeApplication">
     <configuration name="BibliocAuthentificationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -377,17 +649,17 @@
       <workItem from="1570121858164" duration="2389000" />
       <workItem from="1571168731965" duration="5647000" />
       <workItem from="1571473099171" duration="46336000" />
-      <workItem from="1572293646781" duration="310000" />
+      <workItem from="1572293646781" duration="11162000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54682000" />
+    <option name="totallyTimeSpent" value="65534000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20575693" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -395,6 +667,7 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Image Layers" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Duplicate detector" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.28275862" />
@@ -409,7 +682,7 @@
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Run Dashboard" order="14" visible="true" weight="0.3" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="14" visible="true" weight="0.36888888" />
       <window_info anchor="bottom" id="Messages" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -427,31 +700,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/biblioc-server/biblioc-business/src/it/simple-it/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/biblioc-server/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/biblioc-server/biblioc-business/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/biblioc-client/pom.xml" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/beans.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Editeur.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/LivreNotFoundException.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/EditeurNotFoundException.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/BibliothequeNotFoundException.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/AdresseNotFoundException.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/AuteurNotFoundException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="61" lean-forward="true" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Exemplaire.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/AdresseDao.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/BibliothequeDao.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/EditeurDao.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/ExemplaireDao.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/GenreDao.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/LivreDao.java" />
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/AdresseController.java" />
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/EditeurController.java" />
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/ExemplaireController.java" />
@@ -461,7 +709,6 @@
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Bibliotheque.java" />
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/BibliothequeController.java" />
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/dto/LivreDto.java" />
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java" />
     <entry file="file://$PROJECT_DIR$/eureka-server/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -509,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/resources/bootstrap.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/AuteurDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -523,23 +763,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/BibliocReservationApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/biblioc-reservation/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -563,17 +786,311 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/BibliocBibliothequeApplication.java">
+    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Editeur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="19" lean-forward="true" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/BibliothequeDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/BibliocReservationApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/AdresseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/resources/bootstrap.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Exemplaire.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/resources/bootstrap.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="2" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/resources/bootstrap.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+        <state relative-caret-position="376">
+          <caret line="37" column="21" selection-start-line="34" selection-start-column="8" selection-end-line="37" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/BibliocAuthentificationApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/BibliocBibliothequeApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Bibliotheque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="25" column="27" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="25" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Adresse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="111" column="5" lean-forward="true" selection-start-line="8" selection-end-line="111" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#737#738#0" expanded="true" />
+            <element signature="e#769#770#0" expanded="true" />
+            <element signature="e#877#878#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#950#951#0" expanded="true" />
+            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#1046#1047#0" expanded="true" />
+            <element signature="e#1086#1087#0" expanded="true" />
+            <element signature="e#1118#1119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Utilisateur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="44" column="27" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="44" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Adresse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="22" lean-forward="true" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Reservation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="529">
+          <caret line="96" column="67" lean-forward="true" selection-start-line="96" selection-start-column="67" selection-end-line="96" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1298#1299#0" expanded="true" />
+            <element signature="e#1323#1324#0" expanded="true" />
+            <element signature="e#1356#1357#0" expanded="true" />
+            <element signature="e#1384#1385#0" expanded="true" />
+            <element signature="e#1422#1423#0" expanded="true" />
+            <element signature="e#1459#1460#0" expanded="true" />
+            <element signature="e#1516#1517#0" expanded="true" />
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1610#1611#0" expanded="true" />
+            <element signature="e#1645#1646#0" expanded="true" />
+            <element signature="e#1704#1705#0" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#1789#1790#0" expanded="true" />
+            <element signature="e#1821#1822#0" expanded="true" />
+            <element signature="e#1872#1873#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1951#1952#0" expanded="true" />
+            <element signature="e#1987#1988#0" expanded="true" />
+            <element signature="e#2042#2043#0" expanded="true" />
+            <element signature="e#2092#2093#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ExemplaireDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="73" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/BibliothequeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="21" column="67" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ReservationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" lean-forward="true" selection-start-line="4" selection-start-column="4" selection-end-line="5" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ExemplaireController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dao/ReservationDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/AdresseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="67" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/RoleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/dao/UtilisateurDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/AdresseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="34" column="35" lean-forward="true" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/exceptions/AdresseNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/exceptions/AdresseNotFoundException.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/web/controller/AdresseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

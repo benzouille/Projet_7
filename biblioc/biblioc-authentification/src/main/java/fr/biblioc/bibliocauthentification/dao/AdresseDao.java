@@ -1,6 +1,6 @@
-package fr.biblioc.bibliocreservation.dao;
+package fr.biblioc.bibliocauthentification.dao;
 
-import fr.biblioc.bibliocreservation.model.Adresse;
+import fr.biblioc.bibliocauthentification.model.Adresse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocbibliotheque.model;
+package fr.biblioc.bibliocreservation.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +16,11 @@ public class Adresse {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int id_adresse;
 
     @NotNull
     @Max(6)
-    private String cp;
+    private String code_postal;
 
     @NotNull
     @Max(200)
@@ -44,13 +44,13 @@ public class Adresse {
 
     /**
      * Constructeur avec parametres
-     * @param cp String code postal
+     * @param code_postal String code postal
      * @param rue String rue
      * @param num String numéro
      * @param commune String commune
      */
-    public Adresse(@NotNull @Max(6) String cp, @NotNull @Max(200) String rue, @NotNull @Max(5) String num, @NotNull @Max(200) String commune) {
-        this.cp = cp;
+    public Adresse(@NotNull @Max(6) String code_postal, @NotNull @Max(200) String rue, @NotNull @Max(5) String num, @NotNull @Max(200) String commune) {
+        this.code_postal = code_postal;
         this.rue = rue;
         this.num = num;
         this.commune = commune;
@@ -58,20 +58,20 @@ public class Adresse {
 
     //------------------------- GETTER/SETTER -------------------------
 
-    public int getId() {
-        return id;
+    public int getid_adresse() {
+        return id_adresse;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setid_adresse(int id_adresse) {
+        this.id_adresse = id_adresse;
     }
 
-    public String getCp() {
-        return cp;
+    public String getcode_postal() {
+        return code_postal;
     }
 
-    public void setCp(String cp) {
-        this.cp = cp;
+    public void setcode_postal(String code_postal) {
+        this.code_postal = code_postal;
     }
 
     public String getRue() {
@@ -103,8 +103,8 @@ public class Adresse {
     @Override
     public String toString() {
         return "Adresse{" +
-                "id=" + id +
-                ", cp='" + cp + '\'' +
+                "id_adresse=" + id_adresse +
+                ", code_postal='" + code_postal + '\'' +
                 ", rue='" + rue + '\'' +
                 ", num='" + num + '\'' +
                 ", commune='" + commune + '\'' +

@@ -1,7 +1,8 @@
 package fr.biblioc.bibliocreservation.web.controller;
 
-public class ExemplaireController {
+public class ReservationController {
 
     //------------------------- ATTRIBUTS -------------------------
     //------------------------- CONSTRUCTEUR -------------------------
+
 }
