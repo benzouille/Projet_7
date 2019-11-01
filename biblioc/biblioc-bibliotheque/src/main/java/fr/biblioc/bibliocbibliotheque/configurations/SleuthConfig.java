@@ -4,6 +4,9 @@ package fr.biblioc.bibliocbibliotheque.configurations;
 //import brave.sampler.Sampler;
 //import org.springframework.context.annotation.Configuration;
 
+/**
+ * Bean configuration de sleuth
+ */
 // TODO a reactiver plus tard
 //  @Configuration
 public class SleuthConfig {

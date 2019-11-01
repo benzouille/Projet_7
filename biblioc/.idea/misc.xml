@@ -13,6 +13,8 @@
         <option value="$PROJECT_DIR$/biblioc-bibliotheque/pom.xml" />
         <option value="$PROJECT_DIR$/biblioc-reservation/pom.xml" />
         <option value="$PROJECT_DIR$/biblioc-authentification/pom.xml" />
+        <option value="$PROJECT_DIR$/biblioc-batch/pom.xml" />
+        <option value="$PROJECT_DIR$/biblioc-clientUi/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

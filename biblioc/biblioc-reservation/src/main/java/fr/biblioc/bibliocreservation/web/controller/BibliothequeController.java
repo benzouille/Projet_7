@@ -2,7 +2,7 @@ package fr.biblioc.bibliocreservation.web.controller;
 
 import fr.biblioc.bibliocreservation.dao.BibliothequeDao;
 import fr.biblioc.bibliocreservation.model.Bibliotheque;
-import fr.biblioc.bibliocbibliotheque.web.exceptions.BibliothequeNotFoundException;
+import fr.biblioc.bibliocreservation.web.exceptions.BibliothequeNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import java.util.Optional;
 /**
  * Controller de la classe {@link Bibliotheque}
  */
+@RestController
 public class BibliothequeController implements HealthIndicator {
 
     //------------------------- ATTRIBUTS -------------------------
@@ -43,7 +45,7 @@ public class BibliothequeController implements HealthIndicator {
     }
 
     /**
-     * Affiche la liste de tous les bibliotheques
+     * Affiche la liste de toutes les bibliotheques
      * @return liste de {@link Bibliotheque}
      */
     @GetMapping(value = "/Bibliotheques")

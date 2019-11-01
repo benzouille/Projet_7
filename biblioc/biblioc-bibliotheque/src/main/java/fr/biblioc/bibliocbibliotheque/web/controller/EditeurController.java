@@ -10,6 +10,7 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import java.util.Optional;
 /**
  * Controller de la classe {@link Editeur}
  */
+@RestController
 public class EditeurController implements HealthIndicator {
 
     //------------------------- ATTRIBUTS -------------------------
@@ -67,7 +69,7 @@ public class EditeurController implements HealthIndicator {
      * @return bean {@link Editeur}
      */
     @GetMapping( value = "/Editeurs/{id}")
-    public Optional<Editeur> recupererUneBibliotheque(@PathVariable int id) {
+    public Optional<Editeur> recupererUnEditeur(@PathVariable int id) {
 
         Optional<Editeur> editeur = editeurDao.findById(id);
 

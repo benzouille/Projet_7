@@ -71,7 +71,7 @@ public class AuteurController implements HealthIndicator {
     @GetMapping( value = "/Auteurs/{id}")
     public Optional<Auteur> recupererUnAuteur(@PathVariable int id) {
 
-        Optional<Auteur> auteur = Optional.ofNullable(auteurDao.findById(id));
+        Optional<Auteur> auteur = auteurDao.findById(id);
 
         if(!auteur.isPresent())  throw new AuteurNotFoundException("L'auteur correspondant à l'id " + id + " n'existe pas");
 
