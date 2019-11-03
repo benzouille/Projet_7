@@ -51,13 +51,13 @@
   <table id="TAB12" populated="true" UUID="bfdfd731-b895-4085-8e19-b1d927c17c1d" name="reservation" objectType="TABLE" physicalName="reservation" >
    <remarks></remarks>
    <folder id="FOLTAB121" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL13" populated="true" UUID="eea06ee5-a7f5-4c03-8486-07801a8042f3" autoIncrement="true" autoIncrementSequenceName="reservation_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="4" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL13" populated="true" UUID="eea06ee5-a7f5-4c03-8486-07801a8042f3" autoIncrement="true" autoIncrementSequenceName="reservation_id_seq" defaultValue="" name="id_reservation" nullable="0" physicalName="id_reservation" precision="0" primaryKeySeq="0" referenceCount="4" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL14" populated="true" UUID="8ced8e0b-9b48-4fa4-8d58-8751390b5bb5" autoIncrement="false" autoIncrementSequenceName="reservation_id_user_locataire_seq" defaultValue="" name="id_utilisateur" nullable="0" physicalName="id_utilisateur" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL15" populated="true" UUID="d3cc5ab7-a612-486f-86f2-19e610143c0a" autoIncrement="false" autoIncrementSequenceName="reservation_date_seq" defaultValue="" name="date_emprunt" nullable="0" physicalName="date_emprunt" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+    <column id="COL15" populated="true" UUID="d3cc5ab7-a612-486f-86f2-19e610143c0a" autoIncrement="false" autoIncrementSequenceName="reservation_date_seq" defaultValue="" name="date_emprunt" nullable="0" physicalName="date_emprunt" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="91" userDefinedTypeUUID="ee349be3-6af2-46e1-b305-975f5354b009" >
      <remarks></remarks>
     </column>
     <column id="COL16" populated="true" UUID="fa431c44-2f36-4ea5-bb8f-0d177df42b64" autoIncrement="false" autoIncrementSequenceName="reservation_Extension_seq" defaultValue="" name="extension" nullable="0" physicalName="extension" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
@@ -73,7 +73,7 @@
     </folder>
     <folder id="FOLTAB124" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX18" populated="true" UUID="e3783659-359f-440b-bcc6-84688cae881b" clustered="false" name="reservation_pk" physicalName="reservation_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC19" populated="true" UUID="a527c00f-6e68-4222-959a-24b4664a513d" ascendingOrDescending="UNSPECIFIED" column-ref="COL13" name="id" physicalName="id" />
+     <index-column id="IDC19" populated="true" UUID="a527c00f-6e68-4222-959a-24b4664a513d" ascendingOrDescending="UNSPECIFIED" column-ref="COL13" name="id_reservation" physicalName="id_reservation" />
     </index>
    </folder>
   </table>
