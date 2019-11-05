@@ -2,15 +2,16 @@ package fr.biblioc.bibliocbibliotheque.web.controller;
 
 import fr.biblioc.bibliocbibliotheque.dao.AuteurDao;
 import fr.biblioc.bibliocbibliotheque.model.Auteur;
-import fr.biblioc.bibliocbibliotheque.web.exceptions.AuteurNotFoundException;
+import fr.biblioc.bibliocbibliotheque.web.exceptions.ErrorAddException;
+import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +55,7 @@ public class AuteurController implements HealthIndicator {
         List<Auteur> auteurs = auteurDao.findAll();
 
         if(auteurs.isEmpty()){
-            throw new AuteurNotFoundException("Aucun auteur n'a été trouvé");
+            throw new ObjectNotFoundException("Aucun auteur n'a été trouvé");
         }
 
         log.info("Récupération de la liste des auteurs");
@@ -73,8 +74,32 @@ public class AuteurController implements HealthIndicator {
 
         Optional<Auteur> auteur = auteurDao.findById(id);
 
-        if(!auteur.isPresent())  throw new AuteurNotFoundException("L'auteur correspondant à l'id " + id + " n'existe pas");
+        if(!auteur.isPresent())  throw new ObjectNotFoundException("L'auteur correspondant à l'id " + id + " n'existe pas");
 
         return auteur;
+    }
+
+    /**
+     * Ajouter un auteur
+     * @param auteur bean {@link Auteur}
+     * @return ResponseEntity<Auteur> renvoi un http status.
+     */
+    @PostMapping (value = "/auteurs")
+    public ResponseEntity<Auteur> addAuteur(Auteur auteur){
+
+        Auteur newAuteur = auteurDao.save(auteur);
+
+        if(newAuteur == null) throw new ErrorAddException("Impossible d'ajouter cet auteur");
+
+        return new ResponseEntity<Auteur>(auteur, HttpStatus.CREATED);
+    }
+
+    /**
+     * Permet de mettre à jour un auteur existant.
+     **/
+    @PutMapping(value = "/auteurs")
+    public void updateAuteur(@RequestBody Auteur auteur) {
+
+        auteurDao.save(auteur);
     }
 }

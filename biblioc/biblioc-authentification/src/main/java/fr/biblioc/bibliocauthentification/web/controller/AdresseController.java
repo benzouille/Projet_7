@@ -1,16 +1,17 @@
 package fr.biblioc.bibliocauthentification.web.controller;
 
-import fr.biblioc.bibliocauthentification.web.exceptions.AdresseNotFoundException;
 import fr.biblioc.bibliocauthentification.dao.AdresseDao;
 import fr.biblioc.bibliocauthentification.model.Adresse;
+import fr.biblioc.bibliocauthentification.web.exceptions.ErrorAddException;
+import fr.biblioc.bibliocauthentification.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +55,7 @@ public class AdresseController implements HealthIndicator {
         List<Adresse> adresses = adresseDao.findAll();
 
         if(adresses.isEmpty()){
-            throw new AdresseNotFoundException("Aucune adresse n'a été trouvée");
+            throw new ObjectNotFoundException("Aucune adresse n'a été trouvée");
         }
 
         log.info("Récupération de la liste des adresses");
@@ -73,8 +74,32 @@ public class AdresseController implements HealthIndicator {
 
         Optional<Adresse> adresse = adresseDao.findById(id);
 
-        if(!adresse.isPresent())  throw new AdresseNotFoundException("L'adresse correspondant à l'id " + id + " n'existe pas");
+        if(!adresse.isPresent())  throw new ObjectNotFoundException("L'adresse correspondant à l'id " + id + " n'existe pas");
 
         return adresse;
+    }
+
+    /**
+     * Ajouter un adresse
+     * @param adresse bean {@link Adresse}
+     * @return ResponseEntity<Adresse> renvoi un http status.
+     */
+    @PostMapping(value = "/adresses")
+    public ResponseEntity<Adresse> addAdresse(Adresse adresse){
+
+        Adresse newAdresse = adresseDao.save(adresse);
+
+        if(newAdresse == null) throw new ErrorAddException("Impossible d'ajouter ce adresse");
+
+        return new ResponseEntity<Adresse>(adresse, HttpStatus.CREATED);
+    }
+
+    /**
+     * Permet de mettre à jour un adresse existant.
+     **/
+    @PutMapping(value = "/adresses")
+    public void updateAdresse(@RequestBody Adresse adresse) {
+
+        adresseDao.save(adresse);
     }
 }

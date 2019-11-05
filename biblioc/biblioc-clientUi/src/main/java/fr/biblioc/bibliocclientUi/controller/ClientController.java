@@ -1,6 +1,6 @@
 package fr.biblioc.bibliocclientUi.controller;
 
-import fr.biblioc.bibliocclientUi.beans.AuteurBean;
+import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
 import fr.biblioc.bibliocclientUi.proxies.BibliocBibliothequeProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

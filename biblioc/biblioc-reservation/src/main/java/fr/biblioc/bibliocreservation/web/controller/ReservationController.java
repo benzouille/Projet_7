@@ -2,15 +2,16 @@ package fr.biblioc.bibliocreservation.web.controller;
 
 import fr.biblioc.bibliocreservation.dao.ReservationDao;
 import fr.biblioc.bibliocreservation.model.Reservation;
-import fr.biblioc.bibliocreservation.web.exceptions.ReservationNotFoundException;
+import fr.biblioc.bibliocreservation.web.exceptions.ErrorAddException;
+import fr.biblioc.bibliocreservation.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +55,7 @@ public class ReservationController implements HealthIndicator {
         List<Reservation> reservations = reservationDao.findAll();
 
         if(reservations.isEmpty()){
-            throw new ReservationNotFoundException("Aucune reservation n'a été trouvée");
+            throw new ObjectNotFoundException("Aucune reservation n'a été trouvée");
         }
 
         log.info("Récupération de la liste des reservations");
@@ -73,8 +74,32 @@ public class ReservationController implements HealthIndicator {
 
         Optional<Reservation> reservation = reservationDao.findById(id);
 
-        if(!reservation.isPresent())  throw new ReservationNotFoundException("La reservation correspondant à l'id " + id + " n'existe pas");
+        if(!reservation.isPresent())  throw new ObjectNotFoundException("La reservation correspondant à l'id " + id + " n'existe pas");
 
         return reservation;
+    }
+
+    /**
+     * Ajouter un reservation
+     * @param reservation bean {@link Reservation}
+     * @return ResponseEntity<Reservation> renvoi un http status.
+     */
+    @PostMapping(value = "/reservations")
+    public ResponseEntity<Reservation> addReservation(Reservation reservation){
+
+        Reservation newReservation = reservationDao.save(reservation);
+
+        if(newReservation == null) throw new ErrorAddException("Impossible d'ajouter ce reservation");
+
+        return new ResponseEntity<Reservation>(reservation, HttpStatus.CREATED);
+    }
+
+    /**
+     * Permet de mettre à jour un reservation existant.
+     **/
+    @PutMapping(value = "/reservations")
+    public void updateReservation(@RequestBody Reservation reservation) {
+
+        reservationDao.save(reservation);
     }
 }

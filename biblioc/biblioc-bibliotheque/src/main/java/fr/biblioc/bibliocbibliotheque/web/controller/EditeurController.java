@@ -2,15 +2,16 @@ package fr.biblioc.bibliocbibliotheque.web.controller;
 
 import fr.biblioc.bibliocbibliotheque.dao.EditeurDao;
 import fr.biblioc.bibliocbibliotheque.model.Editeur;
-import fr.biblioc.bibliocbibliotheque.web.exceptions.EditeurNotFoundException;
+import fr.biblioc.bibliocbibliotheque.web.exceptions.ErrorAddException;
+import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +55,7 @@ public class EditeurController implements HealthIndicator {
         List<Editeur> editeurs = editeurDao.findAll();
 
         if(editeurs.isEmpty()){
-            throw new EditeurNotFoundException("Aucun editeur n'a été trouvé");
+            throw new ObjectNotFoundException("Aucun editeur n'a été trouvé");
         }
 
         log.info("Récupération de la liste des editeurs");
@@ -73,8 +74,32 @@ public class EditeurController implements HealthIndicator {
 
         Optional<Editeur> editeur = editeurDao.findById(id);
 
-        if(!editeur.isPresent())  throw new EditeurNotFoundException("L'editeur correspondant à l'id " + id + " n'existe pas");
+        if(!editeur.isPresent())  throw new ObjectNotFoundException("L'editeur correspondant à l'id " + id + " n'existe pas");
 
         return editeur;
+    }
+
+    /**
+     * Ajouter un editeur
+     * @param editeur bean {@link Editeur}
+     * @return ResponseEntity<Editeur> renvoi un http status.
+     */
+    @PostMapping(value = "/editeurs")
+    public ResponseEntity<Editeur> addEditeur(Editeur editeur){
+
+        Editeur newEditeur = editeurDao.save(editeur);
+
+        if(newEditeur == null) throw new ErrorAddException("Impossible d'ajouter cet editeur");
+
+        return new ResponseEntity<Editeur>(editeur, HttpStatus.CREATED);
+    }
+
+    /**
+     * Permet de mettre à jour un editeur existant.
+     **/
+    @PutMapping(value = "/editeurs")
+    public void updateEditeur(@RequestBody Editeur editeur) {
+
+        editeurDao.save(editeur);
     }
 }

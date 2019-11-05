@@ -2,15 +2,16 @@ package fr.biblioc.bibliocbibliotheque.web.controller;
 
 import fr.biblioc.bibliocbibliotheque.dao.LivreDao;
 import fr.biblioc.bibliocbibliotheque.model.Livre;
-import fr.biblioc.bibliocbibliotheque.web.exceptions.LivreNotFoundException;
+import fr.biblioc.bibliocbibliotheque.web.exceptions.ErrorAddException;
+import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +54,7 @@ public class LivreController implements HealthIndicator {
         List<Livre> livres = livreDao.findAll();
 
         if(livres.isEmpty()){
-            throw new LivreNotFoundException("Aucun livre n'a été trouvé");
+            throw new ObjectNotFoundException("Aucun livre n'a été trouvé");
         }
 
         log.info("Récupération de la liste des livres");
@@ -72,8 +73,32 @@ public class LivreController implements HealthIndicator {
 
         Optional<Livre> livre = livreDao.findById(id);
 
-        if(!livre.isPresent())  throw new LivreNotFoundException("Le livre correspondant à l'id " + id + " n'existe pas");
+        if(!livre.isPresent())  throw new ObjectNotFoundException("Le livre correspondant à l'id " + id + " n'existe pas");
 
         return livre;
+    }
+
+    /**
+     * Ajouter un livre
+     * @param livre bean {@link Livre}
+     * @return ResponseEntity<Livre> renvoi un http status.
+     */
+    @PostMapping (value = "/livres")
+    public ResponseEntity<Livre> addLivre(Livre livre){
+
+        Livre newLivre = livreDao.save(livre);
+
+        if(newLivre == null) throw new ErrorAddException("Impossible d'ajouter ce livre");
+
+        return new ResponseEntity<Livre>(livre, HttpStatus.CREATED);
+    }
+
+    /**
+     * Permet de mettre à jour un livre existant.
+     **/
+    @PutMapping(value = "/livres")
+    public void updateLivre(@RequestBody Livre livre) {
+
+        livreDao.save(livre);
     }
 }

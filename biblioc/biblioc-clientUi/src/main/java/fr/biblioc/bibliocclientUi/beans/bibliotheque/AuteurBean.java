@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocclientUi.beans;
+package fr.biblioc.bibliocclientUi.beans.bibliotheque;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
