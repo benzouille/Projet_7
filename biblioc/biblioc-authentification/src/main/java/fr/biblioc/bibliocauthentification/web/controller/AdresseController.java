@@ -84,7 +84,7 @@ public class AdresseController implements HealthIndicator {
      * @param adresse bean {@link Adresse}
      * @return ResponseEntity<Adresse> renvoi un http status.
      */
-    @PostMapping(value = "/adresses")
+    @PostMapping(value = "/Nadresses")
     public ResponseEntity<Adresse> addAdresse(Adresse adresse){
 
         Adresse newAdresse = adresseDao.save(adresse);
@@ -97,7 +97,7 @@ public class AdresseController implements HealthIndicator {
     /**
      * Permet de mettre à jour un adresse existant.
      **/
-    @PutMapping(value = "/adresses")
+    @PutMapping(value = "/Uadresses")
     public void updateAdresse(@RequestBody Adresse adresse) {
 
         adresseDao.save(adresse);

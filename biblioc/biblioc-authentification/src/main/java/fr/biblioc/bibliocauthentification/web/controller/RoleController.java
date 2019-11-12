@@ -84,7 +84,7 @@ public class RoleController implements HealthIndicator {
      * @param role bean {@link Role}
      * @return ResponseEntity<Role> renvoi un http status.
      */
-    @PostMapping(value = "/roles")
+    @PostMapping(value = "/Nroles")
     public ResponseEntity<Role> addRole(Role role){
 
         Role newRole = roleDao.save(role);
@@ -97,7 +97,7 @@ public class RoleController implements HealthIndicator {
     /**
      * Permet de mettre à jour un role existant.
      **/
-    @PutMapping(value = "/roles")
+    @PutMapping(value = "/Uroles")
     public void updateRole(@RequestBody Role role) {
 
         roleDao.save(role);

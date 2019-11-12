@@ -84,7 +84,7 @@ public class ReservationController implements HealthIndicator {
      * @param reservation bean {@link Reservation}
      * @return ResponseEntity<Reservation> renvoi un http status.
      */
-    @PostMapping(value = "/reservations")
+    @PostMapping(value = "/Nreservations")
     public ResponseEntity<Reservation> addReservation(Reservation reservation){
 
         Reservation newReservation = reservationDao.save(reservation);
@@ -97,7 +97,7 @@ public class ReservationController implements HealthIndicator {
     /**
      * Permet de mettre à jour un reservation existant.
      **/
-    @PutMapping(value = "/reservations")
+    @PutMapping(value = "/Ureservations")
     public void updateReservation(@RequestBody Reservation reservation) {
 
         reservationDao.save(reservation);

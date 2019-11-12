@@ -84,7 +84,7 @@ public class ExemplaireController implements HealthIndicator {
      * @param exemplaire bean {@link Exemplaire}
      * @return ResponseEntity<Exemplaire> renvoi un http status.
      */
-    @PostMapping(value = "/exemplaires")
+    @PostMapping(value = "/Nexemplaires")
     public ResponseEntity<Exemplaire> addExemplaire(Exemplaire exemplaire){
 
         Exemplaire newExemplaire = exemplaireDao.save(exemplaire);
@@ -97,7 +97,7 @@ public class ExemplaireController implements HealthIndicator {
     /**
      * Permet de mettre à jour un exemplaire existant.
      **/
-    @PutMapping(value = "/exemplaires")
+    @PutMapping(value = "/Uexemplaires")
     public void updateExemplaire(@RequestBody Exemplaire exemplaire) {
 
         exemplaireDao.save(exemplaire);

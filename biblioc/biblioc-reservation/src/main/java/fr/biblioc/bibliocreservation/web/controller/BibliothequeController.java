@@ -84,7 +84,7 @@ public class BibliothequeController implements HealthIndicator {
      * @param bibliotheque bean {@link Bibliotheque}
      * @return ResponseEntity<Bibliotheque> renvoi un http status.
      */
-    @PostMapping(value = "/bibliotheques")
+    @PostMapping(value = "/Nbibliotheques")
     public ResponseEntity<Bibliotheque> addBibliotheque(Bibliotheque bibliotheque){
 
         Bibliotheque newBibliotheque = bibliothequeDao.save(bibliotheque);
@@ -97,7 +97,7 @@ public class BibliothequeController implements HealthIndicator {
     /**
      * Permet de mettre à jour un bibliotheque existant.
      **/
-    @PutMapping(value = "/bibliotheques")
+    @PutMapping(value = "/Ubibliotheques")
     public void updateBibliotheque(@RequestBody Bibliotheque bibliotheque) {
 
         bibliothequeDao.save(bibliotheque);

@@ -84,7 +84,7 @@ public class EditeurController implements HealthIndicator {
      * @param editeur bean {@link Editeur}
      * @return ResponseEntity<Editeur> renvoi un http status.
      */
-    @PostMapping(value = "/editeurs")
+    @PostMapping(value = "/Nediteurs")
     public ResponseEntity<Editeur> addEditeur(Editeur editeur){
 
         Editeur newEditeur = editeurDao.save(editeur);
@@ -97,7 +97,7 @@ public class EditeurController implements HealthIndicator {
     /**
      * Permet de mettre à jour un editeur existant.
      **/
-    @PutMapping(value = "/editeurs")
+    @PutMapping(value = "/Uediteurs")
     public void updateEditeur(@RequestBody Editeur editeur) {
 
         editeurDao.save(editeur);

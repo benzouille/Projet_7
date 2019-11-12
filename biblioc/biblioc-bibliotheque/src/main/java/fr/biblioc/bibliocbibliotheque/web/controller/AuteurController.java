@@ -52,6 +52,8 @@ public class AuteurController implements HealthIndicator {
     @GetMapping(value = "/Auteurs")
     public List<Auteur> listeDesAuteurs(){
 
+        log.info("passe par List<Auteur> listeDesAuteurs");
+
         List<Auteur> auteurs = auteurDao.findAll();
 
         if(auteurs.isEmpty()){
@@ -72,6 +74,8 @@ public class AuteurController implements HealthIndicator {
     @GetMapping( value = "/Auteurs/{id}")
     public Optional<Auteur> recupererUnAuteur(@PathVariable int id) {
 
+        log.info("passe par Optional<Auteur> recupererUnAuteur");
+
         Optional<Auteur> auteur = auteurDao.findById(id);
 
         if(!auteur.isPresent())  throw new ObjectNotFoundException("L'auteur correspondant à l'id " + id + " n'existe pas");
@@ -84,7 +88,7 @@ public class AuteurController implements HealthIndicator {
      * @param auteur bean {@link Auteur}
      * @return ResponseEntity<Auteur> renvoi un http status.
      */
-    @PostMapping (value = "/auteurs")
+    @PostMapping (value = "/Nauteurs")
     public ResponseEntity<Auteur> addAuteur(Auteur auteur){
 
         Auteur newAuteur = auteurDao.save(auteur);
@@ -97,7 +101,7 @@ public class AuteurController implements HealthIndicator {
     /**
      * Permet de mettre à jour un auteur existant.
      **/
-    @PutMapping(value = "/auteurs")
+    @PutMapping(value = "/Uauteurs")
     public void updateAuteur(@RequestBody Auteur auteur) {
 
         auteurDao.save(auteur);

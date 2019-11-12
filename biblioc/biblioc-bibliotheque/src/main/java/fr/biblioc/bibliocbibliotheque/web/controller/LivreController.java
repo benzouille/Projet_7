@@ -75,6 +75,8 @@ public class LivreController implements HealthIndicator {
 
         if(!livre.isPresent())  throw new ObjectNotFoundException("Le livre correspondant à l'id " + id + " n'existe pas");
 
+        log.info("Récupération du livre avec l'id : "+id);
+
         return livre;
     }
 
@@ -83,7 +85,7 @@ public class LivreController implements HealthIndicator {
      * @param livre bean {@link Livre}
      * @return ResponseEntity<Livre> renvoi un http status.
      */
-    @PostMapping (value = "/livres")
+    @PostMapping (value = "/Nlivres")
     public ResponseEntity<Livre> addLivre(Livre livre){
 
         Livre newLivre = livreDao.save(livre);
@@ -96,7 +98,7 @@ public class LivreController implements HealthIndicator {
     /**
      * Permet de mettre à jour un livre existant.
      **/
-    @PutMapping(value = "/livres")
+    @PutMapping(value = "/Ulivres")
     public void updateLivre(@RequestBody Livre livre) {
 
         livreDao.save(livre);
