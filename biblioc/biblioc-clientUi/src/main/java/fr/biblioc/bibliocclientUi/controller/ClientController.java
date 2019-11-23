@@ -17,16 +17,6 @@ public class ClientController {
     @Autowired
     private BibliocBibliothequeProxy bibliothequeProxy;
 
-    @RequestMapping("/test/")
-    public String test(Model model){
-
-        List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
-
-        model.addAttribute("auteurs", auteurs);
-
-        return "test";
-    }
-
     @RequestMapping("/")
     public String accueil(Model model){
 

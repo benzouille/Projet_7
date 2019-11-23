@@ -4,6 +4,7 @@ import fr.biblioc.bibliocclientUi.beans.authentification.UtilisateurBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -18,4 +19,7 @@ public interface BibliocAuthentificationProxy {
 
     @GetMapping(value = "/Utilisateurs/{id}")
     UtilisateurBean getUtilisateur(@PathVariable("id") int id);
+
+    @PostMapping(value = "/Utilisateurs")
+    UtilisateurBean setUtilisateur(@PathVariable("utilisateur") UtilisateurBean utilisateur);
 }

@@ -2,27 +2,239 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
     <title>Accueil</title>
 </head>
 <body>
+
+<!-- HEADER-->
+
+<!--BODY-->
 <div class="container">
-
-    <h1>DETAIL LIVRE</h1>
-
-    <div class="row">
-        <p th:text= "${livre.titre}"></p>
-        <p th:text= "${livre.annee_parution}"></p>
-        <p th:text= "${livre.id_genre}"></p>
-        <p th:text= "${livre.id_editeur}"></p>
-        <p th:text= "${livre.image}"></p>
-        <p th:text= "${livre.isbn13}"></p>
-        <p th:text= "${livre.resume}"></p>
+    <div class="jumbotron">
+        <div>
+            <h1 class="display-4"><strong><p th:text= "${livre.titre}"></p></strong></h1>
+        </div>
     </div>
+    <blockquote class="blockquote text-right">
+        <p class="mb-0">Crée par : <c:out value="${spot.createur.pseudo}"/></p>
+    </blockquote>
+    <div>
+        <hr class="my-4">
+    </div>
+    <%--IMAGE A METTRE ICI--%>
+    <div class="information row">
+        <div class="photo col-lg-5">
+            <div class="row">
+                <div class="carousel-spot margin-10b">
+                    <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselCaptions" data-slide-to="1"></li>
+                            <li data-target="#carouselCaptions" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <c:forEach items="${vListImagesPath}" var="image" varStatus="vs">
+                                <div class="carousel-item <c:if test="${vs.first}"> active</c:if>">
+                                <img src="<%=request.getContextPath()%>${image}" class="img_spot d-block img-fluid" alt="image du spot">
+                        </div>
+                        </c:forEach>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="secteur_list_1 col-lg-12">
+            <h3 class="text-center"><strong>Reservation</strong></h3>
+            <hr class="my-4">
+            <ul class="list-group">
+                <c:forEach items="${spot.secteurs}" var="secteur">
+                    <form action="spot/secteur" method="post">
+                        <input type="hidden" name="id_secteur" value="${secteur.id}"/>
+                        <input type="submit" name="_secteur_" id="${secteur.id}" class="btn list-group-item list-group-item-action turquoise" value="${secteur.nom}"/>
+                    </form>
+                </c:forEach>
+            </ul>
+            <div>
+                <c:if test="${ !empty sessionScope.utilisateur && sessionScope.utilisateur.pseudo == spot.createur.pseudo}">
+                    <div class="form-inline pull-right">
+                        <a href="#" class="btn btn-outline-success margin-10t" role="button" data-toggle="modal" data-target="#secteurModal"><i class="fa fa-plus"></i> Nouveau secteur</a>
+                    </div>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="secteurModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Nouveau secteur</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <form action="spot/secteur" method="post">
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="nom">Nom</label>
+                                                    <input type="text" class="form-control" name="nom" id="nom" placeholder="nom"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputDescription">Description</label>
+                                                <textarea class="form-control" id="inputDescription" name="description" rows="6" placeholder="1000 caractères maxi."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="id_spot" value="${spot.id}"/>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                        <input type="submit" name="_nouveau_secteur_" value="Enregistrer" class="btn btn-primary"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
+            </div>
+        </div>
+
+    </div>
+    <div class="describe col-lg-7">
+        <h3 class="text-center"><strong>Informations</strong></h3>
+        <hr class="my-4">
+        <p>Date de parution : <label th:text= "${livre.annee_parution}"></label></p>
+        <p>Genre : <label th:text= "${livre.id_genre}"></label></p>
+        <p>Editeur : <label th:text= "${livre.id_editeur}"></label></p>
+        <p>Image, a bouger... : <label th:text= "${livre.image}"></label></p>
+        <p>Code Isbn-13 : <label th:text= "${livre.isbn13}"></label></p>
+        <p>Résumé : <label th:text= "${livre.resume}"></label></p>
+    </div>
+</div>
+<hr class="my-4">
+<div class="commentaire">
+    <h3 class="text-center"><strong><i class="fa fa-comments"></i> Commentaires</strong></h3>
+    <div class="row">
+        <div  class="col-lg-12">
+            <c:if test="${ !empty sessionScope.utilisateur}">
+                <form class="form-inline pull-right" action="spots/spot" method="post">
+                    <a href="#" class="btn btn-outline-success" role="button" data-toggle="modal" data-target="#exampleModal2"><i class="fa fa-plus"></i> Nouveau commentaire</a>
+                </form>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabe2" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabe2">Nouveau commentaire</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form action="spot" method="post">
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="form-group">
+                                            <label for="inputDescription">Commentaire</label>
+                                            <textarea class="form-control" id="commentaire" name="commentaire" rows="6" placeholder="1000 caractères maxi."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                    <input type="submit" name="_nouveau_commentaire_" value="Enregistrer" class="btn btn-primary"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
+        </div>
+    </div>
+    <c:forEach items="${spot.commentaires}" var="commentaire">
+        <div class="card border-light mb-3">
+            <div class="row no-gutters">
+                <div class="card-header row col-md-3 margin-0l">
+                    <div class="col-6 col-md-12 col-lg-12">
+                        <h6>${commentaire.utilisateur.pseudo}</h6>
+                    </div>
+                    <div class="col-6 col-md-12 col-lg-12">
+                        <div class="pull-right pull-bottom">
+                            <p class="card-text"><small class="text-muted date_heure">${commentaire.date}</small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <p class="card-text">${commentaire.commentaire}</p>
+                        <c:if test="${sessionScope.utilisateur.pseudo == commentaire.utilisateur.pseudo || sessionScope.utilisateur.privilege.id==2 || sessionScope.utilisateur.privilege.id==3}">
+                            <div class="row pull-right margin-5b">
+                                <form class="margin-5r" action="spots/spot" method="post">
+                                    <a href="#" class="btn btn-outline-secondary btn-sm" role="button" data-toggle="modal" data-target="#modalEdit${commentaire.id}">Editer</a>
+                                </form>
+                                <!-- Modal -->
+                                <div class="modal fade" id="modalEdit${commentaire.id}" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalLabel">Modifier commentaire</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form action="spot" method="post">
+                                                <div class="modal-body">
+                                                    <div class="container-fluid">
+                                                        <div class="form-group">
+                                                            <label for="inputDescription">Commentaire</label>
+                                                            <textarea class="form-control" id="modifier_commentaire" name="modifier_commentaire" rows="6" >${commentaire.commentaire}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                    <input type="hidden" name="id_modifier_commentaire" value="${commentaire.id}">
+                                                    <input type="submit" name="_modifier_commentaire_" value="Modifier" class="btn btn-primary"/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <form action="spot" method="post">
+                                    <input type="hidden" name="id_commentaire" value="${commentaire.id}">
+                                    <input type="submit" name="_supprimer_commentaire_" class="btn btn-outline-secondary btn-sm" value="Supprimer"/>
+                                </form>
+                            </div>
+                        </c:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </c:forEach>
+</div>
 </div>
 
+<%-- FOOTER --%>
+<%@ include file="/WEB-INF/header_footer/footer.jsp" %>
 
-<script src="/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+<!-- SCRIPTS -->
+<script type="application/javascript">
+    $(".date_heure").each(function() {console.debug(this);gooddate = this.innerText.split(' ')[0].split('-');
+        var goodtime = this.innerText.split(' ')[1]
+        console.debug(goodtime);goodtime = goodtime.split(':')
+        $(this).text(gooddate[2]+"/"+gooddate[1]+"/"+gooddate[0]+" "+goodtime[0]+":"+goodtime[1]
+        );
+    });
+</script>
+
+
+<script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

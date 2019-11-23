@@ -80,11 +80,26 @@ public class UtilisateurController implements HealthIndicator {
     }
 
     /**
+     * Récuperer un utilisateur par son email
+     * @param email String
+     * @return bean {@link Utilisateur}
+     */
+    @GetMapping( value = "/Utilisateurs/{email}")
+    public Optional<Utilisateur> recupererUnUtilisateur(@PathVariable String email) {
+
+        Optional<Utilisateur> utilisateur = Optional.ofNullable(utilisateurDao.findByEmail(email));
+
+        if(!utilisateur.isPresent())  throw new ObjectNotFoundException("L'utilisateur correspondant à l'email " + email + " n'existe pas");
+
+        return utilisateur;
+    }
+
+    /**
      * Ajouter un utilisateur
      * @param utilisateur bean {@link Utilisateur}
      * @return ResponseEntity<Utilisateur> renvoi un http status.
      */
-    @PostMapping(value = "/Nutilisateurs")
+    @PostMapping(value = "/utilisateurs")
     public ResponseEntity<Utilisateur> addUtilisateur(Utilisateur utilisateur){
 
         Utilisateur newUtilisateur = utilisateurDao.save(utilisateur);
@@ -97,7 +112,7 @@ public class UtilisateurController implements HealthIndicator {
     /**
      * Permet de mettre à jour un utilisateur existant.
      **/
-    @PutMapping(value = "/Uutilisateurs")
+    @PutMapping(value = "/utilisateurs")
     public void updateUtilisateur(@RequestBody Utilisateur utilisateur) {
 
         utilisateurDao.save(utilisateur);

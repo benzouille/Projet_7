@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UtilisateurDao extends JpaRepository<Utilisateur, Integer> {
+
+    Utilisateur findByEmail(String email);
 }
