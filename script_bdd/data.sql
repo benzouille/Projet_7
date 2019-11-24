@@ -90,15 +90,19 @@ INSERT INTO adresse (code_postal, rue, num, commune) VALUES
 ('57000','rue des cordonniers', 20, 'Metz'),
 ('57950','rue du général Patton', 45, 'Montigny-lès-Metz'),
 ('57950',E'place de l\'église', 18, 'Montigny-lès-Metz'),
-('57950','rue des alliés', 7, 'Montigny-lès-Metz');
-('57950','rue du général Patton', 4, 'Montigny-lès-Metz'),
+('57950','rue des alliés', 7, 'Montigny-lès-Metz'),
+('57950','rue du général Patton', 4, 'Montigny-lès-Metz');
 
 
-INSERT INTO utilisateur (nom, prenom, email, password, telephone, id_role, id_adresse) VALUES
-('admin', 'admin', 'admin@admin.com', 'admin', '0123456789', 3, 1),
-('tata', 'manue', 'tata@tata.com', '1234', '9876543210',1 ,2),
-('simon', 'culçonet', 'simon.culçonet@haha.com', '2345', '0000000000',1 ,3);
+INSERT INTO utilisateur (nom, prenom, telephone, id_adresse) VALUES
+('admin', 'admin', '0123456789', 1),
+('tata', 'manue', '9876543210', 2),
+('simon', 'culçonet', '0000000000', 3);
 
+INSERT INTO compte (email, password, id_role, id_utilisateur) VALUES
+('admin@admin.com', 'admin', 3, 1),
+('tata@tata.com', '1234', 1, 2),
+('simon.culçonet@haha.com', '2345', 1, 3);
 
 INSERT INTO bibliotheque (nom, id_adresse) VALUES
 ('bibliothèque du centre', 4),
@@ -134,7 +138,7 @@ INSERT INTO livre_auteur (id_livre, id_auteur) VALUES
 (3, 3);
 
 
-INSERT INTO reservation (id_utilisateur, date_emprunt, extension, id_exemplaire) VALUES
+INSERT INTO reservation (id_compte, date_emprunt, extension, id_exemplaire) VALUES
 (2, '2019/11/5', false, 7),
 (2, '2019/11/5', false, 14),
 (3, '2019/9/11', true, 8);

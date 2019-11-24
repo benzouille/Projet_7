@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocauthentification.model;
+package fr.biblioc.utilisateur.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

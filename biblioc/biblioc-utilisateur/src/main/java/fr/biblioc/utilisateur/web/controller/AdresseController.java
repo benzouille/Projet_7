@@ -1,9 +1,9 @@
-package fr.biblioc.bibliocauthentification.web.controller;
+package fr.biblioc.utilisateur.web.controller;
 
-import fr.biblioc.bibliocauthentification.dao.AdresseDao;
-import fr.biblioc.bibliocauthentification.model.Adresse;
-import fr.biblioc.bibliocauthentification.web.exceptions.ErrorAddException;
-import fr.biblioc.bibliocauthentification.web.exceptions.ObjectNotFoundException;
+import fr.biblioc.utilisateur.dao.AdresseDao;
+import fr.biblioc.utilisateur.model.Adresse;
+import fr.biblioc.utilisateur.web.exceptions.ErrorAddException;
+import fr.biblioc.utilisateur.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocclientUi.beans.authentification;
+package fr.biblioc.bibliocclientUi.beans.utilisateur;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;

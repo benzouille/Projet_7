@@ -1,6 +1,6 @@
-package fr.biblioc.bibliocauthentification.dao;
+package fr.biblioc.utilisateur.dao;
 
-import fr.biblioc.bibliocauthentification.model.Utilisateur;
+import fr.biblioc.utilisateur.model.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +9,4 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UtilisateurDao extends JpaRepository<Utilisateur, Integer> {
-
-    Utilisateur findByEmail(String email);
 }

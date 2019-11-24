@@ -19,7 +19,7 @@ public class Reservation {
     private int id_reservation;
 
     @NotNull
-    private int id_utilisateur;
+    private int id_compte;
 
     @NotNull
     private Date date_emprunt;
@@ -40,13 +40,13 @@ public class Reservation {
 
     /**
      * constructeur avec parametres
-     * @param id_utilisateur int
+     * @param id_compte int
      * @param date_emprunt Date
      * @param extension boolean
      * @param id_exemplaire int
      */
-    public Reservation(@NotNull int id_utilisateur, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull int id_exemplaire) {
-        this.id_utilisateur = id_utilisateur;
+    public Reservation(@NotNull int id_compte, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull int id_exemplaire) {
+        this.id_compte = id_compte;
         this.date_emprunt = date_emprunt;
         this.extension = extension;
         this.id_exemplaire = id_exemplaire;
@@ -63,11 +63,11 @@ public class Reservation {
     }
 
     public int getId_utilisateur() {
-        return id_utilisateur;
+        return id_compte;
     }
 
     public void setId_utilisateur(int id_utilisateur) {
-        this.id_utilisateur = id_utilisateur;
+        this.id_compte = id_utilisateur;
     }
 
     public Date getDate_emprunt() {
@@ -100,7 +100,7 @@ public class Reservation {
     public String toString() {
         return "Reservation{" +
                 "id_reservation=" + id_reservation +
-                ", id_utilisateur=" + id_utilisateur +
+                ", id_compte=" + id_compte +
                 ", date_emprunt=" + date_emprunt +
                 ", extension=" + extension +
                 ", id_exemplaire=" + id_exemplaire +

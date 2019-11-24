@@ -1,6 +1,6 @@
 package fr.biblioc.bibliocclientUi.proxies;
 
-import fr.biblioc.bibliocclientUi.beans.authentification.UtilisateurBean;
+import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -1,8 +1,8 @@
 package fr.biblioc.bibliocclientUi.beans.dto;
 
-import fr.biblioc.bibliocclientUi.beans.authentification.AdresseBean;
+import fr.biblioc.bibliocclientUi.beans.utilisateur.AdresseBean;
 import fr.biblioc.bibliocclientUi.beans.authentification.RoleBean;
-import fr.biblioc.bibliocclientUi.beans.authentification.UtilisateurBean;
+import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
 
 /**
  * Objet à envoyer vers la vue contenant tout le neccessaire pour un utilisateur

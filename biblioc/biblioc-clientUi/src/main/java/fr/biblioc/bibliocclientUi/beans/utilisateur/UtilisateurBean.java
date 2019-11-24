@@ -1,4 +1,4 @@
-package fr.biblioc.bibliocclientUi.beans.authentification;
+package fr.biblioc.bibliocclientUi.beans.utilisateur;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
@@ -22,18 +22,7 @@ public class UtilisateurBean {
 
     @NotNull
     @Max(100)
-    private String email;
-
-    @NotNull
-    @Max(100)
-    private String password;
-
-    @NotNull
-    @Max(100)
     private int telephone;
-
-    @NotNull
-    private int id_role;
 
     @NotNull
     private int id_adresse;
@@ -50,19 +39,13 @@ public class UtilisateurBean {
      * constructeur avec parametres
      * @param nom string
      * @param prenom string
-     * @param email string
-     * @param password string
      * @param telephone int
-     * @param id_role int
      * @param id_adresse int
      */
-    public UtilisateurBean(@NotNull @Max(100) String nom, @NotNull @Max(100) String prenom, @NotNull @Max(100) String email, @NotNull @Max(100) String password, @NotNull @Max(100) int telephone, @NotNull int id_role, @NotNull int id_adresse) {
+    public UtilisateurBean(@NotNull @Max(100) String nom, @NotNull @Max(100) String prenom, @NotNull @Max(100) int telephone, @NotNull int id_adresse) {
         this.nom = nom;
         this.prenom = prenom;
-        this.email = email;
-        this.password = password;
         this.telephone = telephone;
-        this.id_role = id_role;
         this.id_adresse = id_adresse;
     }
 
@@ -92,36 +75,12 @@ public class UtilisateurBean {
         this.prenom = prenom;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public int getTelephone() {
         return telephone;
     }
 
     public void setTelephone(int telephone) {
         this.telephone = telephone;
-    }
-
-    public int getId_role() {
-        return id_role;
-    }
-
-    public void setId_role(int id_role) {
-        this.id_role = id_role;
     }
 
     public int getId_adresse() {
@@ -140,10 +99,7 @@ public class UtilisateurBean {
                 "id_utilisateur=" + id_utilisateur +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", telephone=" + telephone +
-                ", id_role=" + id_role +
                 ", id_adresse=" + id_adresse +
                 '}';
     }

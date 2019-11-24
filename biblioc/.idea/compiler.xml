@@ -13,6 +13,7 @@
         <module name="biblioc-reservation" />
         <module name="config-server" />
         <module name="eureka-server" />
+        <module name="utilisateur" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -33,6 +34,7 @@
       <module name="biblioc-reservation" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="utilisateur" options="-parameters" />
       <module name="zuul-server" options="-parameters" />
     </option>
   </component>

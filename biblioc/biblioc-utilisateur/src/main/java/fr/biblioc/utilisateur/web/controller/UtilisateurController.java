@@ -1,9 +1,9 @@
-package fr.biblioc.bibliocauthentification.web.controller;
+package fr.biblioc.utilisateur.web.controller;
 
-import fr.biblioc.bibliocauthentification.dao.UtilisateurDao;
-import fr.biblioc.bibliocauthentification.model.Utilisateur;
-import fr.biblioc.bibliocauthentification.web.exceptions.ErrorAddException;
-import fr.biblioc.bibliocauthentification.web.exceptions.ObjectNotFoundException;
+import fr.biblioc.utilisateur.dao.UtilisateurDao;
+import fr.biblioc.utilisateur.model.Utilisateur;
+import fr.biblioc.utilisateur.web.exceptions.ErrorAddException;
+import fr.biblioc.utilisateur.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,21 +75,6 @@ public class UtilisateurController implements HealthIndicator {
         Optional<Utilisateur> utilisateur = utilisateurDao.findById(id);
 
         if(!utilisateur.isPresent())  throw new ObjectNotFoundException("L'utilisateur correspondant à l'id " + id + " n'existe pas");
-
-        return utilisateur;
-    }
-
-    /**
-     * Récuperer un utilisateur par son email
-     * @param email String
-     * @return bean {@link Utilisateur}
-     */
-    @GetMapping( value = "/Utilisateurs/{email}")
-    public Optional<Utilisateur> recupererUnUtilisateur(@PathVariable String email) {
-
-        Optional<Utilisateur> utilisateur = Optional.ofNullable(utilisateurDao.findByEmail(email));
-
-        if(!utilisateur.isPresent())  throw new ObjectNotFoundException("L'utilisateur correspondant à l'email " + email + " n'existe pas");
 
         return utilisateur;
     }

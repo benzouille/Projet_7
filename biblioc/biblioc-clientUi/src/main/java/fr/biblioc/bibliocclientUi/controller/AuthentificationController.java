@@ -1,6 +1,6 @@
 package fr.biblioc.bibliocclientUi.controller;
 
-import fr.biblioc.bibliocclientUi.beans.utilities.UserConnexion;
+import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
 import fr.biblioc.bibliocclientUi.proxies.BibliocAuthentificationProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,17 +18,17 @@ public class AuthentificationController {
     @RequestMapping("/authentification/connexion")
     public String test(Model model){
 
-        UserConnexion userConnexion = new UserConnexion();
+        CompteBean compte = new CompteBean();
 
-        model.addAttribute("userConnexion", userConnexion);
+        model.addAttribute("compte", compte);
 
         return "connexion";
     }
 
     @PostMapping("/authentification/connexion")
-    public String connexion(@ModelAttribute UserConnexion userConnexion){
+    public String connexion(@ModelAttribute CompteBean compte){
 
-        System.out.println(userConnexion.toString());
+        System.out.println(compte.toString());
 
         return "connexion";
     }
