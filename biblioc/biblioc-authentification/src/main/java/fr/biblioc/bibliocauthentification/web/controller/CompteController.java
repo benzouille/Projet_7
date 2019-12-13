@@ -21,7 +21,6 @@ import java.util.Optional;
  */
 @RestController
 public class CompteController implements HealthIndicator {
-
     //------------------------- ATTRIBUTS -------------------------
 
     @Autowired
@@ -84,12 +83,12 @@ public class CompteController implements HealthIndicator {
      * @param email String
      * @return bean {@link Compte}
      */
-    @GetMapping( value = "/Comptes/{email}")
+    @GetMapping( value = "/Comptes_mail/{email}")
     public Optional<Compte> recupererUnCompte(@PathVariable String email) {
 
         Optional<Compte> compte = Optional.ofNullable(compteDao.findByEmail(email));
 
-        if(!compte.isPresent())  throw new ObjectNotFoundException("L'compte correspondant à l'email " + email + " n'existe pas");
+        if(compte == null)  throw new ObjectNotFoundException("L'compte correspondant à l'email " + email + " n'existe pas");
 
         return compte;
     }
@@ -99,8 +98,10 @@ public class CompteController implements HealthIndicator {
      * @param compte bean {@link Compte}
      * @return ResponseEntity<Compte> renvoi un http status.
      */
-    @PostMapping(value = "/comptes")
-    public ResponseEntity<Compte> addCompte(Compte compte){
+    @PostMapping(value = "/Comptes")
+    public ResponseEntity<Compte> newCompte(@RequestBody Compte compte){
+
+        System.out.println();
 
         Compte newCompte = compteDao.save(compte);
 
@@ -112,7 +113,7 @@ public class CompteController implements HealthIndicator {
     /**
      * Permet de mettre à jour un compte existant.
      **/
-    @PutMapping(value = "/comptes")
+    @PutMapping(value = "/Comptes")
     public void updateCompte(@RequestBody Compte compte) {
 
         compteDao.save(compte);

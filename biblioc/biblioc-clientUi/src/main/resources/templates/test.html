@@ -20,6 +20,14 @@
         </div>
     </div>
 
+    <div class="row">
+        <div th:each="compte : ${comptes}" class="col-md-4 my-1">
+                <p th:text= "${compte.email}"></p>
+                <p th:text= "${compte.password}"></p>
+            </a>
+        </div>
+    </div>
+
 </div>
 
 

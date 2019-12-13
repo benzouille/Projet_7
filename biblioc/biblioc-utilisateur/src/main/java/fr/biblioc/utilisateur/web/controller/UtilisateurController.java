@@ -84,7 +84,7 @@ public class UtilisateurController implements HealthIndicator {
      * @param utilisateur bean {@link Utilisateur}
      * @return ResponseEntity<Utilisateur> renvoi un http status.
      */
-    @PostMapping(value = "/utilisateurs")
+    @PostMapping(value = "/Utilisateurs")
     public ResponseEntity<Utilisateur> addUtilisateur(Utilisateur utilisateur){
 
         Utilisateur newUtilisateur = utilisateurDao.save(utilisateur);
@@ -97,7 +97,7 @@ public class UtilisateurController implements HealthIndicator {
     /**
      * Permet de mettre à jour un utilisateur existant.
      **/
-    @PutMapping(value = "/utilisateurs")
+    @PutMapping(value = "/Utilisateurs")
     public void updateUtilisateur(@RequestBody Utilisateur utilisateur) {
 
         utilisateurDao.save(utilisateur);

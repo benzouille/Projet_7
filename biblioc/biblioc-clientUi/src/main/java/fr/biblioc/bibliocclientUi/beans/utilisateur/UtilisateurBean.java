@@ -13,16 +13,14 @@ public class UtilisateurBean {
     private int id_utilisateur;
 
     @NotNull
-    @Max(100)
     private String nom;
 
     @NotNull
-    @Max(100)
     private String prenom;
 
     @NotNull
     @Max(100)
-    private int telephone;
+    private long telephone;
 
     @NotNull
     private int id_adresse;
@@ -39,10 +37,10 @@ public class UtilisateurBean {
      * constructeur avec parametres
      * @param nom string
      * @param prenom string
-     * @param telephone int
+     * @param telephone long
      * @param id_adresse int
      */
-    public UtilisateurBean(@NotNull @Max(100) String nom, @NotNull @Max(100) String prenom, @NotNull @Max(100) int telephone, @NotNull int id_adresse) {
+    public UtilisateurBean(@NotNull String nom, @NotNull String prenom, @NotNull @Max(100) long telephone, @NotNull int id_adresse) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
@@ -75,11 +73,11 @@ public class UtilisateurBean {
         this.prenom = prenom;
     }
 
-    public int getTelephone() {
+    public long getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(long telephone) {
         this.telephone = telephone;
     }
 

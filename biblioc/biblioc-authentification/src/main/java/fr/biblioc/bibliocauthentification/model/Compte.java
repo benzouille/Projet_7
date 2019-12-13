@@ -18,11 +18,9 @@ public class Compte {
     private int id_compte;
 
     @NotNull
-    @Max(100)
     private String email;
 
     @NotNull
-    @Max(100)
     private String password;
 
     @NotNull

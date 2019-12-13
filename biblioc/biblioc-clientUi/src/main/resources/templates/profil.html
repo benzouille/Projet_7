@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/authentification.css}"/>
+    <title>Profil</title>
+</head>
+<body>
+<!--NAVBAR-->
+
+<!--BODY-->
+<div class="container">
+    <div class="row">
+        <div class="col-xl-2 col-lg-2 col-md-2"></div>
+        <div class="box-profil col-xl-8 col-lg-8 col-md-8 col-sm-12">
+            <h1>Profil</h1>
+            <div class="row">
+                <p th:if="${compte.getId_utilisateur() == 1}">Pas de profil encore crée !</p>
+            </div>
+            <!--    <div th:switch="${user.role}">-->
+            <!--        <p th:case="'admin'">User is an administrator</p>-->
+            <!--        <p th:case="#{roles.manager}">User is a manager</p>-->
+            <!--        <p th:case="*">User is some other thing</p>-->
+            <!--    </div>-->
+            <div class="row">
+                <div class="col-lg-4">
+                    <label for="nom" class="">Nom : </label>
+                </div>
+                <div class="col-lg-8">
+                    <label id="nom" name="nom" th:text= "${utilisateur.nom}"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <label for="prenom" class="">Prenom : </label>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <label id="prenom" th:text= "${utilisateur.prenom}"></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <label for="tel" class="">Numéro de téléphone : </label>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <label id="tel" th:text= "${utilisateur.telephone}"></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <label for="adresse" class="">Adresse : </label>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <label id="adresse"><c:if test="${ !empty sessionScope.utilisateur}">${ sessionScope.utilisateur.departement.num }</c:if></label>
+                </div>
+            </div>
+            <div class="form-inline pull-right">
+                <input type="button" name="_ok_" value="Modifier" data-toggle="modal" data-target="#exampleModal">
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-2"></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modifier le profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="profil" method="post">
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="id_sexe">Sexe</label>
+                                    <select class="custom-select" name="sexe" id="id_sexe">
+                                        <option selected>Séléctionnez</option>
+                                        <c:forEach items="${vListSexes}" var="sexe">
+                                            <option><c:out value="${sexe.sexe}"/></option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="id_departement">Département</label>
+                                    <select class="custom-select" name="departement" id="id_departement">
+                                        <option selected>Séléctionnez</option>
+                                        <c:forEach items="${vListDepartements}" var="departement">
+                                            <option><c:out value="${departement.num}"/></option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="id_email">Email</label>
+                                    <input type="email" id="id_email" class="form-control"  name="email" value="<c:if test="${ !empty sessionScope.utilisateur}">${ sessionScope.utilisateur.email }</c:if>"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <input type="submit" name="_modifier_profil_" class="btn btn-primary" value="Enregistrer"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--FOOTER-->
+
+
+<!-- SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+</script>
+
+<script type="text/javascript" src="http://localhost:8080/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous">
+</script>
+
+</body>
+</html>

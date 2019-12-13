@@ -10,12 +10,14 @@ body{
     background-color: rgba(0,0,0,0.8);
     text-align: center;
 }
+
 .box h1{
     color: white;
     padding-bottom: 35px;
     text-transform: uppercase;
     font-weight: 500;
 }
+
 .box label{
     background: none;
     display: block;
@@ -23,6 +25,11 @@ body{
     text-align: center;
     color: white;
 }
+
+#red .box label{
+    color: red;
+}
+
 .box input[type = "text"],.box input[type = "password"]{
     background: none;
     display: block;
@@ -36,6 +43,7 @@ body{
     border-radius: 24px;
     transition: 0.25s;
 }
+
 .box input[type = "text"]:focus,.box input[type = "password"]:focus{
     width: 220px;
     background: none;
@@ -49,6 +57,7 @@ body{
     border-radius: 24px;
     transition: 0.25s;
 }
+
 .box input[type = "submit"]{
     background: none;
     display: block;
@@ -62,6 +71,7 @@ body{
     transition: 0.25s;
     cursor: pointer;
 }
+
 .box input[type = "submit"]:hover{
     background: #78e08f;
 }
@@ -76,12 +86,14 @@ body{
     background-color: rgba(0,0,0,0.8);
     text-align: center;
 }
+
 .box-profil h1{
     color: white;
     padding-bottom: 35px;
     text-transform: uppercase;
     font-weight: 500;
 }
+
 .box-profil label, .box-profil select{
     background: none;
     font-size: 20px;
@@ -90,6 +102,7 @@ body{
     text-align: left;
     color: white;
 }
+
 .box-profil  select{
     background: none;
     display: block;
@@ -102,6 +115,7 @@ body{
     color: white;
     border-radius: 8px;
 }
+
 .box-profil input {
     background: none;
     display: block;
@@ -115,6 +129,7 @@ body{
     border-radius: 8px;
     cursor: pointer;
 }
+
 .box-profil input[type = "submit"]:hover{
     background: #78e08f;
 }
@@ -122,19 +137,20 @@ body{
 .link {
     color: #60a3bc;
 }
-.red{
-    color: red;
-}
-.email{
+
+.email {
     color: white;
 }
+
 .footer-top{
     background-color: rgba(0,0,0,0.7);
     padding: 60px 0 30px 0;
 }
+
 .footer-info{
     margin-bottom: 30px;
 }
+
 .footer-info h3{
     font-size: 34px;
     margin: 0 0 20px 0;
@@ -146,6 +162,7 @@ body{
     letter-spacing: 3px;
     text-transform: uppercase;
 }
+
 .footer-info p{
     font-size: 13px;
     line-height: 24px;
@@ -153,6 +170,7 @@ body{
     font-family: "Monstreet" , sans-serif;
     color:#eef5ff;
 }
+
 .footer-top h4{
     font-size: 14px;
     font-weight: bold;
@@ -161,9 +179,11 @@ body{
     position:center;
     padding-bottom: 10px;
 }
+
 .footer-links{
     margin-bottom: 30px;
 }
+
 .footer-links ul{
     list-style: none;
     margin: 0;
@@ -177,26 +197,33 @@ body{
 .footer-links ul li{
     padding: 8px 0;
 }
+
 .footer-links ul li:first-child{
     padding-top: 0;
 }
+
 .footer-links ul a{
     color: #f1f7ff;
 }
+
 .footer-links ul a:hover{
     color: #74b5fc;
 }
+
 .footer-contact{
     margin-bottom: 30px;
 }
+
 .footer-contact p{
     line-height: 26px;
 }
+
 .credits{
     text-align: center;
     font-size: 13px;
     color: #bfddfe;
 }
+
 .credits a:hover{
     color: #f1f7ff;
 }

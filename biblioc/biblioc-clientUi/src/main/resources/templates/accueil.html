@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <title>Accueil</title>
 </head>
 <body>
@@ -11,12 +11,32 @@
     <h1>ACCUEIL BIBLIOC</h1>
 
     <div class="row">
-        <div th:each="auteur : ${auteurs}" class="col-md-4 my-1">
-            <a th:href="@{|/details-auteur/${auteur.id}|}" >
-                <p th:text= "${auteur.nom}"></p>
-            </a>
-        </div>
+        <p th:if="${compte != null}">Bonjour <label th:if="${compte != null}" th:text="${compte.email}"></label> !</p>
     </div>
+
+    <div class="row">
+        <a th:href="@{|/authentification/connexion|}">
+            <p>Connexion</p>
+        </a>
+
+        <a th:if="${compte != null}" th:href="@{|/authentification/profil/${compte.id_compte}|}">
+            <p>Profil</p>
+        </a>
+
+    </div>
+    <!--    <div th:switch="${user.role}">-->
+    <!--        <p th:case="'admin'">User is an administrator</p>-->
+    <!--        <p th:case="#{roles.manager}">User is a manager</p>-->
+    <!--        <p th:case="*">User is some other thing</p>-->
+    <!--    </div>-->
+
+        <div class="row">
+            <div th:each="auteur : ${auteurs}" class="col-md-4 my-1">
+                <a th:href="@{|/details-auteur/${auteur.id}|}" >
+                    <p th:text= "${auteur.nom}"></p>
+                </a>
+            </div>
+        </div>
 
 </div>
 

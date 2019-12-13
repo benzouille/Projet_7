@@ -1,12 +1,11 @@
 package fr.biblioc.bibliocclientUi.proxies;
 
-import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
+import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Proxy du microservice authentification.
@@ -14,12 +13,15 @@ import java.util.List;
 @FeignClient(name = "biblioc-authentification", url = "localhost:9001")
 public interface BibliocAuthentificationProxy {
 
-    @GetMapping(value = "/Utilisateurs")
-    List<UtilisateurBean> listUtilisateurs();
+    @GetMapping(value = "/Comptes")
+    List<CompteBean> listComptes();
 
-    @GetMapping(value = "/Utilisateurs/{id}")
-    UtilisateurBean getUtilisateur(@PathVariable("id") int id);
+    @GetMapping(value = "/Comptes/{id}")
+    CompteBean getCompte(@PathVariable("id") int id);
 
-    @PostMapping(value = "/Utilisateurs")
-    UtilisateurBean setUtilisateur(@PathVariable("utilisateur") UtilisateurBean utilisateur);
+    @GetMapping( value = "/Comptes_mail/{email}")
+    CompteBean  getCompte(@PathVariable("email") String email);
+
+    @PostMapping(value = "/Comptes")
+    CompteBean newCompte(@RequestBody CompteBean compte);
 }

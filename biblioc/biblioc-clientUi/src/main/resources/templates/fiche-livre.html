@@ -24,6 +24,7 @@
         <hr class="my-4">
     </div>
     <%--IMAGE A METTRE ICI--%>
+    <p>Image : <label th:text= "${livre.image}"></label></p>
     <div class="information row">
         <div class="photo col-lg-5">
             <div class="row">
@@ -53,20 +54,20 @@
             </div>
         </div>
         <div class="secteur_list_1 col-lg-12">
-            <h3 class="text-center"><strong>Reservation</strong></h3>
+            <h3 class="text-center"><strong>Disponibilité</strong></h3>
             <hr class="my-4">
             <ul class="list-group">
                 <c:forEach items="${spot.secteurs}" var="secteur">
                     <form action="spot/secteur" method="post">
                         <input type="hidden" name="id_secteur" value="${secteur.id}"/>
-                        <input type="submit" name="_secteur_" id="${secteur.id}" class="btn list-group-item list-group-item-action turquoise" value="${secteur.nom}"/>
+                        <input type="submit" name="_secteur_" id="${secteur.id}" class="btn list-group-item list-group-item-action turquoise" value="Le nom de la bibliothèque"/>
                     </form>
                 </c:forEach>
             </ul>
             <div>
                 <c:if test="${ !empty sessionScope.utilisateur && sessionScope.utilisateur.pseudo == spot.createur.pseudo}">
                     <div class="form-inline pull-right">
-                        <a href="#" class="btn btn-outline-success margin-10t" role="button" data-toggle="modal" data-target="#secteurModal"><i class="fa fa-plus"></i> Nouveau secteur</a>
+                        <a href="#" class="btn btn-outline-success margin-10t" role="button" data-toggle="modal" data-target="#secteurModal"><i class="fa fa-plus"></i> Reservation, A BOUGER</a>
                     </div>
 
                     <!-- Modal -->
@@ -74,7 +75,7 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Nouveau secteur</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Reservation</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -114,7 +115,6 @@
         <p>Date de parution : <label th:text= "${livre.annee_parution}"></label></p>
         <p>Genre : <label th:text= "${livre.id_genre}"></label></p>
         <p>Editeur : <label th:text= "${livre.id_editeur}"></label></p>
-        <p>Image, a bouger... : <label th:text= "${livre.image}"></label></p>
         <p>Code Isbn-13 : <label th:text= "${livre.isbn13}"></label></p>
         <p>Résumé : <label th:text= "${livre.resume}"></label></p>
     </div>

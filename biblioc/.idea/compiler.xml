@@ -6,14 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="biblioc-authentification" />
-        <module name="biblioc-batch" />
-        <module name="biblioc-bibliotheque" />
         <module name="biblioc-clientUi" />
-        <module name="biblioc-reservation" />
-        <module name="config-server" />
         <module name="eureka-server" />
+        <module name="config-server" />
+        <module name="biblioc-reservation" />
+        <module name="biblioc-authentification" />
         <module name="utilisateur" />
+        <module name="biblioc-bibliotheque" />
+        <module name="biblioc-batch" />
+        <module name="biblioc-utilisateur" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -32,6 +33,7 @@
       <module name="biblioc-bibliotheque" options="-parameters" />
       <module name="biblioc-clientUi" options="-parameters" />
       <module name="biblioc-reservation" options="-parameters" />
+      <module name="biblioc-utilisateur" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="utilisateur" options="-parameters" />
