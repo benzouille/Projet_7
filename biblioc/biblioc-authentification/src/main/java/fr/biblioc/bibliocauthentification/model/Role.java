@@ -19,7 +19,6 @@ public class Role {
     private int id_role;
 
     @NotNull
-    @Max(100)
     private String role;
 
     //------------------------- CONSTRUCTEUR -------------------------

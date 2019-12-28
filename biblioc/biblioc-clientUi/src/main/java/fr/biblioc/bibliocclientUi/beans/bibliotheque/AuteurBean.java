@@ -14,11 +14,9 @@ public class AuteurBean {
     private int id;
 
     @NotBlank
-    @Max(50)
     private String nom;
 
     @NotBlank
-    @Max(50)
     private String prenom;
 
     @NotBlank

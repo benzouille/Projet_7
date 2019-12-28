@@ -19,7 +19,6 @@ public class Genre {
     private int id_genre;
 
     @NotNull
-    @Max(100)
     private String genre;
 
     //------------------------- CONSTRUCTEUR -------------------------
@@ -35,7 +34,7 @@ public class Genre {
      * @param id_genre int
      * @param genre string
      */
-    public Genre(int id_genre, @NotNull @Max(100) String genre) {
+    public Genre(int id_genre, @NotNull String genre) {
         this.id_genre = id_genre;
         this.genre = genre;
     }

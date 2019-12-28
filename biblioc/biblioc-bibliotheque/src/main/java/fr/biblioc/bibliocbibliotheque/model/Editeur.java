@@ -19,7 +19,6 @@ public class Editeur {
     private int id_editeur;
 
     @NotNull
-    @Max(100)
     private String nom;
 
     //------------------------- CONSTRUCTEUR -------------------------

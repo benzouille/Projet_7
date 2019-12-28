@@ -33,4 +33,9 @@ public class TestController {
 
         return "test";
     }
+
+    @RequestMapping("/navbar")
+    public String navbar(Model model){
+        return "navbar";
+    }
 }

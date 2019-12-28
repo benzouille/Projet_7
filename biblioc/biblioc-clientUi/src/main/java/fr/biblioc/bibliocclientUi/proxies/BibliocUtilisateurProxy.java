@@ -31,4 +31,7 @@ public interface BibliocUtilisateurProxy {
     @PostMapping(value = "/Adresses")
     AdresseBean newAdresse(@RequestBody AdresseBean adresse);
 
+    @PutMapping(value = "/Adresses")
+    AdresseBean updateAdresse(@RequestBody AdresseBean adresse);
+
 }

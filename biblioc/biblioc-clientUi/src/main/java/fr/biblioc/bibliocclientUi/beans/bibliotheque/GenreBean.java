@@ -12,7 +12,6 @@ public class GenreBean {
     private int id_genre;
 
     @NotNull
-    @Max(100)
     private String genre;
 
     //------------------------- CONSTRUCTEUR -------------------------

@@ -21,12 +21,10 @@ public class Auteur {
     private int id;
 
     @NotBlank
-    @Max(50)
     @Column(name = "nom")
     private String nom;
 
     @NotBlank
-    @Max(50)
     @Column(name = "prenom")
     private String prenom;
 

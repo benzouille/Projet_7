@@ -13,7 +13,6 @@ public class RoleBean {
     private int id_role;
 
     @NotNull
-    @Max(100)
     private String role;
 
     //------------------------- CONSTRUCTEUR -------------------------

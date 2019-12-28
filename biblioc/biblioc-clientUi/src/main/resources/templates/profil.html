@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossorigin="anonymous">
@@ -21,43 +21,52 @@
             <div class="row">
                 <p th:if="${compte.getId_utilisateur() == 1}">Pas de profil encore crée !</p>
             </div>
-            <!--    <div th:switch="${user.role}">-->
-            <!--        <p th:case="'admin'">User is an administrator</p>-->
-            <!--        <p th:case="#{roles.manager}">User is a manager</p>-->
-            <!--        <p th:case="*">User is some other thing</p>-->
-            <!--    </div>-->
+
             <div class="row">
                 <div class="col-lg-4">
-                    <label for="nom" class="">Nom : </label>
+                    <label for="1nom">Nom : </label>
                 </div>
                 <div class="col-lg-8">
-                    <label id="nom" name="nom" th:text= "${utilisateur.nom}"></label>
+                    <label id="1nom" name="nom" th:text="${utilisateur.nom}"></label>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-12">
-                    <label for="prenom" class="">Prenom : </label>
+                    <label for="1prenom" class="">Prenom : </label>
                 </div>
                 <div class="col-lg-8 col-md-12">
-                    <label id="prenom" th:text= "${utilisateur.prenom}"></label>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-12">
-                    <label for="tel" class="">Numéro de téléphone : </label>
-                </div>
-                <div class="col-lg-8 col-md-12">
-                    <label id="tel" th:text= "${utilisateur.telephone}"></label>
+                    <label id="1prenom" th:text="${utilisateur.prenom}"></label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-lg-4 col-md-12">
-                    <label for="adresse" class="">Adresse : </label>
+                    <label for="1tel" class="">Numéro de téléphone : </label>
                 </div>
                 <div class="col-lg-8 col-md-12">
-                    <label id="adresse"><c:if test="${ !empty sessionScope.utilisateur}">${ sessionScope.utilisateur.departement.num }</c:if></label>
+                    <label id="1tel" th:text="${utilisateur.telephone}"></label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <label class="">Adresse : </label>
+                </div>
+                <div class="col-lg-8 col-md-12">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <label th:text="${adresse.num}"></label>
+                        </div>
+                        <div class="col-lg-11">
+                            <label th:text="${adresse.rue}"></label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label th:text="${adresse.getcode_postal()}"></label>
+                        </div>
+                        <div class="col-lg-10">
+                            <label th:text="${adresse.commune}"></label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-inline pull-right">
@@ -69,7 +78,8 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -78,36 +88,48 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="profil" method="post">
+            <form th:action="@{/authentification/profil}" th:object="${utilisateur}" method="post">
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="id_sexe">Sexe</label>
-                                    <select class="custom-select" name="sexe" id="id_sexe">
-                                        <option selected>Séléctionnez</option>
-                                        <c:forEach items="${vListSexes}" var="sexe">
-                                            <option><c:out value="${sexe.sexe}"/></option>
-                                        </c:forEach>
-                                    </select>
+                                    <input name="id_utilisateur" type="hidden" th:value="*{id_utilisateur}"/>
+                                    <input name="id_adresse" type="hidden" th:value="*{getId_adresse()}"/>
+                                    <label for="nom">Nom</label>
+                                    <input class="form-control" id="nom" type="text" name="nom"
+                                           th:value="*{nom}"/>
+                                    <label for="prenom">Prenom</label>
+                                    <input class="form-control" id="prenom" type="text" name="prenom"
+                                           th:value="*{prenom}"/>
+                                    <label for="tel">Numéro de téléphone</label>
+                                    <input class="form-control" id="tel" type="text" name="telephone"
+                                           th:value="*{telephone}"/>
                                 </div>
                             </div>
-                            <div>
-                                <div class="form-group">
-                                    <label for="id_departement">Département</label>
-                                    <select class="custom-select" name="departement" id="id_departement">
-                                        <option selected>Séléctionnez</option>
-                                        <c:forEach items="${vListDepartements}" var="departement">
-                                            <option><c:out value="${departement.num}"/></option>
-                                        </c:forEach>
-                                    </select>
+
+                            <div class="row" th:object="${adresse}">
+                                <div class="col-md-2">
+                                    <input name="id_adresse" type="hidden" th:value="*{getid_adresse()}"/>
+                                    <label for="num">N°</label>
+                                    <input class="form-control" id="num" type="text" name="num"
+                                           th:value="*{num}"/>
+                                    <p th:if="${#fields.hasErrors('num')}" th:errors="*{num}">test</p>
                                 </div>
-                            </div>
-                            <div>
-                                <div class="form-group">
-                                    <label for="id_email">Email</label>
-                                    <input type="email" id="id_email" class="form-control"  name="email" value="<c:if test="${ !empty sessionScope.utilisateur}">${ sessionScope.utilisateur.email }</c:if>"/>
+                                <div class="col-md-10">
+                                    <label for="rue">Rue</label>
+                                    <input class="form-control" id="rue" type="text" name="rue"
+                                           th:value="*{rue}"/>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="code_postal">Code postal</label>
+                                    <input class="form-control" id="code_postal" type="text" name="code_postal"
+                                           th:value="*{getcode_postal()}"/>
+                                </div>
+                                <div class="col-md-9">
+                                    <label for="commune">Commune</label>
+                                    <input class="form-control" id="commune" type="text"
+                                           name="commune" th:value="*{commune}"/>
                                 </div>
                             </div>
                         </div>

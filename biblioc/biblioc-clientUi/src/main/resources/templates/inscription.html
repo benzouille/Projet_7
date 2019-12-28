@@ -11,6 +11,7 @@
 </head>
 <body>
 <!--NAVBAR-->
+<div th:include="navbar.html"></div>
 
 <!--BODY-->
 <div class="container">
@@ -20,9 +21,9 @@
             <form class="box" action="#" th:action="@{/authentification/inscription}" th:object="${compte}" method="post">
                 <h1>Inscription</h1>
                 <input type="text" th:field="*{email}" placeholder="E-mail"/>
-                <label th:if="${#fields.hasErrors('email')}" th:class="'error'">Enter Email</label>
+                <label th:if="${#fields.hasErrors('email')}" th:class="'email'">Enter Email</label>
                 <input type="text" th:field="*{password}" placeholder="Mot de passe">
-                <label th:if="${#fields.hasErrors('password')}" th:class="'error'">Enter Password</label>
+                <label th:if="${#fields.hasErrors('password')}" th:class="'password'">Enter Password</label>
                 <input type="submit" th:value="Inscription"/>
                 <a class="link" href="/authentification/connexion">Déjà un compte ?</a>
             </form>
@@ -32,7 +33,7 @@
 </div>
 
 <!--FOOTER-->
-
+<div th:include="footer.html"></div>
 
 <!-- SCRIPTS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

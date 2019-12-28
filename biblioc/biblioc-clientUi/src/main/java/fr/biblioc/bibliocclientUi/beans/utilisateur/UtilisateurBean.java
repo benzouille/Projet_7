@@ -2,6 +2,7 @@ package fr.biblioc.bibliocclientUi.beans.utilisateur;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  * Bean Utilisateur coté client
@@ -12,14 +13,14 @@ public class UtilisateurBean {
 
     private int id_utilisateur;
 
-    @NotNull
+    @NotNull(message = "ne peux être vide")
     private String nom;
 
-    @NotNull
+    @NotNull(message = "ne peux être vide")
     private String prenom;
 
-    @NotNull
-    @Max(100)
+    @NotNull(message = "ne peux être vide")
+    @Pattern(regexp = "^[0-9]{10}", message = "doit conenir 10 chiffres")
     private long telephone;
 
     @NotNull
@@ -40,7 +41,7 @@ public class UtilisateurBean {
      * @param telephone long
      * @param id_adresse int
      */
-    public UtilisateurBean(@NotNull String nom, @NotNull String prenom, @NotNull @Max(100) long telephone, @NotNull int id_adresse) {
+    public UtilisateurBean(@NotNull String nom, @NotNull String prenom, @NotNull long telephone, @NotNull int id_adresse) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;

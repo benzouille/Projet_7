@@ -13,19 +13,15 @@ public class AdresseBean {
     private int id_adresse;
 
     @NotNull
-    @Max(6)
     private String code_postal;
 
     @NotNull
-    @Max(200)
     private String rue;
 
     @NotNull
-    @Max(5)
     private String num;
 
     @NotNull
-    @Max(200)
     private String commune;
 
     //------------------------- CONSTRUCTEUR -------------------------
@@ -43,7 +39,7 @@ public class AdresseBean {
      * @param num String numéro
      * @param commune String commune
      */
-    public AdresseBean(@NotNull @Max(6) String code_postal, @NotNull @Max(200) String rue, @NotNull @Max(5) String num, @NotNull @Max(200) String commune) {
+    public AdresseBean(@NotNull String code_postal, @NotNull String rue, @NotNull String num, @NotNull String commune) {
         this.code_postal = code_postal;
         this.rue = rue;
         this.num = num;

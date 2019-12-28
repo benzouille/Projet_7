@@ -19,7 +19,6 @@ public class Bibliotheque {
     private int id_biblio;
 
     @NotNull
-    @Max(100)
     private String nom;
 
     @NotNull

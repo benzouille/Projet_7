@@ -1,7 +1,10 @@
 package fr.biblioc.bibliocclientUi.beans.utilisateur;
 
-import javax.validation.constraints.Max;
+import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * Bean adresse coté client contenant l'adresse complète pour les utilisateurs et pour les bibliothèques.
@@ -12,20 +15,19 @@ public class AdresseBean {
 
     private int id_adresse;
 
-    @NotNull
-    @Max(6)
-    private String code_postal;
-
-    @NotNull
-    @Max(200)
-    private String rue;
-
-    @NotNull
-    @Max(5)
+    @NotNull(message = "ne peux être vide")
+    @Pattern(regexp = "[0-9]{1,3}[a-zA-Z]{0,3}", message = "3 chiffres suivi de 3 lettres maximum")
     private String num;
 
-    @NotNull
-    @Max(200)
+    @NotNull(message = "ne peux être vide")
+    @Length(max = 100, message = "ne peux dépasser 100 caractères")
+    private String rue;
+
+    @Pattern(regexp = "^[0-9]{5}", message = "veuillez entrer un code postal à 5 chiffres")
+    private String code_postal;
+
+    @NotNull(message = "ne peux être vide")
+    @Length(max = 100, message = "ne peux dépasser 100 caractères")
     private String commune;
 
     //------------------------- CONSTRUCTEUR -------------------------
@@ -43,7 +45,7 @@ public class AdresseBean {
      * @param num String numéro
      * @param commune String commune
      */
-    public AdresseBean(@NotNull @Max(6) String code_postal, @NotNull @Max(200) String rue, @NotNull @Max(5) String num, @NotNull @Max(200) String commune) {
+    public AdresseBean(@NotNull String code_postal, @NotNull String rue, @NotNull String num, @NotNull String commune) {
         this.code_postal = code_postal;
         this.rue = rue;
         this.num = num;

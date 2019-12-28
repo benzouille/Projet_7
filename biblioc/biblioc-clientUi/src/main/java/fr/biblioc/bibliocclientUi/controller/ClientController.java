@@ -26,7 +26,7 @@ public class ClientController {
     @Autowired
     private BibliocAuthentificationProxy authentificationProxy;
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String accueil(Model model){
 
         List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
@@ -36,25 +36,8 @@ public class ClientController {
         return "Accueil";
     }
 
-//    @RequestMapping("/{id_compte}")
-//    public String accueil(@PathVariable("id_compte") int id_compte, Model model){
-//
-//        System.out.println("je passe par /{id_compte}");
-//
-//        List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
-//        CompteBean compte = authentificationProxy.getCompte(id_compte);
-//
-//        //CompteBean compte2 = (CompteBean) model.getAttribute("compte");
-//        //System.out.println("objet CompteBean passé en parametre" + compte2.getEmail());
-//
-//        model.addAttribute("auteurs", auteurs);
-//        model.addAttribute("compte", compte);
-//
-//        return "Accueil";
-//    }
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView get(HttpServletRequest request) {
+    @RequestMapping(value = "/accueil", method = RequestMethod.GET)
+    public ModelAndView accueilConnecte(HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView("accueil");
 
@@ -69,19 +52,7 @@ public class ClientController {
         return modelAndView;
     }
 
-//    @PostMapping("/")
-//    public String accueil(@PathVariable("compte") CompteBean compte, Model model){
-//
-//        List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
-//
-//        model.addAttribute("auteurs", auteurs);
-//        model.addAttribute("compte", compte);
-//
-//
-//        return "Accueil";
-//    }
-
-    @RequestMapping("/details-auteur/{id}")
+    @RequestMapping(value= "/details-auteur/{id}", method = RequestMethod.GET)
     public String ficheAuteur(@PathVariable int id, Model model){
 
         AuteurBean auteur = bibliothequeProxy.getAuteur(id);
@@ -95,7 +66,7 @@ public class ClientController {
         return "fiche-auteur";
     }
 
-    @RequestMapping("/details-livre/{id}")
+    @RequestMapping(value= "/details-livre/{id}", method = RequestMethod.GET)
     public String ficheLivre(@PathVariable int id, Model model){
 
 //        AuteurBean auteur = bibliothequeProxy.getAuteur(id);

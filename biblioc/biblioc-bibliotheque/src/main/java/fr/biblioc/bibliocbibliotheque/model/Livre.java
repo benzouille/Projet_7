@@ -19,18 +19,15 @@ public class Livre {
     private int id_livre;
 
     @NotNull
-    @Max(50)
     private String isbn13;
 
     @NotNull
     private int id_genre;
 
     @NotNull
-    @Max(200)
     private String titre;
 
     @NotNull
-    @Max(1000)
     private String resume;
 
     private String image;
@@ -60,7 +57,7 @@ public class Livre {
      * @param annee_parution-
      * @param id_editeur-
      */
-    public Livre(@NotNull @Max(50) String isbn13, @NotNull int id_genre, @NotNull @Max(200) String titre, @NotNull @Max(1000) String resume, String image, @NotNull @Max(4) int annee_parution, @NotNull int id_editeur) {
+    public Livre(@NotNull String isbn13, @NotNull int id_genre, @NotNull String titre, @NotNull String resume, String image, @NotNull @Max(4) int annee_parution, @NotNull int id_editeur) {
         this.isbn13 = isbn13;
         this.id_genre = id_genre;
         this.titre = titre;

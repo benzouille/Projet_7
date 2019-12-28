@@ -13,18 +13,15 @@ public class LivreBean {
     private int id_livre;
 
     @NotNull
-    @Max(50)
     private String isbn13;
 
     @NotNull
     private int id_genre;
 
     @NotNull
-    @Max(200)
     private String titre;
 
     @NotNull
-    @Max(1000)
     private String resume;
 
     private String image;
