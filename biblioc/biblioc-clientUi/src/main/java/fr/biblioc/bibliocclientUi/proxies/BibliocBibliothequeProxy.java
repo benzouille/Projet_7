@@ -1,6 +1,7 @@
 package fr.biblioc.bibliocclientUi.proxies;
 
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
+import fr.biblioc.bibliocclientUi.beans.bibliotheque.GenreBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.LivreBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,4 +26,7 @@ public interface BibliocBibliothequeProxy {
 
     @GetMapping(value = "/Livres/{id}")
     LivreBean getLivre(@PathVariable("id") int id);
+
+    @GetMapping(value = "/Genres")
+    List<GenreBean> getGenres();
 }

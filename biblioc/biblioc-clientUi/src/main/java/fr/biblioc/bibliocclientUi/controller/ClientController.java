@@ -2,6 +2,7 @@ package fr.biblioc.bibliocclientUi.controller;
 
 import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
+import fr.biblioc.bibliocclientUi.beans.bibliotheque.GenreBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.LivreBean;
 import fr.biblioc.bibliocclientUi.proxies.BibliocAuthentificationProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocBibliothequeProxy;
@@ -50,33 +51,5 @@ public class ClientController {
         modelAndView.addObject("auteurs", auteurs);
 
         return modelAndView;
-    }
-
-    @RequestMapping(value= "/details-auteur/{id}", method = RequestMethod.GET)
-    public String ficheAuteur(@PathVariable int id, Model model){
-
-        AuteurBean auteur = bibliothequeProxy.getAuteur(id);
-
-        model.addAttribute("auteur", auteur);
-
-        List<LivreBean> livres = bibliothequeProxy.listLivres();
-
-        model.addAttribute("livres", livres);
-
-        return "fiche-auteur";
-    }
-
-    @RequestMapping(value= "/details-livre/{id}", method = RequestMethod.GET)
-    public String ficheLivre(@PathVariable int id, Model model){
-
-//        AuteurBean auteur = bibliothequeProxy.getAuteur(id);
-//
-//        model.addAttribute("auteur", auteur);
-
-        LivreBean livre = bibliothequeProxy.getLivre(id);
-
-        model.addAttribute("livre", livre);
-
-        return "fiche-livre";
     }
 }

@@ -1,5 +1,6 @@
 package fr.biblioc.bibliocclientUi.proxies;
 
+import fr.biblioc.bibliocclientUi.beans.reservation.BibliothequeBean;
 import fr.biblioc.bibliocclientUi.beans.reservation.ReservationBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,5 +24,8 @@ public interface BibliocReservationProxy {
 
     @PostMapping(value = "/Reservations/reservation")
     ReservationBean newReservation(@RequestBody ReservationBean reservation);
+
+    @GetMapping(value = "/Bibliotheques")
+    List <BibliothequeBean> listBibliotheques();
 
 }

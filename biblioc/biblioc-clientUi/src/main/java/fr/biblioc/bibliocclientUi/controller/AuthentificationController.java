@@ -1,11 +1,9 @@
 package fr.biblioc.bibliocclientUi.controller;
 
 import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
-import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
 import fr.biblioc.bibliocclientUi.beans.utilisateur.AdresseBean;
 import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
 import fr.biblioc.bibliocclientUi.proxies.BibliocAuthentificationProxy;
-import fr.biblioc.bibliocclientUi.proxies.BibliocBibliothequeProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocUtilisateurProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,11 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -98,31 +94,39 @@ public class AuthentificationController {
     public String inscription(@Valid @ModelAttribute CompteBean compte, BindingResult bindingResult, Model model){
 
         if(bindingResult.hasErrors()){
-            // TODO SINON
-            //  retourner sur la page inscription avec message d'erreur
+            //TODO regarder l'erreur
             return "inscription";
         }
         else{
-            //TODO SI inscription ok :
-            // aller sur la page connexion
+            CompteBean compteComparator = authentificationProxy.getCompte(compte.getEmail());
+            if(compteComparator != null){
+                System.out.println("double email : " + compteComparator.getEmail() + " et : " + compte.getEmail());
+                String erreur = "cette adresse email est déjà utilisée !";
 
-            //attribution de l'utilisateur provisoire
-            compte.setId_utilisateur(1);
-            compte.setId_role(1);
+                model.addAttribute("compte", compte);
+                model.addAttribute("erreur", erreur);
 
-            System.out.println(compte.toString());
+                return "inscription";
+            } else{
+                //attribution de l'utilisateur provisoire
+                compte.setId_utilisateur(1);
+                compte.setId_role(1);
 
-            authentificationProxy.newCompte(compte);
+                System.out.println(compte.toString());
 
-            compte = new CompteBean();
+                authentificationProxy.newCompte(compte);
 
-            //TODO ajouter le retour http
+                compte = new CompteBean();
+
+                //TODO ajouter le retour http
 //            if(paiement.getStatusCode() == HttpStatus.CREATED)
 //                paiementAccepte = true;
 
-            model.addAttribute("compte", compte);
+                model.addAttribute("compte", compte);
 
-            return "connexion";
+                return "connexion";
+            }
+
         }
     }
 

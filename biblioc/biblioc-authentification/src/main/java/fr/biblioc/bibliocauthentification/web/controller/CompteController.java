@@ -84,11 +84,11 @@ public class CompteController implements HealthIndicator {
      * @return bean {@link Compte}
      */
     @GetMapping( value = "/Comptes_mail/{email}")
-    public Optional<Compte> recupererUnCompte(@PathVariable String email) {
+    public Compte recupererUnCompte(@PathVariable String email) {
 
-        Optional<Compte> compte = Optional.ofNullable(compteDao.findByEmail(email));
+        Compte compte = compteDao.findByEmail(email);
 
-        if(compte == null)  throw new ObjectNotFoundException("L'compte correspondant à l'email " + email + " n'existe pas");
+        //if(compte == null)  throw new ObjectNotFoundException("Le compte correspondant à l'email " + email + " n'existe pas");
 
         return compte;
     }

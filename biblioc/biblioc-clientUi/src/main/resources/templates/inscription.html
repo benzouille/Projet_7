@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/authentification.css}"/>
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/authentification.css}"/>
     <title>Inscription</title>
 </head>
 <body>
@@ -20,6 +20,7 @@
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
             <form class="box" action="#" th:action="@{/authentification/inscription}" th:object="${compte}" method="post">
                 <h1>Inscription</h1>
+                <label th:if="${erreur} != null" th:text="${erreur}" style="color: red"></label>
                 <input type="text" th:field="*{email}" placeholder="E-mail"/>
                 <label th:if="${#fields.hasErrors('email')}" th:class="'email'">Enter Email</label>
                 <input type="text" th:field="*{password}" placeholder="Mot de passe">
