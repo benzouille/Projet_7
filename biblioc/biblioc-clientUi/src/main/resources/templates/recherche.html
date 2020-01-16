@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<html class="no-overflow" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:fragment="head" xmlns:th="http://www.thymeleaf.org" >
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
@@ -39,34 +39,34 @@
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade" id="v-pills-livre" role="tabpanel" aria-labelledby="v-pills-livre-tab">
-                        <form action="rechercher" method="post">
+                    <div class="tab-pane fade show active" id="v-pills-livre" role="tabpanel" aria-labelledby="v-pills-livre-tab">
+                        <form name="titre" th:action="@{/recherche}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Titre</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" id="titre" placeholder="titre">
+                                        <input type="text" name="titre" class="form-control" placeholder="titre">
                                     </div>
                                 </div>
                                 <div class="row col-12">
                                 </div>
                             </div>
                             <div class="pull-right margin-20t">
-                                <input type="submit" name="_recherche_spot_" value="Rechercher" class="btn btn-outline-secondary"/>
+                                <input type="submit" value="Rechercher" class="btn btn-outline-secondary"/>
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade show active" id="v-pills-auteur" role="tabpanel" aria-labelledby="v-pills-auteur-tab">
-                        <form action="rechercher" method="post">
+                    <div class="tab-pane fade" id="v-pills-auteur" role="tabpanel" aria-labelledby="v-pills-auteur-tab">
+                        <form name="id_auteur" action="#" th:action="@{/recherche}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Auteur</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" name="auteur" id="auteur">
-                                            <option selected>Séléctionnez</option>
-                                            <p th:each="auteur : ${auteurs}" >
-                                                <option th:text= "${auteur.nom}"></option>
-                                            </p>
+                                        <select name="id_auteur" class="custom-select">
+                                            <option th:each="auteur : ${auteurs}"
+                                                    th:value="${auteur.id}"
+                                                    th:text="${auteur.nom}">
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -74,21 +74,21 @@
                                 </div>
                             </div>
                             <div class="pull-right margin-20t">
-                                <input type="submit" name="_recherche_spot_" value="Rechercher" class="btn btn-outline-secondary"/>
+                                <input type="submit" value="Rechercher" class="btn btn-outline-secondary"/>
                             </div>
                         </form>
                     </div>
                     <div class="tab-pane fade" id="v-pills-genre" role="tabpanel" aria-labelledby="v-pills-genre-tab">
-                        <form action="rechercher" method="post">
+                        <form name="id_genre" action="#" th:action="@{/recherche}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Genre</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" name="genre" id="genre">
-                                            <option selected>Séléctionnez</option>
-                                            <p th:each="genre : ${genres}" >
-                                                <option th:text= "${genre.genre}"></option>
-                                            </p>
+                                        <select name="id_genre" class="custom-select">
+                                                <option th:each="genre : ${genres}"
+                                                        th:value="${genre.getid_genre()}"
+                                                        th:text= "${genre.genre}">
+                                                </option>
                                         </select>
                                     </div>
                                 </div>
@@ -101,38 +101,41 @@
                         </form>
                     </div>
                     <div class="tab-pane fade" id="v-pills-multi" role="tabpanel" aria-labelledby="v-pills-multi-tab">
-                        <form action="rechercher" method="post">
+                        <form name="id_multi" action="#" th:action="@{/recherches}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Auteur</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" name="auteur" id="multi_auteur">
-                                            <option selected>Séléctionnez</option>
-                                            <p th:each="auteur : ${auteurs}" >
-                                                <option th:text= "${auteur.nom}"></option>
-                                            </p>
+                                        <select name="id_auteur" class="custom-select">
+                                            <option th:value="-1">sélectionnez</option>
+                                            <option th:each="auteur : ${auteurs}"
+                                                    th:value="${auteur.id}"
+                                                    th:text="${auteur.nom}">
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Genre</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" name="genre" id="multi_genre">
-                                            <option selected>Séléctionnez</option>
-                                            <p th:each="genre : ${genres}" >
-                                                <option th:text= "${genre.genre}"></option>
-                                            </p>
+                                        <select name="id_genre" class="custom-select">
+                                            <option th:value="-1">sélectionnez</option>
+                                            <option th:each="genre : ${genres}"
+                                                    th:value="*{genre.getid_genre()}"
+                                                    th:text= "${genre.genre}">
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Bibliothèque</label>
                                     <div class="input-group mb-3">
-                                        <select class="custom-select" name="genre" id="multi_biblio">
-                                            <option selected>Séléctionnez</option>
-                                            <p th:each="biblio : ${biblios}" >
-                                                <option th:text= "${biblio.nom}"></option>
-                                            </p>
+                                        <select class="custom-select" name="id_biblio">
+                                            <option th:value="-1">sélectionnez</option>
+                                            <option th:each="biblio : ${biblios}"
+                                                    th:value="*{biblio.getid_biblio()}"
+                                                    th:text= "${biblio.nom}">
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -164,14 +167,12 @@
                 <th scope="col">Genre</th>
             </tr>
             </thead>
-            <tbody>
-<!--            un foreach-->
-                <tr>
-                    <td><a class="link" href="#">titre livre</a></td>
-                    <td><a class="link" href="#">nom auteur</a></td>
-                    <td>genre</td>
+            <tbody th:if="${livres != null}">
+                <tr th:each="livre : ${livres}">
+                    <td><a class="link" href="#" th:text="${livre.titre}"></a></td>
+                    <td><a class="link" href="#" th:text="${livre.auteurs.get(0).nom}"></a></td>
+                    <td th:text="${livre.genre.genre}"></td>
                 </tr>
-<!--            un foreach-->
             </tbody>
         </table>
         <!--            if-->

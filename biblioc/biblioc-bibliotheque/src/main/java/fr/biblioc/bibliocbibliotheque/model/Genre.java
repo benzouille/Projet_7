@@ -1,8 +1,6 @@
 package fr.biblioc.bibliocbibliotheque.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
@@ -10,15 +8,17 @@ import javax.validation.constraints.NotNull;
  * Bean genre
  */
 @Entity
+@Table(name = "genre")
 public class Genre {
 
     //------------------------- ATTRIBUTS -------------------------
 
     @Id
     @GeneratedValue
+    @Column(name = "id_genre")
     private int id_genre;
 
-    @NotNull
+    @Column(name = "genre")
     private String genre;
 
     //------------------------- CONSTRUCTEUR -------------------------

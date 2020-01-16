@@ -1,6 +1,8 @@
 package fr.biblioc.bibliocbibliotheque.web.controller;
 
 import fr.biblioc.bibliocbibliotheque.dao.LivreDao;
+import fr.biblioc.bibliocbibliotheque.dto.LivreDto;
+import fr.biblioc.bibliocbibliotheque.mapper.LivreMapper;
 import fr.biblioc.bibliocbibliotheque.model.Livre;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +28,9 @@ public class LivreController implements HealthIndicator {
 
     @Autowired
     LivreDao livreDao;
+
+    @Autowired
+    LivreMapper livreMapper;
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -69,15 +75,20 @@ public class LivreController implements HealthIndicator {
      * @return bean {@link Livre}
      */
     @GetMapping( value = "/Livres/{id}")
-    public Optional<Livre> recupererUnLivre(@PathVariable int id) {
+    public LivreDto recupererUnLivre(@PathVariable int id) {
 
         Optional<Livre> livre = livreDao.findById(id);
+        LivreDto livreDto = null;
 
-        if(!livre.isPresent())  throw new ObjectNotFoundException("Le livre correspondant à l'id " + id + " n'existe pas");
+
+        if(livre.isPresent()){
+            livreDto = livreMapper.livreToLivreDto(livre.get());
+            log.info(livreDto.toString());
+        }
 
         log.info("Récupération du livre avec l'id : "+id);
 
-        return livre;
+        return livreDto;
     }
 
     /**
@@ -85,7 +96,7 @@ public class LivreController implements HealthIndicator {
      * @param livre bean {@link Livre}
      * @return ResponseEntity<Livre> renvoi un http status.
      */
-    @PostMapping (value = "/Nlivres")
+    @PostMapping (value = "/Livres")
     public ResponseEntity<Livre> addLivre(Livre livre){
 
         Livre newLivre = livreDao.save(livre);
@@ -98,7 +109,7 @@ public class LivreController implements HealthIndicator {
     /**
      * Permet de mettre à jour un livre existant.
      **/
-    @PutMapping(value = "/Ulivres")
+    @PutMapping(value = "/Livres")
     public void updateLivre(@RequestBody Livre livre) {
 
         livreDao.save(livre);

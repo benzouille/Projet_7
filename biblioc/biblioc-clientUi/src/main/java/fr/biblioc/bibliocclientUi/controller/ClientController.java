@@ -32,7 +32,7 @@ public class ClientController {
 
         List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
 
-        model.addAttribute("auteurs", auteurs);
+        //model.addAttribute("auteurs", auteurs);
 
         return "Accueil";
     }

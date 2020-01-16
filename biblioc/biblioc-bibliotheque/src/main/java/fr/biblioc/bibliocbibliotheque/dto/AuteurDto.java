@@ -1,12 +1,15 @@
-package fr.biblioc.bibliocclientUi.beans.bibliotheque;
+package fr.biblioc.bibliocbibliotheque.dto;
 
+import fr.biblioc.bibliocbibliotheque.model.Livre;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Bean auteur
+ * Dto auteur
  */
-public class AuteurBean {
+public class AuteurDto {
 
     //------------------------- ATTRIBUTS -------------------------
 
@@ -20,25 +23,26 @@ public class AuteurBean {
 
     private Date date_deces;
 
-    private List<LivreBean> bibliographie;
+    private List<Livre> bibliographie;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
      * constructeur
      */
-    public AuteurBean() {
+    public AuteurDto() {
     }
 
     /**
      * constructeur avec parametres
+     * @param id int
      * @param nom string
      * @param prenom string
      * @param date_naissance Date
      * @param date_deces Date
-     * @param bibliographie list de livre
+     * @param bibliographie List de Livre
      */
-    public AuteurBean(int id, String nom, String prenom, Date date_naissance, Date date_deces, List<LivreBean> bibliographie) {
+    public AuteurDto(int id, String nom, String prenom, Date date_naissance, Date date_deces, List<Livre> bibliographie) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -89,11 +93,11 @@ public class AuteurBean {
         this.date_deces = date_deces;
     }
 
-    public List<LivreBean> getBibliographie() {
+    public List<Livre> getBibliographie() {
         return bibliographie;
     }
 
-    public void setBibliographie(List<LivreBean> bibliographie) {
+    public void setBibliographie(List<Livre> bibliographie) {
         this.bibliographie = bibliographie;
     }
 
@@ -101,13 +105,19 @@ public class AuteurBean {
 
     @Override
     public String toString() {
-        return "AuteurBean{" +
+
+        List<Integer>id_livres = new ArrayList<>();
+        for(Livre livre : bibliographie){
+            id_livres.add(livre.getid_livre());
+        }
+
+        return "AuteurDto{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", date_naissance=" + date_naissance +
                 ", date_deces=" + date_deces +
-                ", bibliographie=" + bibliographie +
+                ", bibliographie=" + id_livres +
                 '}';
     }
 }

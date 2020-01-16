@@ -1,6 +1,8 @@
 package fr.biblioc.bibliocbibliotheque.web.controller;
 
 import fr.biblioc.bibliocbibliotheque.dao.AuteurDao;
+import fr.biblioc.bibliocbibliotheque.dto.AuteurDto;
+import fr.biblioc.bibliocbibliotheque.mapper.AuteurMapper;
 import fr.biblioc.bibliocbibliotheque.model.Auteur;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,9 @@ public class AuteurController implements HealthIndicator {
 
     @Autowired
     AuteurDao auteurDao;
+
+    @Autowired
+    AuteurMapper auteurMapper;
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -47,40 +53,41 @@ public class AuteurController implements HealthIndicator {
 
     /**
      * Affiche la liste de tous les auteurs
-     * @return liste d'auteurs
+     * @return liste d'auteurDtos
      */
     @GetMapping(value = "/Auteurs")
-    public List<Auteur> listeDesAuteurs(){
-
-        log.info("passe par List<Auteur> listeDesAuteurs");
+    public List<AuteurDto> listeDesAuteurs(){
 
         List<Auteur> auteurs = auteurDao.findAll();
+        List<AuteurDto> auteurDtos = new ArrayList<>();
+        for (Auteur auteur : auteurs){
+            auteurDtos.add(auteurMapper.auteurtoAuteurDto(auteur));
+        }
 
-        if(auteurs.isEmpty()){
+        if(auteurDtos.isEmpty()){
             throw new ObjectNotFoundException("Aucun auteur n'a été trouvé");
         }
 
-        log.info("Récupération de la liste des auteurs");
-
-        return auteurs;
+        return auteurDtos;
 
     }
 
     /**
-     * Récuperer un auteur par son id
+     * Récuperer un auteurDto par son id
      * @param id int
-     * @return bean {@link Auteur}
+     * @return bean {@link AuteurDto}
      */
     @GetMapping( value = "/Auteurs/{id}")
-    public Optional<Auteur> recupererUnAuteur(@PathVariable int id) {
-
-        log.info("passe par Optional<Auteur> recupererUnAuteur");
+    public AuteurDto recupererUnAuteur(@PathVariable int id) {
 
         Optional<Auteur> auteur = auteurDao.findById(id);
+        AuteurDto auteurDto = null;
 
-        if(!auteur.isPresent())  throw new ObjectNotFoundException("L'auteur correspondant à l'id " + id + " n'existe pas");
-
-        return auteur;
+        if(auteur.isPresent()){
+            auteurDto = auteurMapper.auteurtoAuteurDto(auteur.get());
+            log.info(auteurDto.toString());
+        }
+        return auteurDto;
     }
 
     /**
@@ -88,7 +95,7 @@ public class AuteurController implements HealthIndicator {
      * @param auteur bean {@link Auteur}
      * @return ResponseEntity<Auteur> renvoi un http status.
      */
-    @PostMapping (value = "/Nauteurs")
+    @PostMapping (value = "/Auteurs")
     public ResponseEntity<Auteur> addAuteur(Auteur auteur){
 
         Auteur newAuteur = auteurDao.save(auteur);
@@ -101,7 +108,7 @@ public class AuteurController implements HealthIndicator {
     /**
      * Permet de mettre à jour un auteur existant.
      **/
-    @PutMapping(value = "/Uauteurs")
+    @PutMapping(value = "/Auteurs")
     public void updateAuteur(@RequestBody Auteur auteur) {
 
         auteurDao.save(auteur);

@@ -1,15 +1,16 @@
 package fr.biblioc.bibliocbibliotheque.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Bean de livre correspondant à la table livre de la bdd
  */
-@Entity
+@Entity(name = "livre")
 public class Livre {
 
     //------------------------- ATTRIBUTS -------------------------
@@ -21,11 +22,16 @@ public class Livre {
     @NotNull
     private String isbn13;
 
-    @NotNull
-    private int id_genre;
+    @OneToOne
+    @JoinColumn(name = "id_genre")
+    private Genre genre;
 
     @NotNull
     private String titre;
+
+    @ManyToMany(mappedBy = "bibliographie")
+    @JsonBackReference
+    private List<Auteur> auteurs;
 
     @NotNull
     private String resume;
@@ -37,7 +43,9 @@ public class Livre {
     private int annee_parution;
 
     @NotNull
-    private int id_editeur;
+    @OneToOne
+    @JoinColumn(name = "id_editeur")
+    private Editeur editeur;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
@@ -50,21 +58,23 @@ public class Livre {
     /**
      * Constructeur avec ses parametres
      * @param isbn13-
-     * @param id_genre-
+     * @param genre-
      * @param titre-
+     * @param auteurs List d'auteurs
      * @param resume-
      * @param image-
      * @param annee_parution-
-     * @param id_editeur-
+     * @param editeur-
      */
-    public Livre(@NotNull String isbn13, @NotNull int id_genre, @NotNull String titre, @NotNull String resume, String image, @NotNull @Max(4) int annee_parution, @NotNull int id_editeur) {
+    public Livre(@NotNull String isbn13, Genre genre, @NotNull String titre, List<Auteur> auteurs, @NotNull String resume, String image, @NotNull @Max(4) int annee_parution, @NotNull Editeur editeur) {
         this.isbn13 = isbn13;
-        this.id_genre = id_genre;
+        this.genre = genre;
         this.titre = titre;
+        this.auteurs = auteurs;
         this.resume = resume;
         this.image = image;
         this.annee_parution = annee_parution;
-        this.id_editeur = id_editeur;
+        this.editeur = editeur;
     }
 //------------------------- GETTER/SETTER -------------------------
 
@@ -84,12 +94,12 @@ public class Livre {
         this.isbn13 = isbn13;
     }
 
-    public int getId_genre() {
-        return id_genre;
+    public Genre getGenre() {
+        return genre;
     }
 
-    public void setId_genre(int id_genre) {
-        this.id_genre = id_genre;
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public String getTitre() {
@@ -98,6 +108,14 @@ public class Livre {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    public List<Auteur> getAuteurs() {
+        return auteurs;
+    }
+
+    public void setAuteurs(List<Auteur> auteurs) {
+        this.auteurs = auteurs;
     }
 
     public String getResume() {
@@ -124,12 +142,12 @@ public class Livre {
         this.annee_parution = annee_parution;
     }
 
-    public int getId_editeur() {
-        return id_editeur;
+    public Editeur getEditeur() {
+        return editeur;
     }
 
-    public void setId_editeur(int id_editeur) {
-        this.id_editeur = id_editeur;
+    public void setEditeur(Editeur editeur) {
+        this.editeur = editeur;
     }
 
 //------------------------- TO_STRING -------------------------
@@ -139,12 +157,13 @@ public class Livre {
         return "Livre{" +
                 "id_livre=" + id_livre +
                 ", isbn13='" + isbn13 + '\'' +
-                ", id_genre=" + id_genre +
+                ", genre=" + genre +
                 ", titre='" + titre + '\'' +
+                ", auteurs=" + auteurs +
                 ", resume='" + resume + '\'' +
                 ", image='" + image + '\'' +
                 ", annee_parution=" + annee_parution +
-                ", id_editeur=" + id_editeur +
+                ", editeur=" + editeur +
                 '}';
     }
 }

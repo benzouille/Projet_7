@@ -37,7 +37,7 @@ public class Bibliotheque {
      * @param nom String nom
      * @param id_adresse int id_adresse
      */
-    public Bibliotheque(@NotNull @Max(100) String nom, @NotNull int id_adresse) {
+    public Bibliotheque(@NotNull String nom, @NotNull int id_adresse) {
         this.nom = nom;
         this.id_adresse = id_adresse;
     }

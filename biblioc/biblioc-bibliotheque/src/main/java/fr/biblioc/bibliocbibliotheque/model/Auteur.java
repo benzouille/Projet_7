@@ -1,16 +1,18 @@
 package fr.biblioc.bibliocbibliotheque.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Bean auteur
  */
-@Entity
-@Table(name = "auteur", schema = "public", catalog = "postgres")
+@Entity(name = "auteur")
 public class Auteur {
 
     //------------------------- ATTRIBUTS -------------------------
@@ -35,12 +37,20 @@ public class Auteur {
     @Column(name = "date_deces")
     private Date date_deces;
 
+    @ManyToMany
+    @JoinTable(
+            name = "auteur_livre",
+            joinColumns = { @JoinColumn(name = "auteur_id") },
+            inverseJoinColumns = { @JoinColumn(name = "livre_id") } )
+    @JsonManagedReference
+    private List<Livre> bibliographie;
+
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
      * constructeur
      */
-    protected Auteur() {
+    public Auteur() {
     }
 
     /**
@@ -49,12 +59,15 @@ public class Auteur {
      * @param prenom string
      * @param date_naissance Date
      * @param date_deces Date
+     * @param bibliographie List de Livre
      */
-    public Auteur(@NotNull @Max(50) String nom, @NotNull @Max(50) String prenom, @NotNull Date date_naissance, Date date_deces) {
+    public Auteur(int id, @NotNull String nom, @NotNull String prenom, @NotNull Date date_naissance, Date date_deces, List<Livre> bibliographie) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.date_naissance = date_naissance;
         this.date_deces = date_deces;
+        this.bibliographie = bibliographie;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -99,16 +112,31 @@ public class Auteur {
         this.date_deces = date_deces;
     }
 
+    public List<Livre> getBibliographie() {
+        return bibliographie;
+    }
+
+    public void setBibliographie(List<Livre> bibliographie) {
+        this.bibliographie = bibliographie;
+    }
+
     //------------------------- TO_STRING -------------------------
 
     @Override
     public String toString() {
+
+        List<Integer>id_livres = new ArrayList<>();
+        for(Livre livre : bibliographie){
+            id_livres.add(livre.getid_livre());
+        }
+
         return "Auteur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", date_naissance=" + date_naissance +
                 ", date_deces=" + date_deces +
-                '}';
+                ", bibliographie=" + id_livres +
+                "}";
     }
 }

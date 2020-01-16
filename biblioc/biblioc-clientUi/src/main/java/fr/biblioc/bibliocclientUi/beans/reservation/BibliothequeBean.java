@@ -23,7 +23,7 @@ public class BibliothequeBean {
     /**
      * constructeur
      */
-    protected BibliothequeBean() {
+    public BibliothequeBean() {
     }
 
     /**

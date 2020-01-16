@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossorigin="anonymous">
@@ -17,109 +17,55 @@
 <div class="container">
     <div class="jumbotron">
         <div>
-            <h1 class="display-4"><strong><p th:text= "${livre.titre}"></p></strong></h1>
+            <h1 class="display-4"><strong><p th:text="${livre.titre}"></p></strong></h1>
         </div>
     </div>
     <blockquote class="blockquote text-right">
-        <p class="mb-0">Auteur : <c:out value="${spot.createur.pseudo}"/></p>
+        <p class="mb-0">Auteur : <label th:text="${livre.auteurs.get(0).prenom + ' ' + livre.auteurs.get(0).nom}"></label></p>
     </blockquote>
     <div>
         <hr class="my-4">
     </div>
-    <%--IMAGE A METTRE ICI--%>
-    <p>Image : <label th:text= "${livre.image}"></label></p>
-    <div class="information row">
-        <div class="photo col-lg-5">
+    <div class="row">
+        <div class="information col-lg-5">
+            <div class="photo col-lg-12">
+                <img class="img-fluid" th:src="@{${'/img/' + livre.image}}" th:alt="${livre.titre}">
+            </div>
+            <hr class="my-4">
+            <div class="bibliotheque col-lg-12">
+                <h3 class="text-center"><strong>Disponibilité</strong></h3>
+
+                <ul class="list-group">
+                    <form name="bibliotheque_id" action="#" method="post">
+                        <input th:each="bibliotheque : ${bibliotheques}" type="submit" name="bibliotheque_id"
+                               class="btn list-group-item list-group-item-action turquoise"
+                               th:value="*{bibliotheque.nom}">
+                    </form>
+                </ul>
+            </div>
+        </div>
+        <div class="describe col-lg-7">
+            <h3 class="text-center"><strong>Informations</strong></h3>
+            <hr class="my-4">
             <div class="row">
-                <div class="carousel-spot margin-10b">
-                    <div id="carouselCaptions" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselCaptions" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselCaptions" data-slide-to="1"></li>
-                            <li data-target="#carouselCaptions" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <c:forEach items="${vListImagesPath}" var="image" varStatus="vs">
-                                <div class="carousel-item <c:if test="${vs.first}"> active</c:if>">
-                                <img src="<%=request.getContextPath()%>${image}" class="img_spot d-block img-fluid" alt="image du spot">
-                        </div>
-                        </c:forEach>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselCaptions" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselCaptions" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                <div class="col-6">
+                    <p>Genre : <label th:text="${livre.genre.genre}"></label></p>
+                </div>
+                <div class="col-6 text-sm-right">
+                    <p>Editeur : <label th:text="${livre.editeur.nom}"></label></p>
+                </div>
+                <div class="col-6">
+                    <p>Date de parution : <label th:text="${livre.annee_parution}"></label></p>
+                </div>
+                <div class="col-6 text-sm-right">
+                    <p>Code Isbn-13 : <label th:text="${livre.isbn13}"></label></p>
                 </div>
             </div>
-        </div>
-        <div class="secteur_list_1 col-lg-12">
-            <h3 class="text-center"><strong>Disponibilité</strong></h3>
             <hr class="my-4">
-            <ul class="list-group">
-                <c:forEach items="${spot.secteurs}" var="secteur">
-                    <form action="spot/secteur" method="post">
-                        <input type="hidden" name="id_secteur" value="${secteur.id}"/>
-                        <input type="submit" name="_secteur_" id="${secteur.id}" class="btn list-group-item list-group-item-action turquoise" value="Le nom de la bibliothèque"/>
-                    </form>
-                </c:forEach>
-            </ul>
             <div>
-                <c:if test="${ !empty sessionScope.utilisateur && sessionScope.utilisateur.pseudo == spot.createur.pseudo}">
-                    <div class="form-inline pull-right">
-                        <a href="#" class="btn btn-outline-success margin-10t" role="button" data-toggle="modal" data-target="#secteurModal"><i class="fa fa-plus"></i> Reservation, A BOUGER</a>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="secteurModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Reservation</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form action="spot/secteur" method="post">
-                                    <div class="modal-body">
-                                        <div class="container-fluid">
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="nom">Nom</label>
-                                                    <input type="text" class="form-control" name="nom" id="nom" placeholder="nom"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputDescription">Description</label>
-                                                <textarea class="form-control" id="inputDescription" name="description" rows="6" placeholder="1000 caractères maxi."></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <input type="hidden" name="id_spot" value="${spot.id}"/>
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                        <input type="submit" name="_nouveau_secteur_" value="Enregistrer" class="btn btn-primary"/>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </c:if>
+                <p>Résumé : <label th:text="${livre.resume}"></label></p>
             </div>
         </div>
-
-    </div>
-    <div class="describe col-lg-7">
-        <h3 class="text-center"><strong>Informations</strong></h3>
-        <hr class="my-4">
-        <p>Date de parution : <label th:text= "${livre.annee_parution}"></label></p>
-        <p>Genre : <label th:text= "${livre.id_genre}"></label></p>
-        <p>Editeur : <label th:text= "${livre.id_editeur}"></label></p>
-        <p>Code Isbn-13 : <label th:text= "${livre.isbn13}"></label></p>
-        <p>Résumé : <label th:text= "${livre.resume}"></label></p>
     </div>
 </div>
 <hr class="my-4">
@@ -130,10 +76,13 @@
 
 <!-- SCRIPTS -->
 <script type="application/javascript">
-    $(".date_heure").each(function() {console.debug(this);gooddate = this.innerText.split(' ')[0].split('-');
+    $(".date_heure").each(function () {
+        console.debug(this);
+        gooddate = this.innerText.split(' ')[0].split('-');
         var goodtime = this.innerText.split(' ')[1]
-        console.debug(goodtime);goodtime = goodtime.split(':')
-        $(this).text(gooddate[2]+"/"+gooddate[1]+"/"+gooddate[0]+" "+goodtime[0]+":"+goodtime[1]
+        console.debug(goodtime);
+        goodtime = goodtime.split(':')
+        $(this).text(gooddate[2] + "/" + gooddate[1] + "/" + gooddate[0] + " " + goodtime[0] + ":" + goodtime[1]
         );
     });
 </script>

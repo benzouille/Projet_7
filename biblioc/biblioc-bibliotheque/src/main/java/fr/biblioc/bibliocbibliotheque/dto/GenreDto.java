@@ -1,12 +1,12 @@
-package fr.biblioc.bibliocclientUi.beans.bibliotheque;
+package fr.biblioc.bibliocbibliotheque.dto;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
- * Bean genre coté client
+ * Bean genre
  */
-public class GenreBean {
+public class GenreDto {
+
     //------------------------- ATTRIBUTS -------------------------
 
     private int id_genre;
@@ -19,7 +19,7 @@ public class GenreBean {
     /**
      * constructeur
      */
-    public GenreBean() {
+    public GenreDto() {
     }
 
     /**
@@ -27,7 +27,7 @@ public class GenreBean {
      * @param id_genre int
      * @param genre string
      */
-    public GenreBean(int id_genre, @NotNull String genre) {
+    public GenreDto(int id_genre, @NotNull String genre) {
         this.id_genre = id_genre;
         this.genre = genre;
     }

@@ -3,11 +3,10 @@ package fr.biblioc.bibliocauthentification.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
- * Bean Adresse representant la table compte de la bdd
+ * Bean Compte representant la table compte de la bdd
  */
 @Entity
 public class Compte {
@@ -45,7 +44,7 @@ public class Compte {
      * @param id_utilisateur int
      */
 
-    public Compte(@NotNull @Max(100) String email, @NotNull @Max(100) String password, @NotNull int id_role, @NotNull int id_utilisateur) {
+    public Compte(@NotNull String email, @NotNull String password, @NotNull int id_role, @NotNull int id_utilisateur) {
         this.email = email;
         this.password = password;
         this.id_role = id_role;

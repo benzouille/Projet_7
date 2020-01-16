@@ -1,68 +1,58 @@
-package fr.biblioc.bibliocclientUi.beans.bibliotheque;
+package fr.biblioc.bibliocbibliotheque.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import fr.biblioc.bibliocbibliotheque.model.Auteur;
+import fr.biblioc.bibliocbibliotheque.model.Editeur;
+import fr.biblioc.bibliocbibliotheque.model.Genre;
+
 import java.util.List;
 
-/**
- * Bean livre coté client
- */
-public class LivreBean {
+public class LivreDto {
 
     //------------------------- ATTRIBUTS -------------------------
 
     private int id_livre;
 
-    @NotNull
     private String isbn13;
 
-    @NotNull
-    private GenreBean genre;
+    private Genre genre;
 
-    @NotNull
-    @Size(min = 1, max = 20)
     private String titre;
 
-    @NotNull
-    private List<AuteurBean> auteurs;
+    private List<Auteur> auteurs;
 
-    @NotNull
     private String resume;
 
     private String image;
 
-    @NotNull
-    @Max(4)
     private int annee_parution;
 
-    @NotNull
-    private EditeurBean editeur;
+    private Editeur editeur;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
      * constructeur
      */
-    public LivreBean() {
+    public LivreDto() {
     }
 
     /**
      * Constructeur avec ses parametres
+     *
      * @param isbn13-
      * @param genre-
      * @param titre-
-     * @param auteurs list d'auteur
+     * @param auteurs List d'auteurs
      * @param resume-
      * @param image-
      * @param annee_parution-
      * @param editeur-
      */
-    public LivreBean(@NotNull String isbn13, @NotNull GenreBean genre, @NotNull @Size(min= 1, max = 20) String titre, List<AuteurBean> auteurs, @NotNull String resume, String image, @NotNull @Max(4) int annee_parution, @NotNull EditeurBean editeur) {
+    public LivreDto(String isbn13, Genre genre, String titre, List<Auteur> auteurs, String resume, String image, int annee_parution,Editeur editeur) {
         this.isbn13 = isbn13;
         this.genre = genre;
         this.titre = titre;
-        this.auteurs =auteurs;
+        this.auteurs = auteurs;
         this.resume = resume;
         this.image = image;
         this.annee_parution = annee_parution;
@@ -86,11 +76,11 @@ public class LivreBean {
         this.isbn13 = isbn13;
     }
 
-    public GenreBean getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(GenreBean genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 
@@ -98,16 +88,16 @@ public class LivreBean {
         return titre;
     }
 
-    public List<AuteurBean> getAuteurs() {
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public List<Auteur> getAuteurs() {
         return auteurs;
     }
 
-    public void setAuteurs(List<AuteurBean> auteurs) {
+    public void setAuteurs(List<Auteur> auteurs) {
         this.auteurs = auteurs;
-    }
-
-    public void setTitre(String titre) {
-        this.titre = titre;
     }
 
     public String getResume() {
@@ -134,11 +124,11 @@ public class LivreBean {
         this.annee_parution = annee_parution;
     }
 
-    public EditeurBean getEditeur() {
+    public Editeur getEditeur() {
         return editeur;
     }
 
-    public void setEditeur(EditeurBean editeur) {
+    public void setEditeur(Editeur editeur) {
         this.editeur = editeur;
     }
 
@@ -146,7 +136,7 @@ public class LivreBean {
 
     @Override
     public String toString() {
-        return "LivreBean{" +
+        return "Livre{" +
                 "id_livre=" + id_livre +
                 ", isbn13='" + isbn13 + '\'' +
                 ", genre=" + genre +
