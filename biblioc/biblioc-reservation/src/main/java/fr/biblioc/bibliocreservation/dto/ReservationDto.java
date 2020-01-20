@@ -1,33 +1,24 @@
-package fr.biblioc.bibliocreservation.model;
+package fr.biblioc.bibliocreservation.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import fr.biblioc.bibliocreservation.model.Exemplaire;
+
 import java.sql.Date;
 
 /**
- * Bean Reservation representant la table reservation de la bdd
+ * Dto de l'objet Reservation
  */
-@Entity
-public class Reservation {
+public class ReservationDto {
 
     //------------------------- ATTRIBUTS -------------------------
 
-    @Id
-    @GeneratedValue
     private int id_reservation;
 
-    @NotNull
     private int id_compte;
 
-    @NotNull
     private Date date_emprunt;
 
-    @NotNull
     private Boolean extension;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_exemplaire")
     private Exemplaire exemplaire;
 
     //------------------------- CONSTRUCTEUR -------------------------
@@ -35,7 +26,7 @@ public class Reservation {
     /**
      * constructeur
      */
-    public Reservation() {
+    public ReservationDto() {
     }
 
     /**
@@ -45,7 +36,7 @@ public class Reservation {
      * @param extension boolean
      * @param exemplaire Objet Exemplaire
      */
-    public Reservation(@NotNull int id_compte, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull Exemplaire exemplaire) {
+    public ReservationDto(int id_compte, Date date_emprunt, Boolean extension, Exemplaire exemplaire) {
         this.id_compte = id_compte;
         this.date_emprunt = date_emprunt;
         this.extension = extension;

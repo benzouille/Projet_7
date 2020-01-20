@@ -1,9 +1,6 @@
 package fr.biblioc.bibliocclientUi.controller;
 
-import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
-import fr.biblioc.bibliocclientUi.beans.bibliotheque.GenreBean;
-import fr.biblioc.bibliocclientUi.beans.bibliotheque.LivreBean;
 import fr.biblioc.bibliocclientUi.proxies.BibliocAuthentificationProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocBibliothequeProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +28,6 @@ public class ClientController {
     public String accueil(Model model){
 
         List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
-
-        //model.addAttribute("auteurs", auteurs);
 
         return "Accueil";
     }

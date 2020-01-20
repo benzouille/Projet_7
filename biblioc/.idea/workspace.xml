@@ -2,40 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="28291b7d-7f07-4250-95c8-d6d977d42d0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dto/AuteurDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dto/EditeurDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dto/GenreDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dto/LivreDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/mapper/AuteurMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/mapper/LivreMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/RechercheController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/static/img/miserable.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/utilities/PasswordDigest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/gestion.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dto/BibliothequeDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dto/ExemplaireDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/dto/ReservationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/mapper/BibliothequeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/mapper/ExemplaireMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/mapper/ReservationMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Compte.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-authentification/src/main/java/fr/biblioc/bibliocauthentification/model/Compte.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/AuteurDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/AuteurDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/LivreDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/dao/LivreDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/mapper/AuteurMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/mapper/AuteurMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Auteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Auteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Genre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/model/Livre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/AuteurController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/AuteurController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/GenreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/GenreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/LivreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/LivreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/test/java/fr/biblioc/bibliocbibliotheque/BibliocBibliothequeApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/bibliotheque/AuteurBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/bibliotheque/AuteurBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/bibliotheque/GenreBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/bibliotheque/GenreBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/bibliotheque/LivreBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/bibliotheque/LivreBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/reservation/BibliothequeBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/beans/reservation/BibliothequeBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/RechercheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-bibliotheque/src/main/java/fr/biblioc/bibliocbibliotheque/web/controller/RechercheController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/controller/BibliothequeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/controller/BibliothequeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/controller/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/controller/ClientController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/proxies/BibliocBibliothequeProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/proxies/BibliocBibliothequeProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/static/css/bibliotheque.css" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/static/css/bibliotheque.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/static/img/miserables.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/accueil.html" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/accueil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/proxies/BibliocReservationProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/java/fr/biblioc/bibliocclientUi/proxies/BibliocReservationProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/fiche-auteur.html" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/fiche-auteur.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/fiche-livre.html" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/fiche-livre.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/inclusion.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/recherche.html" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-clientUi/src/main/resources/templates/recherche.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Bibliotheque.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Bibliotheque.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Exemplaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Exemplaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/model/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/AdresseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/AdresseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/BibliothequeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/BibliothequeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ExemplaireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biblioc-reservation/src/main/java/fr/biblioc/bibliocreservation/web/controller/ExemplaireController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../script_bdd/mpd_projet_7.architect" beforeDir="false" afterPath="$PROJECT_DIR$/../script_bdd/mpd_projet_7.architect" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +101,17 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="compte: table" type="69fad909:PgImplModel$LocalTable" />
+        <item name="genre: table" type="69fad909:PgImplModel$LocalTable" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="biblioc_bdd@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="biblioc_bdd: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="livre: table" type="69fad909:PgImplModel$LocalTable" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -121,8 +131,8 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -180,6 +190,9 @@
       <recent name="fr.biblioc.bibliocbibliotheque.web.exceptions" />
       <recent name="fr.biblioc.bibliocbibliotheque.model" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="fr.biblioc.bibliocreservation" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="fr.biblioc.bibliocauthentification.configurations" />
       <recent name="fr.biblioc.bibliocauthentification.web.exceptions" />
@@ -198,7 +211,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BibliocClientUiApplication">
+  <component name="RunManager" selected="Spring Boot.BibliocReservationApplication">
     <configuration name="BibliocAuthentificationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="biblioc-authentification" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="fr.biblioc.bibliocauthentification.BibliocAuthentificationApplication" />
@@ -285,15 +298,15 @@
       <item itemvalue="Spring Boot.BibliocBibliothequeApplication" />
       <item itemvalue="Spring Boot.BibliocReservationApplication" />
       <item itemvalue="Spring Boot.BibliocBatchApplication" />
-      <item itemvalue="Spring Boot.ConfigServerApplication" />
       <item itemvalue="Spring Boot.EurekaServerApplication" />
+      <item itemvalue="Spring Boot.ConfigServerApplication" />
       <item itemvalue="Spring Boot.BibliocUtilisateurApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.BibliocUtilisateurApplication" />
         <item itemvalue="Spring Boot.EurekaServerApplication" />
         <item itemvalue="Spring Boot.ConfigServerApplication" />
+        <item itemvalue="Spring Boot.BibliocUtilisateurApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -371,7 +384,9 @@
       <workItem from="1578558789034" duration="359000" />
       <workItem from="1578559192827" duration="16575000" />
       <workItem from="1578644607791" duration="7532000" />
-      <workItem from="1578747419131" duration="35925000" />
+      <workItem from="1578747419131" duration="60163000" />
+      <workItem from="1579506590859" duration="6110000" />
+      <workItem from="1579517430488" duration="11210000" />
     </task>
     <servers />
   </component>
@@ -379,10 +394,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1578320385617">
+    <state x="2472" y="178" key="#Assign_Data_Sources" timestamp="1579529823565">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
-    <state x="2472" y="178" key="#Assign_Data_Sources/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1578320385617" />
+    <state x="2472" y="178" key="#Assign_Data_Sources/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579529823565" />
     <state x="2418" y="144" key="#BibliocClientUiApplication" timestamp="1575569175306">
       <screen x="1920" y="0" width="1680" height="1010" />
     </state>
@@ -403,10 +418,14 @@
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state x="2685" y="203" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1578652827210" />
-    <state x="2472" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579012336467">
+    <state x="2472" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1579358178830">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
-    <state x="2472" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579012336467" />
+    <state x="2472" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579358178830" />
+    <state x="2635" y="400" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1579358181859">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state x="2635" y="400" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579358181859" />
     <state x="2334" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578321647141">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
@@ -424,86 +443,86 @@
     </state>
     <state x="592" y="219" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1577995314373" />
     <state x="2660" y="274" key="FileChooserDialogImpl/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1578525720402" />
-    <state width="1450" height="354" key="GridCell.Tab.0.bottom" timestamp="1579169548703">
+    <state width="1450" height="402" key="GridCell.Tab.0.bottom" timestamp="1579547729794">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1877" height="283" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866963" />
+    <state width="1450" height="336" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579386232883" />
+    <state width="1450" height="191" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913487" />
-    <state width="1450" height="354" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548703" />
-    <state width="1450" height="354" key="GridCell.Tab.0.center" timestamp="1579169548702">
+    <state width="1450" height="402" key="GridCell.Tab.0.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729794" />
+    <state width="1450" height="402" key="GridCell.Tab.0.center" timestamp="1579547729793">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1877" height="283" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866963" />
+    <state width="1450" height="336" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1579386232882" />
+    <state width="1450" height="191" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913486" />
-    <state width="1450" height="354" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548702" />
-    <state width="1450" height="354" key="GridCell.Tab.0.left" timestamp="1579169548701">
+    <state width="1450" height="402" key="GridCell.Tab.0.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729793" />
+    <state width="1450" height="402" key="GridCell.Tab.0.left" timestamp="1579547729793">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1877" height="283" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866963" />
+    <state width="1450" height="336" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1579386232882" />
+    <state width="1450" height="191" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913486" />
-    <state width="1450" height="354" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548701" />
-    <state width="1450" height="354" key="GridCell.Tab.0.right" timestamp="1579169548703">
+    <state width="1450" height="402" key="GridCell.Tab.0.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729793" />
+    <state width="1450" height="402" key="GridCell.Tab.0.right" timestamp="1579547729793">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1877" height="283" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866963" />
+    <state width="1450" height="336" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1579386232883" />
+    <state width="1450" height="191" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913486" />
-    <state width="1450" height="354" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548703" />
-    <state width="1450" height="354" key="GridCell.Tab.1.bottom" timestamp="1579169548704">
+    <state width="1450" height="402" key="GridCell.Tab.0.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729793" />
+    <state width="1450" height="402" key="GridCell.Tab.1.bottom" timestamp="1579547729794">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1450" height="462" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866961" />
+    <state width="1450" height="336" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1579386232883" />
+    <state width="1450" height="191" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913487" />
-    <state width="1450" height="354" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548704" />
-    <state width="1450" height="354" key="GridCell.Tab.1.center" timestamp="1579169548704">
+    <state width="1450" height="402" key="GridCell.Tab.1.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729794" />
+    <state width="1450" height="402" key="GridCell.Tab.1.center" timestamp="1579547729794">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1450" height="462" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866961" />
+    <state width="1450" height="336" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1579386232883" />
+    <state width="1450" height="191" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913487" />
-    <state width="1450" height="354" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548704" />
-    <state width="1450" height="354" key="GridCell.Tab.1.left" timestamp="1579169548704">
+    <state width="1450" height="402" key="GridCell.Tab.1.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729794" />
+    <state width="1450" height="402" key="GridCell.Tab.1.left" timestamp="1579547729794">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1450" height="462" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866961" />
+    <state width="1450" height="336" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1579386232883" />
+    <state width="1450" height="191" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913487" />
-    <state width="1450" height="354" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548704" />
-    <state width="1450" height="354" key="GridCell.Tab.1.right" timestamp="1579169548704">
+    <state width="1450" height="402" key="GridCell.Tab.1.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729794" />
+    <state width="1450" height="402" key="GridCell.Tab.1.right" timestamp="1579547729794">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state width="1125" height="197" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569706386" />
-    <state width="1148" height="170" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1578491816637" />
-    <state width="1450" height="462" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1578703866961" />
+    <state width="1450" height="336" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1579386232883" />
+    <state width="1450" height="191" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579517351368" />
     <state width="1148" height="105" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1578824913487" />
-    <state width="1450" height="354" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579169548704" />
-    <state width="1293" height="375" key="GridCell.Tab.2.bottom" timestamp="1576244032842">
+    <state width="1450" height="402" key="GridCell.Tab.1.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579547729794" />
+    <state width="1450" height="336" key="GridCell.Tab.2.bottom" timestamp="1579210172117">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
-    <state width="1293" height="375" key="GridCell.Tab.2.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1576244032842" />
-    <state width="1293" height="375" key="GridCell.Tab.2.center" timestamp="1576244032842">
+    <state width="1450" height="336" key="GridCell.Tab.2.bottom/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579210172117" />
+    <state width="1450" height="336" key="GridCell.Tab.2.center" timestamp="1579210172116">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
-    <state width="1293" height="375" key="GridCell.Tab.2.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1576244032842" />
-    <state width="1293" height="375" key="GridCell.Tab.2.left" timestamp="1576244032842">
+    <state width="1450" height="336" key="GridCell.Tab.2.center/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579210172116" />
+    <state width="1450" height="336" key="GridCell.Tab.2.left" timestamp="1579210172116">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
-    <state width="1293" height="375" key="GridCell.Tab.2.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1576244032842" />
-    <state width="1293" height="375" key="GridCell.Tab.2.right" timestamp="1576244032842">
+    <state width="1450" height="336" key="GridCell.Tab.2.left/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579210172116" />
+    <state width="1450" height="336" key="GridCell.Tab.2.right" timestamp="1579210172117">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
-    <state width="1293" height="375" key="GridCell.Tab.2.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1576244032842" />
+    <state width="1450" height="336" key="GridCell.Tab.2.right/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579210172117" />
     <state x="2545" y="218" key="NewModule_or_Project.wizard" timestamp="1578525723721">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
@@ -513,13 +532,17 @@
     </state>
     <state x="2240" y="79" key="SettingsEditor/0.0.1536.824/1920.0.1680.1010@1920.0.1680.1010" timestamp="1575569435067" />
     <state x="2286" y="81" key="SettingsEditor/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1578591977584" />
-    <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1578752858429">
+    <state x="2634" y="273" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1579198849706">
+      <screen x="1920" y="0" width="1920" height="1030" />
+    </state>
+    <state x="2634" y="273" key="com.intellij.database.run.ParametersPanel.Standalone/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579198849706" />
+    <state x="581" y="298" key="com.intellij.ide.util.TipDialog" timestamp="1579517548637">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1577539449915" />
-    <state x="581" y="298" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578752858429" />
+    <state x="581" y="298" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579517548637" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/1920.0.1920.1030/0.0.1536.824@0.0.1536.824" timestamp="1575102041155" />
-    <state x="2501" y="295" key="com.intellij.ide.util.TipDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1578644767853" />
+    <state x="2501" y="295" key="com.intellij.ide.util.TipDialog/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579506595469" />
     <state x="2529" y="134" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1576505157198">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
@@ -528,9 +551,16 @@
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
     <state x="2521" y="246" width="700" height="530" key="recent.locations.popup/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1575494321989" />
-    <state x="2543" y="225" key="search.everywhere.popup" timestamp="1576505028151">
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1579197694409">
       <screen x="1920" y="0" width="1920" height="1030" />
     </state>
-    <state x="2543" y="225" key="search.everywhere.popup/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1576505028151" />
+    <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1030/0.0.1536.824@1920.0.1920.1030" timestamp="1579197694409" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="livre.value.auteurs.get(0).bibliographie.get(0).auteurs.get(0)" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

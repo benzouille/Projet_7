@@ -1,6 +1,8 @@
 package fr.biblioc.bibliocreservation.web.controller;
 
 import fr.biblioc.bibliocreservation.dao.BibliothequeDao;
+import fr.biblioc.bibliocreservation.dto.BibliothequeDto;
+import fr.biblioc.bibliocreservation.mapper.BibliothequeMapper;
 import fr.biblioc.bibliocreservation.model.Bibliotheque;
 import fr.biblioc.bibliocreservation.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocreservation.web.exceptions.ObjectNotFoundException;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,9 @@ public class BibliothequeController implements HealthIndicator {
 
     @Autowired
     BibliothequeDao bibliothequeDao;
+
+    @Autowired
+    BibliothequeMapper bibliothequeMapper;
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -50,17 +56,20 @@ public class BibliothequeController implements HealthIndicator {
      * @return liste de {@link Bibliotheque}
      */
     @GetMapping(value = "/Bibliotheques")
-    public List<Bibliotheque> listeDesBibliotheques(){
+    public List<BibliothequeDto> listeDesBibliotheques(){
 
         List<Bibliotheque> bibliotheques = bibliothequeDao.findAll();
+        List<BibliothequeDto> bibliothequesDto = new ArrayList<>();
 
-        if(bibliotheques.isEmpty()){
-            throw new ObjectNotFoundException("Aucune bibliotheque n'a été trouvée");
+        if(!bibliotheques.isEmpty()){
+            for(Bibliotheque bibliotheque : bibliotheques){
+                bibliothequesDto.add(bibliothequeMapper.bibliothequeToBibliothequeDto(bibliotheque));
+            }
         }
 
-        log.info("Récupération de la liste des bibliotheques");
+        log.info("Récupération de la liste des DTO bibliotheques");
 
-        return bibliotheques;
+        return bibliothequesDto;
 
     }
 
@@ -70,13 +79,17 @@ public class BibliothequeController implements HealthIndicator {
      * @return bean {@link Bibliotheque}
      */
     @GetMapping( value = "/Bibliotheques/{id}")
-    public Optional<Bibliotheque> recupererUneBibliotheque(@PathVariable int id) {
+    public BibliothequeDto recupererUneBibliotheque(@PathVariable int id) {
 
         Optional<Bibliotheque> bibliotheque = bibliothequeDao.findById(id);
+        BibliothequeDto bibliothequeDto = null;
 
-        if(!bibliotheque.isPresent())  throw new ObjectNotFoundException("La bibliotheque correspondant à l'id " + id + " n'existe pas");
+        if(bibliotheque.isPresent()){
+            bibliothequeDto = bibliothequeMapper.bibliothequeToBibliothequeDto(bibliotheque.get());
+            log.info(bibliothequeDto.toString());
+        }
 
-        return bibliotheque;
+        return bibliothequeDto;
     }
 
     /**

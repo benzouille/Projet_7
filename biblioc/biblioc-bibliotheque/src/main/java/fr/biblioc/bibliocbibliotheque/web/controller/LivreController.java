@@ -80,7 +80,6 @@ public class LivreController implements HealthIndicator {
         Optional<Livre> livre = livreDao.findById(id);
         LivreDto livreDto = null;
 
-
         if(livre.isPresent()){
             livreDto = livreMapper.livreToLivreDto(livre.get());
             log.info(livreDto.toString());

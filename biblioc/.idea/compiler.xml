@@ -9,13 +9,12 @@
         <module name="biblioc-clientUi" />
         <module name="eureka-server" />
         <module name="config-server" />
-        <module name="biblioc-reservation" />
         <module name="biblioc-authentification" />
         <module name="utilisateur" />
         <module name="biblioc-batch" />
         <module name="biblioc-utilisateur" />
       </profile>
-      <profile name="Annotation profile for biblioc-bibliotheque" enabled="true">
+      <profile name="Annotation profile for biblioc-reservation" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -35,6 +34,7 @@
           <entry name="$MAVEN_REPOSITORY$/joda-time/joda-time/2.9/joda-time-2.9.jar" />
         </processorPath>
         <module name="biblioc-bibliotheque" />
+        <module name="biblioc-reservation" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

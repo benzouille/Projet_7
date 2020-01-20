@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-3">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-livre-tab" data-toggle="pill" href="#v-pills-livre" role="tab" aria-controls="v-pills-livre" aria-selected="true">Par livre</a>
+                    <a class="nav-link active" id="v-pills-livre-tab" data-toggle="pill" href="#v-pills-livre" role="tab" aria-controls="v-pills-livre" aria-selected="true">Par titre</a>
                     <a class="nav-link" id="v-pills-auteur-tab" data-toggle="pill" href="#v-pills-auteur" role="tab" aria-controls="v-pills-auteur" aria-selected="false">Par auteur</a>
                     <a class="nav-link" id="v-pills-genre-tab" data-toggle="pill" href="#v-pills-genre" role="tab" aria-controls="v-pills-genre" aria-selected="false">Par genre</a>
                     <a class="nav-link" id="v-pills-multi-tab" data-toggle="pill" href="#v-pills-multi" role="tab" aria-controls="v-pills-multi" aria-selected="false">Multi-critères</a>
@@ -169,8 +169,8 @@
             </thead>
             <tbody th:if="${livres != null}">
                 <tr th:each="livre : ${livres}">
-                    <td><a class="link" href="#" th:text="${livre.titre}"></a></td>
-                    <td><a class="link" href="#" th:text="${livre.auteurs.get(0).nom}"></a></td>
+                    <td><a class="link" th:href="@{|/details-livre/${livre.getid_livre()}|}" th:text="${livre.titre}"></a></td>
+                    <td><a class="link" th:href="@{|/details-auteur/${livre.getAuteurs().get(0).getId()}|}" th:text="${livre.auteurs.get(0).prenom + ' ' + livre.auteurs.get(0).nom}"></a></td>
                     <td th:text="${livre.genre.genre}"></td>
                 </tr>
             </tbody>

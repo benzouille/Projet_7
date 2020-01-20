@@ -1,10 +1,8 @@
 package fr.biblioc.bibliocbibliotheque.web.controller;
 
-import fr.biblioc.bibliocbibliotheque.dao.AuteurDao;
 import fr.biblioc.bibliocbibliotheque.dao.LivreDao;
 import fr.biblioc.bibliocbibliotheque.dto.AuteurDto;
 import fr.biblioc.bibliocbibliotheque.dto.LivreDto;
-import fr.biblioc.bibliocbibliotheque.mapper.AuteurMapper;
 import fr.biblioc.bibliocbibliotheque.mapper.LivreMapper;
 import fr.biblioc.bibliocbibliotheque.model.Auteur;
 import fr.biblioc.bibliocbibliotheque.model.Livre;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Controller des recherches
@@ -41,7 +38,7 @@ public class RechercheController {
     //------------------------- METHODE -------------------------
 
     @GetMapping(value = "/Recherche")
-    List<Livre> rechercheSimple(String type, String value) {
+    List<LivreDto> rechercheSimple(String type, String value) {
         log.info("rechercheSimple : [ type : " + type + ", value : " + value + " ]");
 
         List<Livre> livres = null;
@@ -49,24 +46,33 @@ public class RechercheController {
         if (type.equals("titre")) {
             livres = livreDao.findByTitre(value);
         } else if (type.equals("auteur")) {
-            System.out.println("passe par auteur");
-            livres = livreDao.findByAuteurs(value);
+            AuteurDto auteur = auteurController.recupererUnAuteur(Integer.parseInt(value));
+
+//            List<AuteurDto> auteurs =new ArrayList<>();
+//            auteurs.add(auteur);
+
+            livres = auteur.getBibliographie();
+
+//            for(Livre livre : livres){
+//                livre.setAuteurs(auteurs);
+//            }
         } else if(type.equals("genre")){
-            System.out.println("passe par genre");
-            livres = livreDao.findByGenre(value);
+            livres = livreDao.findById_genre(Integer.parseInt(value));
         }
 
-//        List<LivreDto> livresDto = new ArrayList<>();
-//        for (Livre livre : livres) {
-
-//            livresDto.add(livreMapper.livreToLivreDto(livre));
+        List<LivreDto> livresDto = new ArrayList<>();
+        for (Livre livre : livres) {
+            livresDto.add(livreMapper.livreToLivreDto(livre));
+        }
+//        for (LivreDto livreDto : livresDto){
+//            System.out.println(livreDto.toString());
 //        }
 
 //        if (livresDto.isEmpty()) {
 //            throw new ObjectNotFoundException("Aucun livre n'a été trouvé");
 //        }
 
-        return livres;
+        return livresDto;
     }
 
     @GetMapping(value = "/Recherches")

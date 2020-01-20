@@ -21,7 +21,7 @@
         </div>
     </div>
     <blockquote class="blockquote text-right">
-        <p class="mb-0">Auteur : <label th:text="${livre.auteurs.get(0).prenom + ' ' + livre.auteurs.get(0).nom}"></label></p>
+        <p class="mb-0">Auteur : <a class="link" th:href="@{|/details-auteur/${livre.getAuteurs().get(0).getId()}|}" th:text="${livre.auteurs.get(0).prenom + ' ' + livre.auteurs.get(0).nom}"></a></p>
     </blockquote>
     <div>
         <hr class="my-4">
@@ -75,18 +75,6 @@
 <div th:include="footer.html"></div>
 
 <!-- SCRIPTS -->
-<script type="application/javascript">
-    $(".date_heure").each(function () {
-        console.debug(this);
-        gooddate = this.innerText.split(' ')[0].split('-');
-        var goodtime = this.innerText.split(' ')[1]
-        console.debug(goodtime);
-        goodtime = goodtime.split(':')
-        $(this).text(gooddate[2] + "/" + gooddate[1] + "/" + gooddate[0] + " " + goodtime[0] + ":" + goodtime[1]
-        );
-    });
-</script>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous">

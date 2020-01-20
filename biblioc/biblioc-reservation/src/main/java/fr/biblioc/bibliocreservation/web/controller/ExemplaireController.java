@@ -80,11 +80,26 @@ public class ExemplaireController implements HealthIndicator {
     }
 
     /**
+     * Récuperer un exemplaire par son id
+     * @param id int
+     * @return bean {@link Exemplaire}
+     */
+    @GetMapping( value = "/Exemplaires-livre/{id}")
+    public Optional<Exemplaire> recupererUnExemplaireParIdLivre(@PathVariable int id) {
+
+        Optional<Exemplaire> exemplaire = exemplaireDao.findById(id);
+
+        if(!exemplaire.isPresent())  throw new ObjectNotFoundException("L'exemplaire correspondant à l'id " + id + " n'existe pas");
+
+        return exemplaire;
+    }
+
+    /**
      * Ajouter un exemplaire
      * @param exemplaire bean {@link Exemplaire}
      * @return ResponseEntity<Exemplaire> renvoi un http status.
      */
-    @PostMapping(value = "/Nexemplaires")
+    @PostMapping(value = "/Exemplaires")
     public ResponseEntity<Exemplaire> addExemplaire(Exemplaire exemplaire){
 
         Exemplaire newExemplaire = exemplaireDao.save(exemplaire);
@@ -97,7 +112,7 @@ public class ExemplaireController implements HealthIndicator {
     /**
      * Permet de mettre à jour un exemplaire existant.
      **/
-    @PutMapping(value = "/Uexemplaires")
+    @PutMapping(value = "/Exemplaires")
     public void updateExemplaire(@RequestBody Exemplaire exemplaire) {
 
         exemplaireDao.save(exemplaire);

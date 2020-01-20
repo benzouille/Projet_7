@@ -22,14 +22,14 @@ public class Livre {
     @NotNull
     private String isbn13;
 
-    @OneToOne
-    @JoinColumn(name = "id_genre")
+    @ManyToOne
+    @JoinColumn(name = "id_genre", referencedColumnName = "id_genre")
     private Genre genre;
 
     @NotNull
     private String titre;
 
-    @ManyToMany(mappedBy = "bibliographie")
+    @ManyToMany(mappedBy = "bibliographie", fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Auteur> auteurs;
 

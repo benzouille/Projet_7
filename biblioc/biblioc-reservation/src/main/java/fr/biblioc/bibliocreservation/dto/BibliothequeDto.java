@@ -1,27 +1,18 @@
-package fr.biblioc.bibliocreservation.model;
+package fr.biblioc.bibliocreservation.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
+import fr.biblioc.bibliocreservation.model.Adresse;
 
 /**
- * Bean Bibliothèque representant la table bibliotheque de la bdd
+ * Dto de l'objet Bibliothèque
  */
-@Entity(name = "bibliotheque")
-public class Bibliotheque {
+public class BibliothequeDto {
 
     //------------------------- ATTRIBUTS -------------------------
 
-    @Id
-    @GeneratedValue
     private int id_biblio;
 
-    @NotNull
     private String nom;
 
-    @NotNull
-    @OneToOne
-    @JoinColumn(name = "id_adresse")
     private Adresse adresse;
 
     //------------------------- CONSTRUCTEUR -------------------------
@@ -29,7 +20,7 @@ public class Bibliotheque {
     /**
      * constructeur
      */
-    public Bibliotheque() {
+    public BibliothequeDto() {
     }
 
     /**
@@ -37,7 +28,7 @@ public class Bibliotheque {
      * @param nom String nom
      * @param adresse Adresse adresse
      */
-    public Bibliotheque(@NotNull String nom, @NotNull Adresse adresse) {
+    public BibliothequeDto(String nom, Adresse adresse) {
         this.nom = nom;
         this.adresse = adresse;
     }

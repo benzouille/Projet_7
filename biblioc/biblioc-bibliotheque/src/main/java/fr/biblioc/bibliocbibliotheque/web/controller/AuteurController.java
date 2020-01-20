@@ -61,7 +61,7 @@ public class AuteurController implements HealthIndicator {
         List<Auteur> auteurs = auteurDao.findAll();
         List<AuteurDto> auteurDtos = new ArrayList<>();
         for (Auteur auteur : auteurs){
-            auteurDtos.add(auteurMapper.auteurtoAuteurDto(auteur));
+            auteurDtos.add(auteurMapper.auteurToAuteurDto(auteur));
         }
 
         if(auteurDtos.isEmpty()){
@@ -84,7 +84,7 @@ public class AuteurController implements HealthIndicator {
         AuteurDto auteurDto = null;
 
         if(auteur.isPresent()){
-            auteurDto = auteurMapper.auteurtoAuteurDto(auteur.get());
+            auteurDto = auteurMapper.auteurToAuteurDto(auteur.get());
             log.info(auteurDto.toString());
         }
         return auteurDto;

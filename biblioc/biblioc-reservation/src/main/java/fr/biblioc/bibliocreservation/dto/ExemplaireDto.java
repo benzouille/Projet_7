@@ -1,26 +1,18 @@
-package fr.biblioc.bibliocreservation.model;
+package fr.biblioc.bibliocreservation.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import fr.biblioc.bibliocreservation.model.Bibliotheque;
 
 /**
- * Bean Exemplaire correspondant à la table exemplaire de la bdd
+ * Dto de l'objet Exemplaire
  */
-@Entity
-public class Exemplaire {
+public class ExemplaireDto {
 
     //------------------------- ATTRIBUTS -------------------------
 
-    @Id
-    @GeneratedValue
     private int id_exemplaire;
 
-    @NotNull
     private int id_livre;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_biblio")
     private Bibliotheque bibliotheque;
 
     //------------------------- CONSTRUCTEUR -------------------------
@@ -28,7 +20,7 @@ public class Exemplaire {
     /**
      * constructeur
      */
-    public Exemplaire() {
+    public ExemplaireDto() {
     }
 
     /**
@@ -36,7 +28,7 @@ public class Exemplaire {
      * @param id_livre id livre
      * @param bibliotheque Objet bibliothèque
      */
-    public Exemplaire(@NotNull int id_livre, Bibliotheque bibliotheque) {
+    public ExemplaireDto(int id_livre, Bibliotheque bibliotheque) {
         this.id_livre = id_livre;
         this.bibliotheque = bibliotheque;
     }

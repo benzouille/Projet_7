@@ -4,6 +4,7 @@ import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.GenreBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.LivreBean;
 import fr.biblioc.bibliocclientUi.beans.reservation.BibliothequeBean;
+import fr.biblioc.bibliocclientUi.beans.reservation.ExemplaireBean;
 import fr.biblioc.bibliocclientUi.proxies.BibliocBibliothequeProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocReservationProxy;
 import org.slf4j.Logger;
@@ -156,6 +157,8 @@ public class BibliothequeController {
 
         List<BibliothequeBean> bibliotheques = reservationProxy.listBibliotheques();
         model.addAttribute("bibliotheques", bibliotheques);
+
+        List<ExemplaireBean> exemplaires = reservationProxy.getExemplairesByIdLivre(id);
 
         return "fiche-livre";
     }

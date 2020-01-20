@@ -37,7 +37,7 @@ public class Auteur {
     @Column(name = "date_deces")
     private Date date_deces;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "auteur_livre",
             joinColumns = { @JoinColumn(name = "auteur_id") },

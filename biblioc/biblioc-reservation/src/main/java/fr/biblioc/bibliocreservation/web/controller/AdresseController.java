@@ -69,7 +69,7 @@ public class AdresseController implements HealthIndicator {
      * @param id int
      * @return bean adresse
      */
-    @GetMapping( value = "/adresses/{id}")
+    @GetMapping( value = "/Adresses/{id}")
     public Optional<Adresse> recupererUneAdresse(@PathVariable int id) {
 
         Optional<Adresse> adresse = adresseDao.findById(id);
@@ -84,7 +84,7 @@ public class AdresseController implements HealthIndicator {
      * @param adresse bean {@link Adresse}
      * @return ResponseEntity<Adresse> renvoi un http status.
      */
-    @PostMapping(value = "/Nadresses")
+    @PostMapping(value = "/Adresses")
     public ResponseEntity<Adresse> addAdresse(Adresse adresse){
 
         Adresse newAdresse = adresseDao.save(adresse);
@@ -97,7 +97,7 @@ public class AdresseController implements HealthIndicator {
     /**
      * Permet de mettre à jour un adresse existant.
      **/
-    @PutMapping(value = "/Uadresses")
+    @PutMapping(value = "/Adresses")
     public void updateAdresse(@RequestBody Adresse adresse) {
 
         adresseDao.save(adresse);

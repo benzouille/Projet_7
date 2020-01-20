@@ -6,7 +6,8 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
           crossorigin="anonymous">
-    <title>Accueil</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bibliotheque.css}"/>
+    <title>Fiche auteur</title>
 </head>
 <body>
 <!--NAVBAR-->
@@ -14,24 +15,41 @@
 
 <!--BODY-->
 <div class="container">
+    <div class="jumbotron">
+        <div>
+            <h1 class="display-4"><strong><p th:text="${auteur.prenom + ' ' + auteur.nom}"></p></strong></h1>
+        </div>
+    </div>
+    <blockquote class="blockquote text-right">
+        <small class="text-muted mb-0"><span class="date_format" th:text="${#dates.format(auteur.getDate_naissance(), 'dd-MM-yyyy')}"></span></small>
+        <small class="text-muted mb-0"> / <span class="date_" th:text="${#dates.format(auteur.getDate_deces(), 'dd-MM-yyyy')}"></span></small>
+    </blockquote>
 
-    <h1>DETAIL AUTEUR</h1>
-
-    <div class="row">
-            <p th:text="${auteur.nom}"></p>
-            <p th:text="${auteur.prenom}"></p>
-            <p th:text="${auteur.date_naissance}"></p>
-            <p th:text="${auteur.date_deces}"></p>
+    <div>
+        <hr class="my-4">
     </div>
 
-    <h4>Bibliographie</h4>
-
-    <div th:each="livre : ${auteur.bibliographie}" class="col-md-4 my-1">
-        <a th:href="@{|/details-livre/${livre.getid_livre()}|}">
-            <p th:text="${livre.titre}"></p>
-        </a>
+    <div class="resultat table-responsive">
+        <h3 class="text-center"><strong>Livres de cet auteur dans nos bibliothèques</strong></h3>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Livre</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Editeur</th>
+                <th scope="col">Date d'édition</th>
+            </tr>
+            </thead>
+            <tbody th:if="${auteur.bibliographie != null}">
+            <tr th:each="livre : ${auteur.bibliographie}">
+                <td><a class="link" th:href="@{|/details-livre/${livre.getid_livre()}|}" th:text="${livre.titre}"></a></td>
+                <td th:text="${livre.genre.genre}"></td>
+                <td th:text="${livre.editeur.nom}"></td>
+                <td th:text="${livre.getAnnee_parution()}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-
 </div>
 <!--FOOTER-->
 <div th:include="footer.html"></div>
