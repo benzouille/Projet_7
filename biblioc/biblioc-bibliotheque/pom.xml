@@ -12,7 +12,7 @@
     <artifactId>biblioc-bibliotheque</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>biblioc-bibliotheque</name>
-    <description>micro-service gérant livres, bibliothèque.</description>
+    <description>micro-service gérant livres, auteurs, editeurs.</description>
 
     <properties>
 		<java.version>8</java.version>

@@ -26,6 +26,9 @@ public class Reservation {
     private Boolean extension;
 
     @NotNull
+    private Boolean rendu;
+
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "id_exemplaire")
     private Exemplaire exemplaire;
@@ -45,11 +48,12 @@ public class Reservation {
      * @param extension boolean
      * @param exemplaire Objet Exemplaire
      */
-    public Reservation(@NotNull int id_compte, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull Exemplaire exemplaire) {
+    public Reservation(@NotNull int id_compte, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull Boolean rendu, @NotNull Exemplaire exemplaire) {
         this.id_compte = id_compte;
         this.date_emprunt = date_emprunt;
         this.extension = extension;
         this.exemplaire = exemplaire;
+        this.rendu = rendu;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -86,6 +90,14 @@ public class Reservation {
         this.extension = extension;
     }
 
+    public Boolean getRendu() {
+        return rendu;
+    }
+
+    public void setRendu(Boolean rendu) {
+        this.rendu = rendu;
+    }
+
     public Exemplaire getExemplaire() {
         return exemplaire;
     }
@@ -103,6 +115,7 @@ public class Reservation {
                 ", id_compte=" + id_compte +
                 ", date_emprunt=" + date_emprunt +
                 ", extension=" + extension +
+                ", rendu=" + rendu +
                 ", exemplaire=" + exemplaire +
                 '}';
     }

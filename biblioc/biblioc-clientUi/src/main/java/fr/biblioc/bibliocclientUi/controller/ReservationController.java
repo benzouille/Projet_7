@@ -2,7 +2,6 @@ package fr.biblioc.bibliocclientUi.controller;
 
 import fr.biblioc.bibliocclientUi.beans.reservation.ReservationBean;
 import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
-import fr.biblioc.bibliocclientUi.proxies.BibliocAuthentificationProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocBibliothequeProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocReservationProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocUtilisateurProxy;
@@ -16,9 +15,6 @@ import java.util.List;
 
 @Controller
 public class ReservationController {
-
-    @Autowired
-    private BibliocAuthentificationProxy authentificationProxy;
 
     @Autowired
     private BibliocUtilisateurProxy utilisateurProxy;

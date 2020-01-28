@@ -19,6 +19,8 @@ public class ReservationDto {
 
     private Boolean extension;
 
+    private Boolean rendu;
+
     private Exemplaire exemplaire;
 
     //------------------------- CONSTRUCTEUR -------------------------
@@ -36,11 +38,12 @@ public class ReservationDto {
      * @param extension boolean
      * @param exemplaire Objet Exemplaire
      */
-    public ReservationDto(int id_compte, Date date_emprunt, Boolean extension, Exemplaire exemplaire) {
+    public ReservationDto(int id_compte, Date date_emprunt, Boolean extension, Boolean rendu, Exemplaire exemplaire) {
         this.id_compte = id_compte;
         this.date_emprunt = date_emprunt;
         this.extension = extension;
         this.exemplaire = exemplaire;
+        this.rendu = rendu;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -77,6 +80,14 @@ public class ReservationDto {
         this.extension = extension;
     }
 
+    public Boolean getRendu() {
+        return rendu;
+    }
+
+    public void setRendu(Boolean rendu) {
+        this.rendu = rendu;
+    }
+
     public Exemplaire getExemplaire() {
         return exemplaire;
     }
@@ -89,11 +100,12 @@ public class ReservationDto {
 
     @Override
     public String toString() {
-        return "Reservation{" +
+        return "ReservationDto{" +
                 "id_reservation=" + id_reservation +
                 ", id_compte=" + id_compte +
                 ", date_emprunt=" + date_emprunt +
                 ", extension=" + extension +
+                ", rendu=" + rendu +
                 ", exemplaire=" + exemplaire +
                 '}';
     }

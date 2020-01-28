@@ -13,4 +13,6 @@ public interface ReservationDao extends JpaRepository<Reservation, Integer> {
 
     @Query(value = "SELECT * FROM reservation WHERE id_compte = :id_compte", nativeQuery = true)
     List<Reservation> findAllById_compte(@Param("id_compte") int id_compte);
+
+    List<Reservation> findAllByRenduFalse();
 }

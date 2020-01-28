@@ -25,7 +25,7 @@
     <div class="gestion">
 
         <div class="row">
-            <div class="col-3">
+            <div class="col-2">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-enCours-tab" data-toggle="pill" href="#v-pills-enCours"
                        role="tab" aria-controls="v-pills-enCours" aria-selected="true">Prêt en cours</a>
@@ -37,7 +37,7 @@
                        aria-controls="v-pills-utilisateur" aria-selected="false">Par utilisateur</a>
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-10">
                 <div class="tab-content" id="v-pills-tabContent">
 
                     <!--******************** PRET EN COURS ********************-->
@@ -49,7 +49,8 @@
                                 <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Utilisateur</th>
-                                    <th scope="col">Exemplaire</th>
+                                    <th scope="col">Id exemplaire</th>
+                                    <th scope="col">Id réservation</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Date prêt</th>
                                     <th scope="col">Date retour</th>
@@ -61,14 +62,23 @@
                                 <tr th:each="reservation : ${reservations}">
                                     <td th:text="${reservation.utilisateur.nom + ' ' + reservation.utilisateur.prenom + ' id : ' + reservation.utilisateur.id_utilisateur}"></td>
                                     <td th:text="${reservation.getExemplaire().getid_exemplaire()}"></td>
+                                    <td th:text="${reservation.id_reservation}"></td>
                                     <td th:text="${reservation.getExemplaire().livre.titre}"></td>
                                     <td th:text="${#dates.format(reservation.getDate_emprunt(), 'dd-MM-yyyy')}"></td>
-                                    <td >date fin</td>
+                                    <td th:text="${#dates.format(reservation.getDate_retour(), 'dd-MM-yyyy')}"></td>
                                     <td>
-                                        <input type="submit" value="Extention" class="btn btn-outline-secondary"/>
+                                        <form th:switch="${reservation.getExtension()}" name="extention_pret" action="#" th:action="@{/gestion/extention}" method="post">
+                                            <input type="hidden" name="id_reservation" th:value="${reservation.id_reservation}" />
+                                            <input th:case="false" type="submit" value="Extention" class="btn btn-outline-success"/>
+                                            <input th:case="true" disabled type="submit" value="Extention" class="btn btn-outline-secondary"/>
+                                        </form>
                                     </td>
                                     <td>
-                                        <input type="submit" value="Rendu" class="btn btn-outline-secondary"/>
+                                        <form th:switch="${reservation.getRendu()}" name="retour_pret" action="#" th:action="@{/gestion/retour}" method="post">
+                                            <input type="hidden" name="id_reservation" th:value="${reservation.id_reservation}" />
+                                            <input th:case="false" type="submit" value="Rendu" class="btn btn-outline-success"/>
+                                            <input th:case="true" disabled type="submit" value="Rendu" class="btn btn-outline-secondary"/>
+                                        </form>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -79,7 +89,7 @@
                     <!--******************** AJOUT DE PRET ********************-->
 
                     <div class="tab-pane fade" id="v-pills-pret" role="tabpanel" aria-labelledby="v-pills-pret-tab">
-                        <form name="ajout_pret" action="#" th:action="@{/recherches}" method="post">
+                        <form name="ajout_pret" action="#" th:action="@{/gestion/ajout}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Identifiant exemplaire</label>
@@ -90,7 +100,7 @@
                                 <div class="form-group col-md-4">
                                     <label>Identifiant utilisateur</label>
                                     <div class="input-group mb-3">
-                                        <input type="number" name="titre" class="form-control" placeholder="id utilisateur">
+                                        <input type="number" name="id_utilisateur" class="form-control" placeholder="id utilisateur">
                                     </div>
                                 </div>
                                 <div class="row col-12">
@@ -106,12 +116,12 @@
                     <!--******************** RETOUR DE PRET ********************-->
 
                     <div class="tab-pane fade" id="v-pills-retour" role="tabpanel" aria-labelledby="v-pills-retour-tab">
-                        <form name="retour_pret" action="#" th:action="@{/recherche}" method="post">
+                        <form name="retour_pret" action="#" th:action="@{/gestion/retour}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label>Identifiant exemplaire</label>
+                                    <label>Identifiant réservation</label>
                                     <div class="input-group mb-3">
-                                        <input type="number" name="id_exemplaire" class="form-control" placeholder="id exemplaire">
+                                        <input type="number" name="id_reservation" class="form-control" placeholder="id réservation">
                                     </div>
                                 </div>
                                 <div class="row col-12">
@@ -127,7 +137,7 @@
                     <!--******************** PAR UTILISATEUR ********************-->
 
                     <div class="tab-pane fade" id="v-pills-utilisateur" role="tabpanel" aria-labelledby="v-pills-utilisateur-tab">
-                        <form name="par_utilisateur" action="#" th:action="@{/recherches}" method="post">
+                        <form name="par_utilisateur" action="#" th:action="@{/gestion/utilisateur}" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label>Identifiant utilisateur</label>
@@ -152,7 +162,8 @@
                                 <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Utilisateur</th>
-                                    <th scope="col">Exemplaire</th>
+                                    <th scope="col">Id exemplaire</th>
+                                    <th scope="col">Id réservation</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Date prêt</th>
                                     <th scope="col">Date retour</th>
@@ -161,22 +172,26 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <!--                                <tr th:each="reservation : ${reservation}">-->
-                                <!--                                    <td><a class="link" th:href="@{|/details-livre/${livre.getid_livre()}|}" th:text="${livre.titre}"></a></td>-->
-                                <!--                                    <td><a class="link" th:href="@{|/details-auteur/${livre.getAuteurs().get(0).getId()}|}" th:text="${livre.auteurs.get(0).prenom + ' ' + livre.auteurs.get(0).nom}"></a></td>-->
-                                <!--                                    <td th:text="${livre.genre.genre}"></td>-->
-                                <!--                                </tr>-->
-                                <tr>
-                                    <td>utilisateur test</td>
-                                    <td>exemplaire test</td>
-                                    <td>titre test</td>
-                                    <td>date debut</td>
-                                    <td>date fin</td>
+                                <tr th:each="reservation : ${reservationByIdCompte}">
+                                    <td th:text="${reservation.utilisateur.nom + ' ' + reservation.utilisateur.prenom + ' id : ' + reservation.utilisateur.id_utilisateur}"></td>
+                                    <td th:text="${reservation.getExemplaire().getid_exemplaire()}"></td>
+                                    <td th:text="${reservation.id_reservation}"></td>
+                                    <td th:text="${reservation.getExemplaire().livre.titre}"></td>
+                                    <td th:text="${#dates.format(reservation.getDate_emprunt(), 'dd-MM-yyyy')}"></td>
+                                    <td th:text="${#dates.format(reservation.getDate_retour(), 'dd-MM-yyyy')}"></td>
                                     <td>
-                                        <input type="submit" value="Extention" class="btn btn-outline-secondary"/>
+                                        <form th:switch="${reservation.getExtension()}" name="extention_pret" action="#" th:action="@{/gestion/extention}" method="post">
+                                            <input type="hidden" name="id_reservation" th:value="${reservation.id_reservation}" />
+                                            <input th:case="false" type="submit" value="Extention" class="btn btn-outline-success"/>
+                                            <input th:case="true" disabled type="submit" value="Extention" class="btn btn-outline-secondary"/>
+                                        </form>
                                     </td>
                                     <td>
-                                        <input type="submit" value="Rendu" class="btn btn-outline-secondary"/>
+                                        <form th:switch="${reservation.getRendu()}" name="retour_pret" action="#" th:action="@{/gestion/retour}" method="post">
+                                            <input type="hidden" name="id_reservation" th:value="${reservation.id_reservation}" />
+                                            <input th:case="false" type="submit" value="Rendu" class="btn btn-outline-success"/>
+                                            <input th:case="true" disabled type="submit" value="Rendu" class="btn btn-outline-secondary"/>
+                                        </form>
                                     </td>
                                 </tr>
                                 </tbody>

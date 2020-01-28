@@ -67,6 +67,25 @@ public class ReservationController implements HealthIndicator {
     }
 
     /**
+     * Affiche la liste de toutes les reservations en cours
+     * @return liste de {@link Reservation}
+     */
+    @GetMapping(value = "/Reservations/en_cours")
+    public List<Reservation> listeDesReservationsEnCours(){
+
+        List<Reservation> reservations = reservationDao.findAllByRenduFalse();
+
+        if(reservations.isEmpty()){
+            throw new ObjectNotFoundException("Aucune reservation n'a été trouvée");
+        }
+
+        log.info("Récupération de la liste des reservationsRenduFalse");
+
+        return reservations;
+
+    }
+
+    /**
      * Récuperer une reservation par son id
      * @param id int
      * @return bean {@link Reservation}
@@ -100,8 +119,10 @@ public class ReservationController implements HealthIndicator {
      * @param reservation bean {@link Reservation}
      * @return ResponseEntity<Reservation> renvoi un http status.
      */
-    @PostMapping(value = "/Nreservations")
-    public ResponseEntity<Reservation> addReservation(Reservation reservation){
+    @PostMapping(value = "/Reservations")
+    public ResponseEntity<Reservation> addReservation(@RequestBody Reservation reservation){
+
+        log.info("addReservation : " + reservation);
 
         Reservation newReservation = reservationDao.save(reservation);
 
@@ -113,7 +134,7 @@ public class ReservationController implements HealthIndicator {
     /**
      * Permet de mettre à jour un reservation existant.
      **/
-    @PutMapping(value = "/Ureservations")
+    @PutMapping(value = "/Reservations")
     public void updateReservation(@RequestBody Reservation reservation) {
 
         reservationDao.save(reservation);

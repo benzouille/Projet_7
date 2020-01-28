@@ -17,14 +17,20 @@ public interface BibliocReservationProxy {
     @GetMapping(value = "/Reservations")
     List<ReservationBean> listReservations();
 
+    @GetMapping(value = "/Reservations/en_cours")
+    List<ReservationBean> listeReservationsEnCours();
+
     @GetMapping(value = "/Reservations/{id}")
     ReservationBean getReservation(@PathVariable("id") int id);
 
     @GetMapping(value = "/Reservations/compte/{id_compte}")
-    List<ReservationBean> getReservationById_compte(@RequestParam("id_compte") int id_compte);
+    List<ReservationBean> getReservationById_compte(@PathVariable("id_compte") int id_compte);
 
-    @PostMapping(value = "/Reservations/reservation")
+    @PostMapping(value = "/Reservations")
     ReservationBean newReservation(@RequestBody ReservationBean reservation);
+
+    @PutMapping(value = "/Reservations")
+    ReservationBean updateReservation(@RequestBody ReservationBean reservation);
 
     @GetMapping(value = "/Bibliotheques")
     List <BibliothequeBean> listBibliotheques();
@@ -36,7 +42,7 @@ public interface BibliocReservationProxy {
     List<ExemplaireBean> listExemplaires();
 
     @GetMapping(value = "/Exemplaires/{id}")
-    List<ExemplaireBean> getExemplaire(@PathVariable("id") int id);
+    ExemplaireBean getExemplaire(@PathVariable("id") int id);
 
     @GetMapping(value = "/Exemplaires-livre/{id}")
     List<ExemplaireBean> getExemplairesByIdLivre(@PathVariable("id") int id);

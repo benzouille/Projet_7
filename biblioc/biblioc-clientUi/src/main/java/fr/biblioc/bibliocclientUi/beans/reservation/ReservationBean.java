@@ -1,6 +1,5 @@
 package fr.biblioc.bibliocclientUi.beans.reservation;
 
-import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
 import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
 
 import javax.validation.constraints.NotNull;
@@ -22,8 +21,13 @@ public class ReservationBean {
     @NotNull
     private Date date_emprunt;
 
+    private Date date_retour;
+
     @NotNull
     private Boolean extension;
+
+    @NotNull
+    private Boolean rendu;
 
     @NotNull
     private ExemplaireBean exemplaire;
@@ -43,11 +47,12 @@ public class ReservationBean {
      * @param extension boolean
      * @param exemplaire ExemplaireBean
      */
-    public ReservationBean(@NotNull int id_utilisateur, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull ExemplaireBean exemplaire) {
+    public ReservationBean(@NotNull int id_utilisateur, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull Boolean rendu, @NotNull ExemplaireBean exemplaire) {
         this.id_utilisateur = id_utilisateur;
         this.date_emprunt = date_emprunt;
         this.extension = extension;
         this.exemplaire = exemplaire;
+        this.rendu =rendu;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -76,12 +81,28 @@ public class ReservationBean {
         this.date_emprunt = date_emprunt;
     }
 
+    public Date getDate_retour() {
+        return date_retour;
+    }
+
+    public void setDate_retour(Date date_retour) {
+        this.date_retour = date_retour;
+    }
+
     public Boolean getExtension() {
         return extension;
     }
 
     public void setExtension(Boolean extension) {
         this.extension = extension;
+    }
+
+    public Boolean getRendu() {
+        return rendu;
+    }
+
+    public void setRendu(Boolean rendu) {
+        this.rendu = rendu;
     }
 
     public ExemplaireBean getExemplaire() {
@@ -104,11 +125,11 @@ public class ReservationBean {
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                "id_reservation=" + id_reservation +
+        return "ReservationBean{" +
                 ", id_utilisateur=" + id_utilisateur +
                 ", date_emprunt=" + date_emprunt +
                 ", extension=" + extension +
+                ", rendu=" + rendu +
                 ", exemplaire=" + exemplaire +
                 '}';
     }
