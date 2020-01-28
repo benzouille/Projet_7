@@ -63,7 +63,7 @@ public class Exemplaire {
         return bibliotheque;
     }
 
-    public void setBibliotheque(Bibliotheque id_bibliotheque) {
+    public void setBibliotheque(Bibliotheque bibliotheque) {
         this.bibliotheque = bibliotheque;
     }
 
@@ -74,7 +74,7 @@ public class Exemplaire {
         return "Exemplaire{" +
                 "id_exemplaire=" + id_exemplaire +
                 ", id_livre=" + id_livre +
-                ", id_biblio=" + bibliotheque +
+                ", bibliotheque=" + bibliotheque +
                 '}';
     }
 }

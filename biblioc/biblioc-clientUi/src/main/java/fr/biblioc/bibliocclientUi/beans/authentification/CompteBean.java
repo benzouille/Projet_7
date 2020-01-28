@@ -1,5 +1,7 @@
 package fr.biblioc.bibliocclientUi.beans.authentification;
 
+import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -27,6 +29,8 @@ public class CompteBean {
     private int id_role;
 
     private int id_utilisateur;
+
+    private UtilisateurBean utilisateur;
 
     //------------------------- CONSTRUCTEURS -------------------------
 
@@ -92,6 +96,14 @@ public class CompteBean {
 
     public void setId_utilisateur(int id_utilisateur) {
         this.id_utilisateur = id_utilisateur;
+    }
+
+    public UtilisateurBean getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(UtilisateurBean utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     //------------------------- TO STRING -------------------------

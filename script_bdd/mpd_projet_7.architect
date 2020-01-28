@@ -271,16 +271,13 @@
     </index>
    </folder>
   </table>
-  <table id="TAB72" populated="true" UUID="fb06a7fa-de6c-493f-81db-c50b421881fd" name="livre_auteur" objectType="TABLE" physicalName="livre_auteur" >
+  <table id="TAB72" populated="true" UUID="fb06a7fa-de6c-493f-81db-c50b421881fd" name="auteur_livre" objectType="TABLE" physicalName="auteur_livre" >
    <remarks></remarks>
    <folder id="FOLTAB721" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL73" populated="true" UUID="b6b8fe53-31e1-4df8-a919-f2d69932d57b" autoIncrement="true" autoIncrementSequenceName="livre_auteur_id_seq" defaultValue="" name="id_livre_auteur" nullable="0" physicalName="id_livre_auteur" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL73" populated="true" UUID="b46e10ad-2210-4450-8ef6-496476ef87df" autoIncrement="false" autoIncrementSequenceName="livre_id_seq_2" defaultValue="" name="id_livre" nullable="0" physicalName="id_livre" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL74" populated="true" UUID="b46e10ad-2210-4450-8ef6-496476ef87df" autoIncrement="false" autoIncrementSequenceName="livre_id_seq_2" defaultValue="" name="id_livre" nullable="0" physicalName="id_livre" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
-     <remarks></remarks>
-    </column>
-    <column id="COL75" populated="true" UUID="e719de6c-1488-4172-99e2-c14fff7ff76c" autoIncrement="false" autoIncrementSequenceName="auteur_id_auteur_seq_1" defaultValue="" name="id_auteur" nullable="0" physicalName="id_auteur" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL74" populated="true" UUID="e719de6c-1488-4172-99e2-c14fff7ff76c" autoIncrement="false" autoIncrementSequenceName="auteur_livre_id_auteur_seq" defaultValue="" name="id_auteur" nullable="0" physicalName="id_auteur" precision="0" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     </folder>
@@ -289,8 +286,9 @@
     <folder id="FOLTAB722" populated="true" name="Imported Keys" physicalName="Imported Keys" type="2">
     </folder>
     <folder id="FOLTAB724" populated="true" name="Indices" physicalName="Indices" type="4">
-    <index id="IDX76" populated="true" UUID="ab46bcd2-0d1a-45fa-81e9-0647077867fe" clustered="false" name="livre_auteur_pk" physicalName="livre_auteur_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC77" populated="true" UUID="c788adfc-a4ca-449a-bdae-4382255e1ef8" ascendingOrDescending="UNSPECIFIED" column-ref="COL73" name="id_livre_auteur" physicalName="id_livre_auteur" />
+    <index id="IDX75" populated="true" UUID="ab46bcd2-0d1a-45fa-81e9-0647077867fe" clustered="false" name="auteur_livre_pk" physicalName="livre_auteur_pk" primaryKeyIndex="true" unique="false" >
+     <index-column id="IDC76" populated="true" UUID="e11e7aef-b4ec-413e-b9ef-54dd0de89393" ascendingOrDescending="UNSPECIFIED" column-ref="COL73" name="id_livre" physicalName="id_livre" />
+     <index-column id="IDC77" populated="true" UUID="c3834a2c-2921-4464-9b9e-5c30abfc4812" ascendingOrDescending="UNSPECIFIED" column-ref="COL74" name="id_auteur" physicalName="id_auteur" />
     </index>
    </folder>
   </table>
@@ -328,15 +326,15 @@
     <column-mapping id="CMP87" populated="true" UUID="c5696a6d-87af-4400-a7d0-2547eac4e940" fk-column-ref="COL83" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL88" populated="true" UUID="048dfa12-3d83-4bac-90cd-4c1cb4b8e74c" deferrability="7" deleteRule="3" fk-table-ref="TAB72" fkCardinality="7" identifying="false" name="livre_livre_auteur_fk" physicalName="livre_livre_auteur_fk" pk-table-ref="TAB18" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP89" populated="true" UUID="42325766-b922-440e-8962-a6df1cc2b085" fk-column-ref="COL74" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL19" />
+    <column-mapping id="CMP89" populated="true" UUID="42325766-b922-440e-8962-a6df1cc2b085" fk-column-ref="COL73" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL19" />
    </relationship>
    <relationship id="REL90" populated="true" UUID="f5396d3c-2696-4be3-a628-835f35661574" deferrability="7" deleteRule="3" fk-table-ref="TAB61" fkCardinality="7" identifying="true" name="livre_exemplaire_fk" physicalName="livre_exemplaire_fk" pk-table-ref="TAB18" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP91" populated="true" UUID="6c476931-9015-410b-a923-d39b916a74d8" fk-column-ref="COL63" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL19" />
    </relationship>
    <relationship id="REL92" populated="true" UUID="5e0fb31c-aec1-4cc0-8c97-58a7decd566d" deferrability="7" deleteRule="3" fk-table-ref="TAB72" fkCardinality="7" identifying="false" name="auteur_livre_auteur_fk" physicalName="auteur_livre_auteur_fk" pk-table-ref="TAB29" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP93" populated="true" UUID="692b2b1c-a39e-4f3f-a921-8f65fd6d1371" fk-column-ref="COL75" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL30" />
+    <column-mapping id="CMP93" populated="true" UUID="692b2b1c-a39e-4f3f-a921-8f65fd6d1371" fk-column-ref="COL74" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL30" />
    </relationship>
-   <relationship id="REL94" populated="true" UUID="cf12d91a-8252-4c24-a4ba-34c21285c27f" deferrability="7" deleteRule="3" fk-table-ref="TAB18" fkCardinality="7" identifying="false" name="Genre_livre_fk" physicalName="genre_livre_fk" pk-table-ref="TAB37" pkCardinality="2" updateRule="3" >
+   <relationship id="REL94" populated="true" UUID="cf12d91a-8252-4c24-a4ba-34c21285c27f" deferrability="7" deleteRule="3" fk-table-ref="TAB18" fkCardinality="7" identifying="false" name="Genre_livre_fk" physicalName="Genre_livre_fk" pk-table-ref="TAB37" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP95" populated="true" UUID="7a2af91f-593d-4370-a6f0-689acc7ee316" fk-column-ref="COL21" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL38" />
    </relationship>
    <relationship id="REL96" populated="true" UUID="1367467b-f828-4ef7-b53a-df4f935d112c" deferrability="7" deleteRule="3" fk-table-ref="TAB18" fkCardinality="7" identifying="false" name="editeur_livre_fk" physicalName="editeur_livre_fk" pk-table-ref="TAB42" pkCardinality="2" updateRule="3" >
@@ -362,7 +360,7 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
  <play-pen zoom="1.0" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
@@ -371,7 +369,7 @@
   <table-pane table-ref="TAB18" x="1039" y="530" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB29" x="1428" y="292" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB37" x="1039" y="292" bgColor="0xe8cfdb" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB42" x="1039" y="792" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB42" x="1039" y="792" bgColor="0xe8cfdb" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB47" x="659" y="292" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB53" x="521" y="94" bgColor="0xbfd6ff" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB61" x="659" y="530" bgColor="0xdfedce" fgColor="0x000000" rounded="false" dashed="false"/>

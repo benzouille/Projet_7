@@ -67,6 +67,7 @@ public class BibliothequeController {
 
     /**
      * Recherche simple
+     *
      * @param titre
      * @param id_auteur
      * @param id_genre
@@ -96,6 +97,7 @@ public class BibliothequeController {
 
     /**
      * recherche multiple
+     *
      * @param id_auteur
      * @param id_genre
      * @param id_biblio
@@ -103,34 +105,27 @@ public class BibliothequeController {
      * @return
      */
     @PostMapping(value = "/recherches")
-    public ModelAndView rechercheLivre(Integer id_auteur, Integer id_genre, Integer id_biblio, RedirectAttributes redirectAttributes) {
-
-        List<Object> multicrit = new ArrayList<>();
-
-        System.out.println(" les differentes infos : id_auteur : " + id_auteur + ", id_genre : " + id_genre + ", id_biblio : " + id_biblio);
+    public ModelAndView recherchesLivre(Integer id_auteur, Integer id_genre, Integer id_biblio, RedirectAttributes redirectAttributes) {
+        String multicrit = "";
 
         if (id_auteur.equals(-1) && id_genre.equals(-1) && id_biblio.equals(-1)) {
             System.out.println("pas de recherche");
             String erreur = "aucun critère sélectionné !";
-
-
         } else {
             if (id_auteur != -1) {
-                AuteurBean auteur = new AuteurBean();
-                auteur.setId(id_auteur);
-                multicrit.add(auteur);
+                multicrit+= "_idAuteur_" + id_auteur;
             }
             if (id_genre != -1) {
-                GenreBean genre = new GenreBean();
-                genre.setid_genre(id_genre);
-                multicrit.add(genre);
+                multicrit+= "_idGenre_" + id_genre;
             }
             if (id_biblio != -1) {
-                BibliothequeBean biblio = new BibliothequeBean();
-                biblio.setid_biblio(id_biblio);
-                multicrit.add(biblio);
+                multicrit+= "_idBiblio_" + id_biblio;
             }
         }
+
+        //TODO envoyer au microservice reservation ou bibliotheque pour recherche multiple ?
+
+        bibliothequeProxy.rechercheMulti(multicrit);
 
         return new ModelAndView("redirect:/recherche");
     }
@@ -139,11 +134,9 @@ public class BibliothequeController {
     public String ficheAuteur(@PathVariable int id, Model model) {
 
         AuteurBean auteur = bibliothequeProxy.getAuteur(id);
-
-        model.addAttribute("auteur", auteur);
-
         List<LivreBean> livres = bibliothequeProxy.listLivres();
 
+        model.addAttribute("auteur", auteur);
         model.addAttribute("livres", livres);
 
         return "fiche-auteur";
@@ -153,13 +146,23 @@ public class BibliothequeController {
     public String ficheLivre(@PathVariable int id, Model model) {
 
         LivreBean livre = bibliothequeProxy.getLivre(id);
-        model.addAttribute("livre", livre);
-
+        List<ExemplaireBean> exemplaires = reservationProxy.getExemplairesByIdLivre(id);
         List<BibliothequeBean> bibliotheques = reservationProxy.listBibliotheques();
+
+        populate(bibliotheques, exemplaires);
+        model.addAttribute("livre", livre);
         model.addAttribute("bibliotheques", bibliotheques);
 
-        List<ExemplaireBean> exemplaires = reservationProxy.getExemplairesByIdLivre(id);
-
         return "fiche-livre";
+    }
+
+    private void populate(List<BibliothequeBean> bibliotheques, List<ExemplaireBean> exemplaires){
+        for (BibliothequeBean bibliotheque : bibliotheques) {
+            for (ExemplaireBean exemplaire : exemplaires) {
+                if (exemplaire.getbibliotheque().getid_biblio() == bibliotheque.getid_biblio()){
+                    bibliotheque.addExemplaire(exemplaire);
+                }
+            }
+        }
     }
 }

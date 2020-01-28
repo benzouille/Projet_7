@@ -1,5 +1,7 @@
 package fr.biblioc.bibliocclientUi.beans.reservation;
 
+import fr.biblioc.bibliocclientUi.beans.bibliotheque.LivreBean;
+
 import javax.validation.constraints.NotNull;
 
 public class ExemplaireBean {
@@ -11,8 +13,10 @@ public class ExemplaireBean {
     @NotNull
     private int id_livre;
 
+    private LivreBean livre;
+
     @NotNull
-    private int id_biblio;
+    private BibliothequeBean bibliotheque;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
@@ -25,11 +29,11 @@ public class ExemplaireBean {
     /**
      * Constructeur avec paramètres
      * @param id_livre id livre
-     * @param id_biblio id bibliothèque
+     * @param bibliotheque Objet bibliothèque
      */
-    public ExemplaireBean(@NotNull int id_livre, @NotNull int id_biblio) {
+    public ExemplaireBean(@NotNull int id_livre, @NotNull BibliothequeBean bibliotheque) {
         this.id_livre = id_livre;
-        this.id_biblio = id_biblio;
+        this.bibliotheque = bibliotheque;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -50,12 +54,20 @@ public class ExemplaireBean {
         this.id_livre = id_livre;
     }
 
-    public int getId_biblio() {
-        return id_biblio;
+    public LivreBean getLivre() {
+        return livre;
     }
 
-    public void setId_biblio(int id_bibliotheque) {
-        this.id_biblio = id_biblio;
+    public void setLivre(LivreBean livre) {
+        this.livre = livre;
+    }
+
+    public BibliothequeBean getbibliotheque() {
+        return bibliotheque;
+    }
+
+    public void setbibliotheque(BibliothequeBean bibliotheque) {
+        this.bibliotheque = bibliotheque;
     }
 
     //------------------------- TO_STRING -------------------------
@@ -65,7 +77,7 @@ public class ExemplaireBean {
         return "Exemplaire{" +
                 "id_exemplaire=" + id_exemplaire +
                 ", id_livre=" + id_livre +
-                ", id_biblio=" + id_biblio +
+                ", bibliotheque=" + bibliotheque +
                 '}';
     }
 }

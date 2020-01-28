@@ -36,11 +36,9 @@
                 <h3 class="text-center"><strong>Disponibilité</strong></h3>
 
                 <ul class="list-group">
-                    <form name="bibliotheque_id" action="#" method="post">
-                        <input th:each="bibliotheque : ${bibliotheques}" type="submit" name="bibliotheque_id"
-                               class="btn list-group-item list-group-item-action turquoise"
-                               th:value="*{bibliotheque.nom}">
-                    </form>
+                    <li class="list-group-item list-group-item-action turquoise" th:each="bibliotheque : ${bibliotheques}">
+                        <span th:text="${bibliotheque.nom}"> </span><span class="badge badge-info pull-right" th:text="${bibliotheque.countExemplaireLivre()}"></span>
+                    </li>
                 </ul>
             </div>
         </div>

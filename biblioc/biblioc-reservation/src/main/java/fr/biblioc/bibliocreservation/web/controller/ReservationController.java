@@ -1,6 +1,7 @@
 package fr.biblioc.bibliocreservation.web.controller;
 
 import fr.biblioc.bibliocreservation.dao.ReservationDao;
+import fr.biblioc.bibliocreservation.dto.ReservationDto;
 import fr.biblioc.bibliocreservation.model.Reservation;
 import fr.biblioc.bibliocreservation.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocreservation.web.exceptions.ObjectNotFoundException;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,6 +79,20 @@ public class ReservationController implements HealthIndicator {
         if(!reservation.isPresent())  throw new ObjectNotFoundException("La reservation correspondant à l'id " + id + " n'existe pas");
 
         return reservation;
+    }
+
+    /**
+     * Récuperer une reservation par son id
+     * @param id_compte int
+     * @return List {@link Reservation}
+     */
+    @GetMapping(value = "/Reservations/compte/{id_compte}")
+    List<Reservation> getReservationById_compte(@PathVariable int id_compte){
+
+        List<Reservation> reservations = reservationDao.findAllById_compte(id_compte);
+        List<ReservationDto> reservationsDto = new ArrayList<>();
+
+        return reservations;
     }
 
     /**

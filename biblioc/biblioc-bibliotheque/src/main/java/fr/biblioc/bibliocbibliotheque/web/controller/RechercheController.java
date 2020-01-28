@@ -4,7 +4,6 @@ import fr.biblioc.bibliocbibliotheque.dao.LivreDao;
 import fr.biblioc.bibliocbibliotheque.dto.AuteurDto;
 import fr.biblioc.bibliocbibliotheque.dto.LivreDto;
 import fr.biblioc.bibliocbibliotheque.mapper.LivreMapper;
-import fr.biblioc.bibliocbibliotheque.model.Auteur;
 import fr.biblioc.bibliocbibliotheque.model.Livre;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -47,16 +47,8 @@ public class RechercheController {
             livres = livreDao.findByTitre(value);
         } else if (type.equals("auteur")) {
             AuteurDto auteur = auteurController.recupererUnAuteur(Integer.parseInt(value));
-
-//            List<AuteurDto> auteurs =new ArrayList<>();
-//            auteurs.add(auteur);
-
             livres = auteur.getBibliographie();
-
-//            for(Livre livre : livres){
-//                livre.setAuteurs(auteurs);
-//            }
-        } else if(type.equals("genre")){
+        } else if (type.equals("genre")) {
             livres = livreDao.findById_genre(Integer.parseInt(value));
         }
 
@@ -64,10 +56,6 @@ public class RechercheController {
         for (Livre livre : livres) {
             livresDto.add(livreMapper.livreToLivreDto(livre));
         }
-//        for (LivreDto livreDto : livresDto){
-//            System.out.println(livreDto.toString());
-//        }
-
 //        if (livresDto.isEmpty()) {
 //            throw new ObjectNotFoundException("Aucun livre n'a été trouvé");
 //        }
@@ -76,8 +64,25 @@ public class RechercheController {
     }
 
     @GetMapping(value = "/Recherches")
-    List<Livre> rechercheMulti(String type, String value) {
-        System.out.println("je passe par RechercheController/Recherches");
+    List<Livre> rechercheMulti(String multicrit) {
+        log.info(multicrit);
+        int id_auteur;
+        int id_genre;
+        int id_biblio;
+        List<String> output = Arrays.asList(multicrit.split("_"));
+        for (int i = 0; i < output.size(); i++) {
+            if (output.get(i).equals("idAuteur")) {
+                id_auteur = Integer.parseInt(output.get(i + 1));
+                log.info("id_auteur : " + id_auteur);
+            } else if (output.get(i).equals("idGenre")) {
+                id_genre = Integer.parseInt(output.get(i + 1));
+                log.info("id_genre : " + id_genre);
+            } else if (output.get(i).equals("idBiblio")) {
+                id_biblio = Integer.parseInt(output.get(i + 1));
+                log.info("id_biblio : " + id_biblio);
+            }
+        }
+
         return null;
     }
 }

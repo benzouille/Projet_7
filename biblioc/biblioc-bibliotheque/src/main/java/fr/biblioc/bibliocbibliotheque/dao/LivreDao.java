@@ -13,13 +13,8 @@ import java.util.List;
  */
 @Repository
 public interface LivreDao extends JpaRepository<Livre, Integer> {
+
     List<Livre> findByTitre(String titre);
-
-    //TODO MARCHE PAS
-    //List<Livre> findLivresByGenre_Id_genre(int genre);
-
-    //@Query(value = "SELECT livre FROM livre l WHERE l.genre.id_genre = :id_genre")
-    //List<Livre> findById_genre(@Param("id_genre") int genre);
 
     @Query(value = "SELECT * FROM livre WHERE id_genre = :id_genre", nativeQuery = true)
     List<Livre> findById_genre(@Param("id_genre") int genre);

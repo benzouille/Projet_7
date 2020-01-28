@@ -1,6 +1,8 @@
 package fr.biblioc.bibliocreservation.web.controller;
 
 import fr.biblioc.bibliocreservation.dao.ExemplaireDao;
+import fr.biblioc.bibliocreservation.dto.ExemplaireDto;
+import fr.biblioc.bibliocreservation.mapper.ExemplaireMapper;
 import fr.biblioc.bibliocreservation.model.Exemplaire;
 import fr.biblioc.bibliocreservation.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocreservation.web.exceptions.ObjectNotFoundException;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,9 @@ public class ExemplaireController implements HealthIndicator {
 
     @Autowired
     ExemplaireDao exemplaireDao;
+
+    @Autowired
+    ExemplaireMapper exemplaireMapper;
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -85,13 +91,19 @@ public class ExemplaireController implements HealthIndicator {
      * @return bean {@link Exemplaire}
      */
     @GetMapping( value = "/Exemplaires-livre/{id}")
-    public Optional<Exemplaire> recupererUnExemplaireParIdLivre(@PathVariable int id) {
+    public List<ExemplaireDto> recupererExemplairesByIdLivre(@PathVariable int id) {
 
-        Optional<Exemplaire> exemplaire = exemplaireDao.findById(id);
+        List<Exemplaire> exemplaires = exemplaireDao.findAllById_livre(id);
+        List<ExemplaireDto> exemplairesDto = new ArrayList<>();
 
-        if(!exemplaire.isPresent())  throw new ObjectNotFoundException("L'exemplaire correspondant à l'id " + id + " n'existe pas");
+        if(!exemplaires.isEmpty()){
+            for (Exemplaire exemplaire : exemplaires){
+                exemplairesDto.add(exemplaireMapper.exemplaireToExemplaireDto(exemplaire));
+            }
+        }
 
-        return exemplaire;
+        log.info("List<ExemplaireDto> : " + exemplairesDto);
+        return exemplairesDto;
     }
 
     /**

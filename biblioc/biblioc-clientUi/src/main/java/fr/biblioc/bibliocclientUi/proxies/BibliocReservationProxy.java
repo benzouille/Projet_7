@@ -4,10 +4,7 @@ import fr.biblioc.bibliocclientUi.beans.reservation.BibliothequeBean;
 import fr.biblioc.bibliocclientUi.beans.reservation.ExemplaireBean;
 import fr.biblioc.bibliocclientUi.beans.reservation.ReservationBean;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +19,9 @@ public interface BibliocReservationProxy {
 
     @GetMapping(value = "/Reservations/{id}")
     ReservationBean getReservation(@PathVariable("id") int id);
+
+    @GetMapping(value = "/Reservations/compte/{id_compte}")
+    List<ReservationBean> getReservationById_compte(@RequestParam("id_compte") int id_compte);
 
     @PostMapping(value = "/Reservations/reservation")
     ReservationBean newReservation(@RequestBody ReservationBean reservation);

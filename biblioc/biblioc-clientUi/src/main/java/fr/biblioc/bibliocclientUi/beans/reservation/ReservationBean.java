@@ -1,5 +1,8 @@
 package fr.biblioc.bibliocclientUi.beans.reservation;
 
+import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
+import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
+
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
@@ -14,6 +17,8 @@ public class ReservationBean {
     @NotNull
     private int id_utilisateur;
 
+    private UtilisateurBean utilisateur;
+
     @NotNull
     private Date date_emprunt;
 
@@ -21,7 +26,7 @@ public class ReservationBean {
     private Boolean extension;
 
     @NotNull
-    private int id_exemplaire;
+    private ExemplaireBean exemplaire;
 
     //------------------------- CONSTRUCTEUR -------------------------
 
@@ -36,13 +41,13 @@ public class ReservationBean {
      * @param id_utilisateur int
      * @param date_emprunt Date
      * @param extension boolean
-     * @param id_exemplaire int
+     * @param exemplaire ExemplaireBean
      */
-    public ReservationBean(@NotNull int id_utilisateur, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull int id_exemplaire) {
+    public ReservationBean(@NotNull int id_utilisateur, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull ExemplaireBean exemplaire) {
         this.id_utilisateur = id_utilisateur;
         this.date_emprunt = date_emprunt;
         this.extension = extension;
-        this.id_exemplaire = id_exemplaire;
+        this.exemplaire = exemplaire;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -79,12 +84,20 @@ public class ReservationBean {
         this.extension = extension;
     }
 
-    public int getId_exemplaire() {
-        return id_exemplaire;
+    public ExemplaireBean getExemplaire() {
+        return exemplaire;
     }
 
-    public void setId_exemplaire(int id_exemplaire) {
-        this.id_exemplaire = id_exemplaire;
+    public void setExemplaire(ExemplaireBean exemplaire) {
+        this.exemplaire = exemplaire;
+    }
+
+    public UtilisateurBean getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(UtilisateurBean utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     //------------------------- TO_STRING -------------------------
@@ -96,7 +109,7 @@ public class ReservationBean {
                 ", id_utilisateur=" + id_utilisateur +
                 ", date_emprunt=" + date_emprunt +
                 ", extension=" + extension +
-                ", id_exemplaire=" + id_exemplaire +
+                ", exemplaire=" + exemplaire +
                 '}';
     }
 }
