@@ -62,27 +62,4 @@ public class RechercheController {
 
         return livresDto;
     }
-
-    @GetMapping(value = "/Recherches")
-    List<Livre> rechercheMulti(String multicrit) {
-        log.info(multicrit);
-        int id_auteur;
-        int id_genre;
-        int id_biblio;
-        List<String> output = Arrays.asList(multicrit.split("_"));
-        for (int i = 0; i < output.size(); i++) {
-            if (output.get(i).equals("idAuteur")) {
-                id_auteur = Integer.parseInt(output.get(i + 1));
-                log.info("id_auteur : " + id_auteur);
-            } else if (output.get(i).equals("idGenre")) {
-                id_genre = Integer.parseInt(output.get(i + 1));
-                log.info("id_genre : " + id_genre);
-            } else if (output.get(i).equals("idBiblio")) {
-                id_biblio = Integer.parseInt(output.get(i + 1));
-                log.info("id_biblio : " + id_biblio);
-            }
-        }
-
-        return null;
-    }
 }

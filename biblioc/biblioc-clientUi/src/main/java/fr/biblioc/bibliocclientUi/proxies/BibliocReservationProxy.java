@@ -46,4 +46,7 @@ public interface BibliocReservationProxy {
 
     @GetMapping(value = "/Exemplaires-livre/{id}")
     List<ExemplaireBean> getExemplairesByIdLivre(@PathVariable("id") int id);
+
+    @GetMapping(value = "/Exemplaires-livre")
+    List<ExemplaireBean>rechercheMulti(@RequestParam("multicrit") String multicrit);
 }

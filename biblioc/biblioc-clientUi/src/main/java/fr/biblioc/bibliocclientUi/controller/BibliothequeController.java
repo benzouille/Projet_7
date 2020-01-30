@@ -124,7 +124,7 @@ public class BibliothequeController {
 
         //TODO envoyer au microservice reservation ou bibliotheque pour recherche multiple ?
 
-        bibliothequeProxy.rechercheMulti(multicrit);
+        reservationProxy.rechercheMulti(multicrit);
 
         return new ModelAndView("redirect:/recherche");
     }

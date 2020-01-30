@@ -5,7 +5,6 @@ import fr.biblioc.bibliocreservation.dto.ExemplaireDto;
 import fr.biblioc.bibliocreservation.mapper.ExemplaireMapper;
 import fr.biblioc.bibliocreservation.model.Exemplaire;
 import fr.biblioc.bibliocreservation.web.exceptions.ErrorAddException;
-import fr.biblioc.bibliocreservation.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,18 +56,10 @@ public class ExemplaireController implements HealthIndicator {
      * @return liste de {@link Exemplaire}
      */
     @GetMapping(value = "/Exemplaires")
-    public List<Exemplaire> listeDesExemplaires(){
+    public List<ExemplaireDto> listeDesExemplaires(){
 
         List<Exemplaire> exemplaires = exemplaireDao.findAll();
-
-        if(exemplaires.isEmpty()){
-            throw new ObjectNotFoundException("Aucun exemplaire n'a été trouvée");
-        }
-
-        log.info("Récupération de la liste des exemplaires");
-
-        return exemplaires;
-
+        return getExemplaireDtos(exemplaires);
     }
 
     /**
@@ -76,13 +68,10 @@ public class ExemplaireController implements HealthIndicator {
      * @return bean {@link Exemplaire}
      */
     @GetMapping( value = "/Exemplaires/{id}")
-    public Optional<Exemplaire> recupererUneExemplaire(@PathVariable int id) {
+    public ExemplaireDto recupererUnExemplaire(@PathVariable int id) {
 
         Optional<Exemplaire> exemplaire = exemplaireDao.findById(id);
-
-        if(!exemplaire.isPresent())  throw new ObjectNotFoundException("L'exemplaire correspondant à l'id " + id + " n'existe pas");
-
-        return exemplaire;
+        return getExemplaireDto(exemplaire);
     }
 
     /**
@@ -94,16 +83,34 @@ public class ExemplaireController implements HealthIndicator {
     public List<ExemplaireDto> recupererExemplairesByIdLivre(@PathVariable int id) {
 
         List<Exemplaire> exemplaires = exemplaireDao.findAllById_livre(id);
-        List<ExemplaireDto> exemplairesDto = new ArrayList<>();
+        return getExemplaireDtos(exemplaires);
+    }
 
-        if(!exemplaires.isEmpty()){
-            for (Exemplaire exemplaire : exemplaires){
-                exemplairesDto.add(exemplaireMapper.exemplaireToExemplaireDto(exemplaire));
+    @GetMapping( value = "/Exemplaires-livre")
+    public List<ExemplaireDto> multiCrit(String multicrit) {
+
+        log.info(multicrit);
+        Integer id_auteur = 0;
+        Integer id_genre = 0;
+        Integer id_biblio = 0;
+
+        List<String> output = Arrays.asList(multicrit.split("_"));
+        for (int i = 0; i < output.size(); i++) {
+            if (output.get(i).equals("idAuteur")) {
+                id_auteur = Integer.parseInt(output.get(i + 1));
+                log.info("id_auteur : " + id_auteur);
+            } else if (output.get(i).equals("idGenre")) {
+                id_genre = Integer.parseInt(output.get(i + 1));
+                log.info("id_genre : " + id_genre);
+            } else if (output.get(i).equals("idBiblio")) {
+                id_biblio = Integer.parseInt(output.get(i + 1));
+                log.info("id_biblio : " + id_biblio);
             }
         }
 
-        log.info("List<ExemplaireDto> : " + exemplairesDto);
-        return exemplairesDto;
+        List<Exemplaire> exemplaires = exemplaireDao.multiCrit(id_auteur, id_genre, id_biblio);
+        return getExemplaireDtos(exemplaires);
+
     }
 
     /**
@@ -116,7 +123,7 @@ public class ExemplaireController implements HealthIndicator {
 
         Exemplaire newExemplaire = exemplaireDao.save(exemplaire);
 
-        if(newExemplaire == null) throw new ErrorAddException("Impossible d'ajouter ce exemplaire");
+        if(newExemplaire == null) throw new ErrorAddException("Impossible d'ajouter cet exemplaire");
 
         return new ResponseEntity<Exemplaire>(exemplaire, HttpStatus.CREATED);
     }
@@ -128,5 +135,40 @@ public class ExemplaireController implements HealthIndicator {
     public void updateExemplaire(@RequestBody Exemplaire exemplaire) {
 
         exemplaireDao.save(exemplaire);
+    }
+
+    //------------------------- METHODE INTERNE-------------------------
+
+    /**
+     * transforme un objet exemplaire en exemplaireDto
+     * @param exemplaire ENTITY
+     * @return exemplaireDto DTO
+     */
+    private ExemplaireDto getExemplaireDto(Optional<Exemplaire> exemplaire) {
+        ExemplaireDto exemplaireDto = null;
+
+        if(exemplaire.isPresent()) {
+            exemplaireDto = exemplaireMapper.exemplaireToExemplaireDto(exemplaire.get());
+            log.info("ExemplaireDto : " + exemplaireDto);
+        }
+        return exemplaireDto;
+    }
+
+    /**
+     * transforme une list d'objet exemplaire en exemplaireDto
+     * @param exemplaires ENTITY
+     * @return exemplairesDto DTO
+     */
+    private List<ExemplaireDto> getExemplaireDtos(List<Exemplaire> exemplaires) {
+        List<ExemplaireDto> exemplairesDto = new ArrayList<>();
+
+        if(!exemplaires.isEmpty()){
+            for (Exemplaire exemplaire : exemplaires){
+                exemplairesDto.add(exemplaireMapper.exemplaireToExemplaireDto(exemplaire));
+            }
+        }
+
+        log.info("List<ExemplaireDto> : " + exemplairesDto);
+        return exemplairesDto;
     }
 }

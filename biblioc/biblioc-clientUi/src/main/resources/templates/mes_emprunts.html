@@ -21,7 +21,7 @@
         </div>
     </div>
     <blockquote class="blockquote text-right">
-        <small class="text-muted mb-0"><span class="date_format" >test</span></small>
+        <small class="text-muted mb-0"><span th:text="${utilisateur.nom + ' ' + utilisateur.prenom}"></span></small>
     </blockquote>
 
     <div>
@@ -30,24 +30,32 @@
 
     <div class="resultat table-responsive">
         <h3 class="text-center"><strong>Vos emprunts</strong></h3>
-        <table class="table table-hover">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">Livre</th>
-                <th scope="col">Bibliothèque</th>
-                <th scope="col">Date d'emprunt</th>
-                <th scope="col">Date de retour</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="reservation : ${reservations}">
-                <td><a class="link" th:href="@{|/details-livre/${reservation.exemplaire.id_livre}|}" th:text="${reservation.exemplaire.livre.titre}"></a></td>
-                <td th:text="${reservation.exemplaire.getbibliotheque().nom}"></td>
-                <td th:text="${reservation.getDate_emprunt()}"></td>
-                <td th:text="fin"></td>
-            </tr>
-            </tbody>
-        </table>
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id exemplaire</th>
+                    <th scope="col">Id réservation</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Date prêt</th>
+                    <th scope="col">Date retour</th>
+                    <th scope="col">Extention</th>
+                    <th scope="col">Rendu</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="reservation : ${reservations}">
+                    <td th:text="${reservation.getExemplaire().getid_exemplaire()}"></td>
+                    <td th:text="${reservation.id_reservation}"></td>
+                    <td th:text="${reservation.getExemplaire().livre.titre}"></td>
+                    <td th:text="${#dates.format(reservation.getDate_emprunt(), 'dd-MM-yyyy')}"></td>
+                    <td th:text="${#dates.format(reservation.getDate_retour(), 'dd-MM-yyyy')}"></td>
+                    <td th:if="${reservation.getExtension() == false}" th:text="non"></td>
+                    <td th:if="${reservation.getExtension() == true}" th:text="oui"></td>
+                    <td th:if="${reservation.getRendu() == false}" th:text="non"></td>
+                    <td th:if="${reservation.getRendu() == true}" th:text="oui"></td>
+                </tr>
+                </tbody>
+            </table>
     </div>
 </div>
 <!--FOOTER-->

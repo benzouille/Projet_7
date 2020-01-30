@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,25 @@ public class GestionController {
 
     //------------------------- METHODE -------------------------
 
+    @RequestMapping(value= "/mes_emprunts", method = RequestMethod.GET)
+    public String empruntsUtilisateur(Model model){
+
+        UtilisateurBean utilisateur = utilisateurProxy.getUtilisateur(2);
+        List<ReservationBean> reservations = reservationProxy.getReservationById_compte(2);
+
+        //ajout des objets livres dans les reservations
+        for (ReservationBean reservation : reservations){
+            reservation.setUtilisateur(utilisateurProxy.getUtilisateur(reservation.getId_utilisateur()));
+            reservation.setDate_retour(dateDebutToFin(reservation.getDate_emprunt(), reservation.getExtension()));
+            reservation.getExemplaire().setLivre(bibliothequeProxy.getLivre(reservation.getExemplaire().getId_livre()));
+        }
+
+        model.addAttribute("utilisateur", utilisateur);
+        model.addAttribute("reservations", reservations);
+
+        return "mes_emprunts";
+    }
+
     @RequestMapping(value = "/gestion", method = RequestMethod.GET)
     public ModelAndView gestion(HttpServletRequest request){
 
@@ -56,22 +76,27 @@ public class GestionController {
             modelAndView.addObject("reservationByIdCompte", reservationByIdCompte); // 2
         }
 
-        List<ReservationBean> reservations = reservationProxy.listeReservationsEnCours();
+        List<ReservationBean> reservations;
 
-        //ajout des objets livres et utilisateurs ainsi que la date de retour dans les reservations
-        for (ReservationBean reservation : reservations){
-            reservation.setUtilisateur(utilisateurProxy.getUtilisateur(reservation.getId_utilisateur()));
-            reservation.setDate_retour(dateDebutToFin(reservation.getDate_emprunt(), reservation.getExtension()));
-            reservation.getExemplaire().setLivre(bibliothequeProxy.getLivre(reservation.getExemplaire().getId_livre()));
+        if(!reservationProxy.listeReservationsEnCours().isEmpty()) {
+            reservations = reservationProxy.listeReservationsEnCours();
+
+            //ajout des objets livres et utilisateurs ainsi que la date de retour dans les reservations
+            for (ReservationBean reservation : reservations) {
+                reservation.setUtilisateur(utilisateurProxy.getUtilisateur(reservation.getId_utilisateur()));
+                reservation.setDate_retour(dateDebutToFin(reservation.getDate_emprunt(), reservation.getExtension()));
+                reservation.getExemplaire().setLivre(bibliothequeProxy.getLivre(reservation.getExemplaire().getId_livre()));
+            }
+
+            modelAndView.addObject("reservations", reservations);
         }
-
-        modelAndView.addObject("reservations", reservations);
-
         return modelAndView;
     }
 
     @PostMapping(value = "/gestion/ajout")
     public ModelAndView ajout(String id_exemplaire, String id_utilisateur, RedirectAttributes redirectAttributes){
+
+        //TODO ajouter les verifications sur id_utilisateur : existe t-il ? id_exemplaire : existe-il et est t-il diponible ?
 
         ReservationBean reservation = new ReservationBean();
         reservation.setExemplaire(reservationProxy.getExemplaire(Integer.parseInt(id_exemplaire)));
@@ -145,7 +170,7 @@ public class GestionController {
         long dureePret = 28;
         LocalDate dateFin;
 
-        if(extention) {
+        if(!extention) {
             dateFin = dateDebut.toLocalDate().plusDays(dureePret);
         }else {
             dateFin = dateDebut.toLocalDate().plusDays(dureePret*2);

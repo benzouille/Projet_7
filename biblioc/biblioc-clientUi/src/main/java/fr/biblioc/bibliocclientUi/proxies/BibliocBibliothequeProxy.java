@@ -36,6 +36,4 @@ public interface BibliocBibliothequeProxy {
     @GetMapping(value = "/Recherche")
     List<LivreBean>rechercheSimple(@RequestParam("type") String type, @RequestParam("value") String value);
 
-    @GetMapping(value = "/Recherches")
-    List<LivreBean>rechercheMulti(@RequestParam("multicrit") String multicrit);
 }

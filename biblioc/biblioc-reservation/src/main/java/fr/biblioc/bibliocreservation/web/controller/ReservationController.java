@@ -72,14 +72,12 @@ public class ReservationController implements HealthIndicator {
      */
     @GetMapping(value = "/Reservations/en_cours")
     public List<Reservation> listeDesReservationsEnCours(){
-
+        log.info("Récupération de la liste des reservationsRenduFalse");
         List<Reservation> reservations = reservationDao.findAllByRenduFalse();
 
-        if(reservations.isEmpty()){
-            throw new ObjectNotFoundException("Aucune reservation n'a été trouvée");
-        }
-
-        log.info("Récupération de la liste des reservationsRenduFalse");
+//        if(reservations.isEmpty()){
+//            throw new ObjectNotFoundException("Aucune reservation n'a été trouvée");
+//        }
 
         return reservations;
 
@@ -132,7 +130,7 @@ public class ReservationController implements HealthIndicator {
     }
 
     /**
-     * Permet de mettre à jour un reservation existant.
+     * Permet de mettre à jour une reservation existante.
      **/
     @PutMapping(value = "/Reservations")
     public void updateReservation(@RequestBody Reservation reservation) {
