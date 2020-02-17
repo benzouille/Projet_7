@@ -36,6 +36,7 @@ public class ReservationDto {
      * @param id_compte int
      * @param date_emprunt Date
      * @param extension boolean
+     * @param rendu boolean
      * @param exemplaire Objet Exemplaire
      */
     public ReservationDto(int id_compte, Date date_emprunt, Boolean extension, Boolean rendu, Exemplaire exemplaire) {

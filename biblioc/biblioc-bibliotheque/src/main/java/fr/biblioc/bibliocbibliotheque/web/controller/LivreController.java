@@ -93,7 +93,7 @@ public class LivreController implements HealthIndicator {
     /**
      * Ajouter un livre
      * @param livre bean {@link Livre}
-     * @return ResponseEntity<Livre> renvoi un http status.
+     * @return ResponseEntity bean {@link Livre} renvoi un http status.
      */
     @PostMapping (value = "/Livres")
     public ResponseEntity<Livre> addLivre(Livre livre){
@@ -107,7 +107,8 @@ public class LivreController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un livre existant.
-     **/
+     * @param livre bean {@link Livre}
+     */
     @PutMapping(value = "/Livres")
     public void updateLivre(@RequestBody Livre livre) {
 

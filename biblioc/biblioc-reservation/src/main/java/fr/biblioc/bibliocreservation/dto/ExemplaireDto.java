@@ -15,6 +15,8 @@ public class ExemplaireDto {
 
     private Bibliotheque bibliotheque;
 
+    private boolean disponible;
+
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
@@ -27,10 +29,12 @@ public class ExemplaireDto {
      * Constructeur avec paramètres
      * @param id_livre id livre
      * @param bibliotheque Objet bibliothèque
+     * @param disponible boolean
      */
-    public ExemplaireDto(int id_livre, Bibliotheque bibliotheque) {
+    public ExemplaireDto(int id_livre, Bibliotheque bibliotheque, boolean disponible) {
         this.id_livre = id_livre;
         this.bibliotheque = bibliotheque;
+        this.disponible = disponible;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -59,14 +63,23 @@ public class ExemplaireDto {
         this.bibliotheque = bibliotheque;
     }
 
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
     //------------------------- TO_STRING -------------------------
 
     @Override
     public String toString() {
-        return "Exemplaire{" +
+        return "ExemplaireDto{" +
                 "id_exemplaire=" + id_exemplaire +
                 ", id_livre=" + id_livre +
                 ", bibliotheque=" + bibliotheque +
+                ", disponible=" + disponible +
                 '}';
     }
 }

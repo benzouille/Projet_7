@@ -1,13 +1,38 @@
 # Projet_7
 
+##BDD
+**configuration des bases de données :**
 
-expliquer la création de la BDD avec les rôles.
+les blobs de restoration sont dans le dossier \Projet_7\script_bdd
 
-ecrire les differents path ou mdp a modifier pour le developpeur qui va reprendre/deployer le projet
+ils y a deux bases de données a créer :
+<ul>La base de donnée principale : biblioc_bdd utiliser le fichier biblioc_db.sql</ul>
+<ul>La base de donnée du batch : batch_db utiliser le fichier batch_db.sql</ul>
 
-ordre des lancement des micro-services :
+un role d'acces est a configurer, dans les configuration.properties sur github les modification sont a faire sur les lignes : <br>
 
-config
-eureka
-les autres...
+spring.datasource.username= admin_biblioc<br>
+spring.datasource.password= admin<br>
+<br>
+Sinon créer les roles dans la base de donnée.
 
+## SPRING CLOUD CONFIG
+
+**configuration de cloud config :**
+
+les fichiers .properties sont disponibles
+
+<ul>sur <a href="https://github.com/benzouille/biblioc-config">github.com/benzouille/biblioc-config</a></ul>
+
+Vous devez modifier la boite mail dans le fichier biblioc-batch.properties afin d'y mettre votre adresse email
+
+##ordre de lancement des micro-services :
+Lancer les micros -services dans l'ordre suivant :
+<ul>ConfigServerApplication</ul>
+<ul>EurekaServerApplication</ul>
+<ul>BibliocAuthentificationApplication</ul>
+<ul>BibliocBibliothequeApplication</ul>
+<ul>BibliocReservationApplication</ul>
+<ul>BibliocUtilisateurApplication</ul>
+<ul>BibliocClientUiApplication</ul>
+<ul>BibliocBatchApplication</ul>

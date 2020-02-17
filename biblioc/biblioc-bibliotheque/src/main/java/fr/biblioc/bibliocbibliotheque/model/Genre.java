@@ -5,7 +5,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
- * Bean genre
+ * Bean genre correspondant à la table genre de la bdd
  */
 @Entity
 @Table(name = "genre")

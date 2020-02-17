@@ -1,6 +1,5 @@
 package fr.biblioc.bibliocclientUi.beans.reservation;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -92,12 +91,9 @@ public class AdresseBean {
 
     @Override
     public String toString() {
-        return "Adresse{" +
-                "id_adresse=" + id_adresse +
-                ", code_postal='" + code_postal + '\'' +
-                ", rue='" + rue + '\'' +
-                ", num='" + num + '\'' +
-                ", commune='" + commune + '\'' +
-                '}';
+        return  " : " + num +
+                ", " + rue + ' ' +
+                 code_postal +
+                " " + commune;
     }
 }

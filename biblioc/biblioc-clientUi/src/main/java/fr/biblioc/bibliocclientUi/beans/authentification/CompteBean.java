@@ -22,7 +22,6 @@ public class CompteBean {
     private String email;
 
     @NotNull
-    // 6 a 20 characters :  ^(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{6,20}$
     // ((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})
     private String password;
 
@@ -42,14 +41,12 @@ public class CompteBean {
 
     /**
      * Constructeur avec paramètres
-     * @param id_compte int peux être null
      * @param email String not null
      * @param password String not null
      * @param id_role int peux être null
      * @param id_utilisateur int peux être null
      */
-    public CompteBean(int id_compte, @NotNull String email, @NotNull String password, int id_role, int id_utilisateur) {
-        this.id_compte = id_compte;
+    public CompteBean(@NotNull String email, @NotNull String password, int id_role, int id_utilisateur) {
         this.email = email;
         this.password = password;
         this.id_role = id_role;

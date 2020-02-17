@@ -3,7 +3,7 @@ package fr.biblioc.bibliocbibliotheque.dto;
 import javax.validation.constraints.NotNull;
 
 /**
- * Bean genre
+ * Dto genre
  */
 public class GenreDto {
 

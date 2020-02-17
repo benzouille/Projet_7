@@ -82,7 +82,7 @@ public class AdresseController implements HealthIndicator {
     /**
      * Ajouter un adresse
      * @param adresse bean {@link Adresse}
-     * @return ResponseEntity<Adresse> renvoi un http status.
+     * @return ResponseEntity de Adresse renvoi un http status.
      */
     @PostMapping(value = "/Adresses")
     public ResponseEntity<Adresse> addAdresse(Adresse adresse){
@@ -96,6 +96,7 @@ public class AdresseController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un adresse existant.
+     * @param adresse bean {@link Adresse}
      **/
     @PutMapping(value = "/Adresses")
     public void updateAdresse(@RequestBody Adresse adresse) {

@@ -19,9 +19,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Controller utilisant le proxy vers le microservice bibliotheque
+ */
 @Controller
 public class BibliothequeController {
 
@@ -43,7 +47,7 @@ public class BibliothequeController {
         Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request); // 1
         if (!CollectionUtils.isEmpty(flashMap)) {
             modelAndView.addObject("livres", flashMap.get("livres")); // 2
-            System.out.println("on est dans bibliothequeController/recherche en get : " + flashMap.get("livres").toString());
+            modelAndView.addObject("erreur", flashMap.get("erreur"));
         }
 
         LivreBean livre = new LivreBean();
@@ -97,34 +101,31 @@ public class BibliothequeController {
     /**
      * recherche multiple
      *
-     * @param id_auteur
-     * @param id_genre
-     * @param id_biblio
-     * @param redirectAttributes
-     * @return
+     * @param id_auteur int
+     * @param id_genre int
+     * @param id_biblio int
+     * @param redirectAttributes redirectAttribute
+     * @return modelAndView
      */
     @PostMapping(value = "/recherches")
     public ModelAndView recherchesLivre(Integer id_auteur, Integer id_genre, Integer id_biblio, RedirectAttributes redirectAttributes) {
         String multicrit = "";
 
-        if (id_auteur.equals(-1) && id_genre.equals(-1) && id_biblio.equals(-1)) {
-            System.out.println("pas de recherche");
-            String erreur = "aucun critère sélectionné !";
+        if (id_auteur.equals(-1) | id_genre.equals(-1) | id_biblio.equals(-1)) {
+            String erreur = "veuillez remplir les 3 champs !";
+            redirectAttributes.addFlashAttribute("erreur", erreur);
         } else {
-            if (id_auteur != -1) {
                 multicrit+= "_idAuteur_" + id_auteur;
-            }
-            if (id_genre != -1) {
                 multicrit+= "_idGenre_" + id_genre;
-            }
-            if (id_biblio != -1) {
                 multicrit+= "_idBiblio_" + id_biblio;
-            }
         }
 
-        //TODO envoyer au microservice reservation ou bibliotheque pour recherche multiple ?
-
-        reservationProxy.rechercheMulti(multicrit);
+        List<ExemplaireBean> exemplaires = reservationProxy.rechercheMulti(multicrit);
+        List<LivreBean> livres = new ArrayList<>();
+        for (ExemplaireBean exemplaire : exemplaires){
+            livres.add(bibliothequeProxy.getLivre(exemplaire.getId_livre()));
+        }
+        redirectAttributes.addFlashAttribute("livres", livres);
 
         return new ModelAndView("redirect:/recherche");
     }
@@ -145,7 +146,7 @@ public class BibliothequeController {
     public String ficheLivre(@PathVariable int id, Model model) {
 
         LivreBean livre = bibliothequeProxy.getLivre(id);
-        List<ExemplaireBean> exemplaires = reservationProxy.getExemplairesByIdLivre(id);
+        List<ExemplaireBean> exemplaires = reservationProxy.getExemplairesByIdLivreDispo(id);
         List<BibliothequeBean> bibliotheques = reservationProxy.listBibliotheques();
 
         populate(bibliotheques, exemplaires);
@@ -158,7 +159,7 @@ public class BibliothequeController {
     private void populate(List<BibliothequeBean> bibliotheques, List<ExemplaireBean> exemplaires){
         for (BibliothequeBean bibliotheque : bibliotheques) {
             for (ExemplaireBean exemplaire : exemplaires) {
-                if (exemplaire.getbibliotheque().getid_biblio() == bibliotheque.getid_biblio()){
+                if (exemplaire.getBibliotheque().getid_biblio() == bibliotheque.getid_biblio()){
                     bibliotheque.addExemplaire(exemplaire);
                 }
             }

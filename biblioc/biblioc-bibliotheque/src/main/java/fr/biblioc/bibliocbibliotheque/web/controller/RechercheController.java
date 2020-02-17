@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,6 +36,12 @@ public class RechercheController {
 
     //------------------------- METHODE -------------------------
 
+    /**
+     * Requete de recherche de livre par critères simple
+     * @param type string
+     * @param value string
+     * @return
+     */
     @GetMapping(value = "/Recherche")
     List<LivreDto> rechercheSimple(String type, String value) {
         log.info("rechercheSimple : [ type : " + type + ", value : " + value + " ]");
@@ -56,9 +61,6 @@ public class RechercheController {
         for (Livre livre : livres) {
             livresDto.add(livreMapper.livreToLivreDto(livre));
         }
-//        if (livresDto.isEmpty()) {
-//            throw new ObjectNotFoundException("Aucun livre n'a été trouvé");
-//        }
 
         return livresDto;
     }

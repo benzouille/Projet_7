@@ -81,7 +81,7 @@ public class GenreController implements HealthIndicator {
     /**
      * Ajouter un genre
      * @param genre bean {@link Genre}
-     * @return ResponseEntity<Genre> renvoi un http status.
+     * @return ResponseEntity bean {@link Genre} renvoi un http status.
      */
     @PostMapping(value = "/Genres")
     public ResponseEntity<Genre> addGenre(Genre genre){
@@ -95,7 +95,8 @@ public class GenreController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un genre existant.
-     **/
+     * @param genre bean {@link Genre}
+     */
     @PutMapping(value = "/Genres")
     public void updateGenre(@RequestBody Genre genre) {
 

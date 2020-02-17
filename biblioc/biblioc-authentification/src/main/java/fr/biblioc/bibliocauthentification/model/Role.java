@@ -26,14 +26,14 @@ public class Role {
     /**
      * constructeur
      */
-    protected Role() {
+    public Role() {
     }
 
     /**
      * constructeur avec parametre
      * @param role String
      */
-    public Role(@NotNull @Max(100) String role) {
+    public Role(@NotNull String role) {
         this.role = role;
     }
 

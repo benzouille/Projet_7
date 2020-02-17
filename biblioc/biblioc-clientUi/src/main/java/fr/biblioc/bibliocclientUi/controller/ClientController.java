@@ -1,49 +1,45 @@
 package fr.biblioc.bibliocclientUi.controller;
 
-import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
-import fr.biblioc.bibliocclientUi.proxies.BibliocAuthentificationProxy;
-import fr.biblioc.bibliocclientUi.proxies.BibliocBibliothequeProxy;
+import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
+import fr.biblioc.bibliocclientUi.beans.reservation.BibliothequeBean;
+import fr.biblioc.bibliocclientUi.proxies.BibliocReservationProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.support.RequestContextUtils;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * Controller de la page d'accueil
+ */
 @Controller
 public class ClientController {
 
-    @Autowired
-    private BibliocBibliothequeProxy bibliothequeProxy;
+    //------------------------- PARAMETRE -------------------------
 
     @Autowired
-    private BibliocAuthentificationProxy authentificationProxy;
+    private BibliocReservationProxy reservationProxy;
 
+    //------------------------- METHODE -------------------------
+
+    /**
+     * Reuquete de la page d'accueil
+     * @param request
+     * @param redirectAttributes
+     * @return page d'accueil
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String accueil(Model model){
-
-        List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
-
-        return "Accueil";
-    }
-
-    @RequestMapping(value = "/accueil", method = RequestMethod.GET)
-    public ModelAndView accueilConnecte(HttpServletRequest request) {
+    public ModelAndView accueilConnecte(HttpServletRequest request, RedirectAttributes redirectAttributes) {
 
         ModelAndView modelAndView = new ModelAndView("accueil");
 
-        Map<String, ?> flashMap = RequestContextUtils.getInputFlashMap(request); // 1
-        if (!CollectionUtils.isEmpty(flashMap)) {
-            modelAndView.addObject("compte", flashMap.get("compte")); // 2
-        }
+        List<BibliothequeBean> bibliotheques = reservationProxy.listBibliotheques();
+        modelAndView.addObject("bibliotheques", bibliotheques);
 
-        List<AuteurBean> auteurs = bibliothequeProxy.listAuteurs();
-        modelAndView.addObject("auteurs", auteurs);
+        CompteBean compte = (CompteBean)request.getSession().getAttribute("compte");
+        modelAndView.addObject("compte", compte);
 
         return modelAndView;
     }

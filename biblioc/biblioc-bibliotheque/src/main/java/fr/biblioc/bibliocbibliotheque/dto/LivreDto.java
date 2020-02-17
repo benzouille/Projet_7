@@ -6,6 +6,9 @@ import fr.biblioc.bibliocbibliotheque.model.Genre;
 
 import java.util.List;
 
+/**
+ * Dto Livre
+ */
 public class LivreDto {
 
     //------------------------- ATTRIBUTS -------------------------

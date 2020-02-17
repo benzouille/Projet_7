@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Bean auteur
+ * Bean auteur correspondant à la table auteur de la bdd
  */
 @Entity(name = "auteur")
 public class Auteur {
@@ -55,6 +55,7 @@ public class Auteur {
 
     /**
      * constructeur avec parametres
+     * @param id int
      * @param nom string
      * @param prenom string
      * @param date_naissance Date

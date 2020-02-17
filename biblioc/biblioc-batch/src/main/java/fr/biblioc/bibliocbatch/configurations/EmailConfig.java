@@ -3,8 +3,11 @@ package fr.biblioc.bibliocbatch.configurations;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * Classe de configuration d'email
+ */
 @Component
-public class EmailConfiguration {
+public class EmailConfig {
 
     //------------------------- ATTRIBUTS -------------------------
 

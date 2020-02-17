@@ -4,6 +4,9 @@ import fr.biblioc.bibliocclientUi.beans.bibliotheque.LivreBean;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * Bean exemplaire côté client
+ */
 public class ExemplaireBean {
 
     //------------------------- ATTRIBUTS -------------------------
@@ -18,6 +21,8 @@ public class ExemplaireBean {
     @NotNull
     private BibliothequeBean bibliotheque;
 
+    private boolean disponible;
+
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
@@ -30,10 +35,12 @@ public class ExemplaireBean {
      * Constructeur avec paramètres
      * @param id_livre id livre
      * @param bibliotheque Objet bibliothèque
+     * @param disponible boolean
      */
-    public ExemplaireBean(@NotNull int id_livre, @NotNull BibliothequeBean bibliotheque) {
+    public ExemplaireBean(@NotNull int id_livre, @NotNull BibliothequeBean bibliotheque, boolean disponible) {
         this.id_livre = id_livre;
         this.bibliotheque = bibliotheque;
+        this.disponible = disponible;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -62,22 +69,32 @@ public class ExemplaireBean {
         this.livre = livre;
     }
 
-    public BibliothequeBean getbibliotheque() {
+    public BibliothequeBean getBibliotheque() {
         return bibliotheque;
     }
 
-    public void setbibliotheque(BibliothequeBean bibliotheque) {
+    public void setBibliotheque(BibliothequeBean bibliotheque) {
         this.bibliotheque = bibliotheque;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     //------------------------- TO_STRING -------------------------
 
     @Override
     public String toString() {
-        return "Exemplaire{" +
+        return "ExemplaireBean{" +
                 "id_exemplaire=" + id_exemplaire +
                 ", id_livre=" + id_livre +
+                ", livre=" + livre +
                 ", bibliotheque=" + bibliotheque +
+                ", disponible=" + disponible +
                 '}';
     }
 }

@@ -3,17 +3,16 @@ package fr.biblioc.bibliocclientUi.controller;
 import fr.biblioc.bibliocclientUi.beans.authentification.CompteBean;
 import fr.biblioc.bibliocclientUi.beans.utilisateur.AdresseBean;
 import fr.biblioc.bibliocclientUi.beans.utilisateur.UtilisateurBean;
+import fr.biblioc.bibliocclientUi.beans.utilities.PasswordDigest;
 import fr.biblioc.bibliocclientUi.proxies.BibliocAuthentificationProxy;
 import fr.biblioc.bibliocclientUi.proxies.BibliocUtilisateurProxy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
@@ -21,6 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Map;
 
+/**
+ * Controller utilisant le proxy vers le microservice authentification
+ */
 @Controller
 public class AuthentificationController {
 
@@ -30,17 +32,16 @@ public class AuthentificationController {
     @Autowired
     private BibliocUtilisateurProxy utilisateurProxy;
 
+
+
     @RequestMapping(value= "/authentification/connexion", method = RequestMethod.GET)
     public ModelAndView connexion(Model model){
-
-        CompteBean compte = new CompteBean();
-        model.addAttribute("compte", compte);
 
         return new ModelAndView("connexion");
     }
 
     @RequestMapping(value = "/authentification/connexion/erreur", method = RequestMethod.GET)
-    public ModelAndView connectionerror(HttpServletRequest request) {
+    public ModelAndView connexionError(HttpServletRequest request) {
 
         ModelAndView modelAndView = new ModelAndView("connexion");
 
@@ -49,22 +50,21 @@ public class AuthentificationController {
             modelAndView.addObject("erreur", flashMap.get("erreur")); // 2
         }
 
-        CompteBean compte = new CompteBean();
-        modelAndView.addObject("compte", compte);
-
         return modelAndView;
     }
 
     @PostMapping("/authentification/connexion")
-    public ModelAndView connexion(@ModelAttribute CompteBean compte, RedirectAttributes redirectAttributes){
+    public ModelAndView connexion(String email, String password, HttpServletRequest request, RedirectAttributes redirectAttributes){
 
-            if (compte.getEmail().length() != 0 && compte.getPassword().length() != 0) {
-                CompteBean compteComparator = authentificationProxy.getCompte(compte.getEmail());
+            if (email.length() != 0 && password.length() != 0) {
+                CompteBean compte = authentificationProxy.getCompte(email);
 
-                if (compteComparator != null && compteComparator.getPassword().equals(compte.getPassword())) {
-                    redirectAttributes.addFlashAttribute("compte", compteComparator);
+                password = PasswordDigest.hashAndSalt(password);
 
-                    return new ModelAndView("redirect:/accueil");
+                if (compte != null && compte.getPassword().equals(password)) {
+
+                    request.getSession().setAttribute("compte",compte);
+                    return new ModelAndView("redirect:/");
                 } else {
                     String erreur = "Erreur votre email ou votre mot de passe est incorrect !";
                     redirectAttributes.addFlashAttribute("erreur", erreur);
@@ -80,49 +80,46 @@ public class AuthentificationController {
         }
 
 
+    @PostMapping("/authentification/deconnexion")
+    public ModelAndView deconnexion(@ModelAttribute CompteBean compte, HttpServletRequest request, RedirectAttributes redirectAttributes){
+
+        request.getSession().removeAttribute("compte");
+
+        return new ModelAndView("redirect:/");
+    }
+
     @RequestMapping(value= "/authentification/inscription", method = RequestMethod.GET)
     public String inscription(Model model){
-
-        CompteBean compte = new CompteBean();
-
-        model.addAttribute("compte", compte);
 
         return "inscription";
     }
 
     @PostMapping("/authentification/inscription")
-    public String inscription(@Valid @ModelAttribute CompteBean compte, BindingResult bindingResult, Model model){
+    public String inscription(String email, String password, BindingResult bindingResult, Model model){
 
         if(bindingResult.hasErrors()){
             //TODO regarder l'erreur
             return "inscription";
         }
         else{
-            CompteBean compteComparator = authentificationProxy.getCompte(compte.getEmail());
+            CompteBean compteComparator = authentificationProxy.getCompte(email);
             if(compteComparator != null){
-                System.out.println("double email : " + compteComparator.getEmail() + " et : " + compte.getEmail());
+                System.out.println("double email : " + compteComparator.getEmail() + " et : " + email);
                 String erreur = "cette adresse email est déjà utilisée !";
 
-                model.addAttribute("compte", compte);
                 model.addAttribute("erreur", erreur);
 
                 return "inscription";
             } else{
+
+                password = PasswordDigest.hashAndSalt(password);
+
                 //attribution de l'utilisateur provisoire
-                compte.setId_utilisateur(1);
-                compte.setId_role(1);
+                CompteBean compte = new CompteBean(email, password, 1, 1);
 
                 System.out.println(compte.toString());
 
                 authentificationProxy.newCompte(compte);
-
-                compte = new CompteBean();
-
-                //TODO ajouter le retour http
-//            if(paiement.getStatusCode() == HttpStatus.CREATED)
-//                paiementAccepte = true;
-
-                model.addAttribute("compte", compte);
 
                 return "connexion";
             }
@@ -130,11 +127,12 @@ public class AuthentificationController {
         }
     }
 
-    @RequestMapping(value= "/authentification/profil/{id}", method = RequestMethod.GET)
-    public String profil(@PathVariable int id, Model model){
+    @RequestMapping(value= "/authentification/profil", method = RequestMethod.GET)
+    public String profil(Model model, HttpServletRequest request){
 
-        //TODO recuperer le compte du body
-        CompteBean compte = authentificationProxy.getCompte(id);
+        CompteBean compte = (CompteBean)request.getSession().getAttribute("compte");
+        model.addAttribute("compte", compte);
+
         UtilisateurBean utilisateur = utilisateurProxy.getUtilisateur(compte.getId_utilisateur());
         AdresseBean adresse = utilisateurProxy.getAdresse(utilisateur.getId_adresse());
 

@@ -2,6 +2,7 @@ package fr.biblioc.bibliocbibliotheque.web.controller;
 
 import fr.biblioc.bibliocbibliotheque.dao.EditeurDao;
 import fr.biblioc.bibliocbibliotheque.model.Editeur;
+import fr.biblioc.bibliocbibliotheque.model.Genre;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
@@ -84,7 +85,7 @@ public class EditeurController implements HealthIndicator {
      * @param editeur bean {@link Editeur}
      * @return ResponseEntity<Editeur> renvoi un http status.
      */
-    @PostMapping(value = "/Nediteurs")
+    @PostMapping(value = "/Editeurs")
     public ResponseEntity<Editeur> addEditeur(Editeur editeur){
 
         Editeur newEditeur = editeurDao.save(editeur);
@@ -96,8 +97,9 @@ public class EditeurController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un editeur existant.
+     * @param editeur bean {@link Editeur}
      **/
-    @PutMapping(value = "/Uediteurs")
+    @PutMapping(value = "/Editeurs")
     public void updateEditeur(@RequestBody Editeur editeur) {
 
         editeurDao.save(editeur);

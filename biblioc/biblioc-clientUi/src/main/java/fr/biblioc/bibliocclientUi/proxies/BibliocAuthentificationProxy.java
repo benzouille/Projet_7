@@ -15,6 +15,9 @@ public interface BibliocAuthentificationProxy {
     @GetMapping(value = "/Comptes")
     List<CompteBean> listComptes();
 
+    @GetMapping(value = "/Comptes/existe/{id}")
+    boolean isCompte(@PathVariable("id") int id);
+
     @GetMapping(value = "/Comptes/{id}")
     CompteBean getCompte(@PathVariable("id") int id);
 

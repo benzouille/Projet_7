@@ -1,7 +1,7 @@
 package fr.biblioc.bibliocbibliotheque.dto;
 
 /**
- * Bean editeur
+ * Dto editeur
  */
 public class EditeurDto {
 

@@ -1,12 +1,15 @@
-package fr.banane.batchjsontomail.writers;
+package fr.biblioc.bibliocbatch.writer;
 
-import fr.banane.batchjsontomail.ReservationExpire;
-import fr.banane.batchjsontomail.services.MailContentGenerator;
-import fr.banane.batchjsontomail.services.ReservationExpireMailSenderService;
+import fr.biblioc.bibliocbatch.mail.MailContentGenerator;
+import fr.biblioc.bibliocbatch.mail.ReservationExpireMailSenderService;
+import fr.biblioc.bibliocbatch.model.ReservationExpire;
 import org.springframework.batch.item.ItemWriter;
 
 import java.util.List;
 
+/**
+ * ItemWriter permetant la génération de contenu et l'envoi de mail
+ */
 public class ReservationExpireItemWriter implements ItemWriter<ReservationExpire> {
 
     private final ReservationExpireMailSenderService reservationExpireService;
@@ -14,7 +17,7 @@ public class ReservationExpireItemWriter implements ItemWriter<ReservationExpire
     private final MailContentGenerator mailContentGenerator;
 
     public ReservationExpireItemWriter(final ReservationExpireMailSenderService reservationExpireService,
-                              final MailContentGenerator mailContentGenerator) {
+                                       final MailContentGenerator mailContentGenerator) {
         super();
         this.reservationExpireService = reservationExpireService;
         this.mailContentGenerator = mailContentGenerator;

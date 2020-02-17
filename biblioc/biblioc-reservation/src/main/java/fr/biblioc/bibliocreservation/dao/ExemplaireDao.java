@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 public interface ExemplaireDao extends JpaRepository<Exemplaire, Integer> {
 
+    @Query(value = "SELECT EXISTS(SELECT true from exemplaire where id_exemplaire=:id_exemplaire)", nativeQuery = true)
+    boolean existsById_exemplaire(@Param("id_exemplaire") int id_exemplaire);
+
     @Query(value = "SELECT * FROM exemplaire WHERE id_livre = :id_livre", nativeQuery = true)
     List<Exemplaire> findAllById_livre(@Param("id_livre") int id_livre);
 

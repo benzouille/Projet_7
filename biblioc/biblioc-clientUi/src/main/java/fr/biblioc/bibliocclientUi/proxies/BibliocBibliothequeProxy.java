@@ -1,13 +1,11 @@
 package fr.biblioc.bibliocclientUi.proxies;
 
-import feign.Param;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.AuteurBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.GenreBean;
 import fr.biblioc.bibliocclientUi.beans.bibliotheque.LivreBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;

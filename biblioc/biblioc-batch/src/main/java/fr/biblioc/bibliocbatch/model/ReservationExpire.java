@@ -1,6 +1,11 @@
-package fr.banane.batchjsontomail;
+package fr.biblioc.bibliocbatch.model;
 
+/**
+ * POJO des données du mail a envoyer
+ */
 public class ReservationExpire {
+
+    //------------------------- ATTRIBUTS -------------------------
 
     private Integer id_reservation;
 
@@ -14,9 +19,23 @@ public class ReservationExpire {
 
     private String titre;
 
+    //------------------------- CONSTRUCTEUR -------------------------
+
+    /**
+     * Constructeur
+     */
     public ReservationExpire() {
     }
 
+    /**
+     * Constructeur avec parametres
+     * @param id_reservation int
+     * @param id_exemplaire int
+     * @param email string
+     * @param prenom string
+     * @param bibliotheque string
+     * @param titre string
+     */
     public ReservationExpire(Integer id_reservation, Integer id_exemplaire, String email, String prenom, String bibliotheque, String titre) {
         this.id_reservation = id_reservation;
         this.id_exemplaire = id_exemplaire;
@@ -25,6 +44,8 @@ public class ReservationExpire {
         this.bibliotheque = bibliotheque;
         this.titre = titre;
     }
+
+    //------------------------- GETTER/SETTER -------------------------
 
     public Integer getId_reservation() {
         return id_reservation;
@@ -73,6 +94,8 @@ public class ReservationExpire {
     public void setTitre(String titre) {
         this.titre = titre;
     }
+
+    //------------------------- TO_STRING -------------------------
 
     @Override
     public String toString() {

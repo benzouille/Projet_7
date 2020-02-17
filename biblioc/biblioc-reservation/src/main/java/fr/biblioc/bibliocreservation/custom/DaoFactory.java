@@ -1,4 +1,10 @@
 package fr.biblioc.bibliocreservation.custom;
 
-public class DaoFactory {
+/**
+ * Interface permetant de faire le lien entre le module business et consumer .
+ */
+public interface DaoFactory {
+
+    ReservationExpireDao getReservationExpireDao();
+    void setReservationExpireDao(ReservationExpireDao reservationExpireDao);
 }

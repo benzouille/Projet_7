@@ -1,6 +1,8 @@
 package fr.biblioc.utilisateur.web.controller;
 
 import fr.biblioc.utilisateur.dao.UtilisateurDao;
+import fr.biblioc.utilisateur.dto.UtilisateurDto;
+import fr.biblioc.utilisateur.mapper.UtilisateurMapper;
 import fr.biblioc.utilisateur.model.Utilisateur;
 import fr.biblioc.utilisateur.web.exceptions.ErrorAddException;
 import fr.biblioc.utilisateur.web.exceptions.ObjectNotFoundException;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +29,9 @@ public class UtilisateurController implements HealthIndicator {
 
     @Autowired
     UtilisateurDao utilisateurDao;
+
+    @Autowired
+    UtilisateurMapper utilisateurMapper;
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -50,17 +56,22 @@ public class UtilisateurController implements HealthIndicator {
      * @return liste {@link Utilisateur}
      */
     @GetMapping(value = "/Utilisateurs")
-    public List<Utilisateur> listeDesUtilisateurs(){
+    public List<UtilisateurDto> listeDesUtilisateurs(){
 
         List<Utilisateur> utilisateurs = utilisateurDao.findAll();
+        List<UtilisateurDto> utilisateursDto = new ArrayList<>();
+
+        for(Utilisateur utilisateur : utilisateurs){
+            utilisateursDto.add(utilisateurMapper.utilisateurToUtilisateurDto(utilisateur));
+        }
 
         if(utilisateurs.isEmpty()){
             throw new ObjectNotFoundException("Aucun utilisateur n'a été trouvée");
         }
 
-        log.info("Récupération de la liste des utilisateurs");
+        log.info("Récupération de la liste des utilisateursDto");
 
-        return utilisateurs;
+        return utilisateursDto;
 
     }
 

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/gestion.css}"/>
     <title>Gestion reservation</title>
 </head>
-<body>
+<body th:if="${compte} != null and ${compte.id_role} > 1">
 <!--NAVBAR-->
 <div th:include="navbar.html"></div>
 
@@ -49,8 +49,8 @@
                                 <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Utilisateur</th>
-                                    <th scope="col">Id exemplaire</th>
-                                    <th scope="col">Id réservation</th>
+                                    <th scope="col">N° d'exemplaire</th>
+                                    <th scope="col">N° de réservation</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Date prêt</th>
                                     <th scope="col">Date retour</th>
@@ -61,8 +61,8 @@
                                 <tbody>
                                 <tr th:each="reservation : ${reservations}">
                                     <td th:text="${reservation.utilisateur.nom + ' ' + reservation.utilisateur.prenom + ' id : ' + reservation.utilisateur.id_utilisateur}"></td>
-                                    <td th:text="${reservation.getExemplaire().getid_exemplaire()}"></td>
-                                    <td th:text="${reservation.id_reservation}"></td>
+                                    <td th:text="${reservation.getId_view_exemplaire()}"></td>
+                                    <td th:text="${reservation.getId_view_reservation()}"></td>
                                     <td th:text="${reservation.getExemplaire().livre.titre}"></td>
                                     <td th:text="${#dates.format(reservation.getDate_emprunt(), 'dd-MM-yyyy')}"></td>
                                     <td th:text="${#dates.format(reservation.getDate_retour(), 'dd-MM-yyyy')}"></td>
@@ -162,8 +162,8 @@
                                 <thead class="thead-dark">
                                 <tr>
                                     <th scope="col">Utilisateur</th>
-                                    <th scope="col">Id exemplaire</th>
-                                    <th scope="col">Id réservation</th>
+                                    <th scope="col">N° d'exemplaire</th>
+                                    <th scope="col">N° de réservation</th>
                                     <th scope="col">Titre</th>
                                     <th scope="col">Date prêt</th>
                                     <th scope="col">Date retour</th>
@@ -183,7 +183,6 @@
                                         <form name="extention_pret" action="#" th:action="@{/gestion/extention}" method="post">
                                             <input type="hidden" name="id_reservation" th:value="${reservation.id_reservation}" />
                                             <input th:if="${reservation.getExtension() == false and reservation.getRendu() == false}" type="submit" value="Extention" class="btn btn-outline-success"/>
-<!--                                            <input th:if="${reservation.getExtension() == true and reservation.getRendu() == true}" disabled type="submit" value="Extention" class="btn btn-outline-secondary"/>-->
                                         </form>
                                     </td>
                                     <td>
@@ -199,6 +198,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div th:if="${erreur} != null">
+                <label th:text="${erreur}" style="color: red; font-size: 25px"></label>
             </div>
         </div>
         <br>

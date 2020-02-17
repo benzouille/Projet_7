@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Bean auteur
+ * Bean auteur côté client
  */
 public class AuteurBean {
 
@@ -32,6 +32,7 @@ public class AuteurBean {
 
     /**
      * constructeur avec parametres
+     * @param id int
      * @param nom string
      * @param prenom string
      * @param date_naissance Date

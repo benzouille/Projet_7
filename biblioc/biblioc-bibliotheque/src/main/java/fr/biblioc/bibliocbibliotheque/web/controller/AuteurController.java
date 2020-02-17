@@ -4,6 +4,7 @@ import fr.biblioc.bibliocbibliotheque.dao.AuteurDao;
 import fr.biblioc.bibliocbibliotheque.dto.AuteurDto;
 import fr.biblioc.bibliocbibliotheque.mapper.AuteurMapper;
 import fr.biblioc.bibliocbibliotheque.model.Auteur;
+import fr.biblioc.bibliocbibliotheque.model.Genre;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocbibliotheque.web.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
@@ -107,6 +108,7 @@ public class AuteurController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un auteur existant.
+     * @param auteur bean {@link Auteur}
      **/
     @PutMapping(value = "/Auteurs")
     public void updateAuteur(@RequestBody Auteur auteur) {

@@ -12,26 +12,26 @@
                     <a class="nav-link" href="/recherche"><i class="fa fa-search" style="font-size:25px"></i> Rechercher</a>
                 </li>
                 <!--TODO revoir la condition-->
-                <li class="nav-item">
+                <li class="nav-item" th:if="${compte == null}">
                     <a class="nav-link" href="/authentification/inscription"><i class="fa fa-genderless" style="font-size:25px"></i> S'inscrire</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:if="${compte == null}">
                     <a class="nav-link" href="/authentification/connexion"><i class="fa fa-genderless" style="font-size:25px"></i> Se connecter</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <!--TODO revoir la condition-->
-                    <li class="nav-item">
+                    <li class="nav-item" th:if="${compte != null}">
                         <a class="nav-link" href="/mes_emprunts"><i class="fa fa-book" style="font-size:25px"></i> Mes emprunts</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" th:if="${compte != null && compte.id_role > 1}">
                         <a class="nav-link" href="/gestion"><i class="fa fa-cogs" style="font-size:25px"></i> Gestion</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/authentification/profil/1"><i class="fa fa-user" style="font-size:25px"></i> Profil</a>
+                    <li class="nav-item" th:if="${compte != null}">
+                        <a class="nav-link" href="/authentification/profil"><i class="fa fa-user" style="font-size:25px"></i> Profil</a>
                     </li>
-                    <li style="margin-top: 5px">
-                        <form class="form-inline" action="/deconnexion" method="post">
+                    <li style="margin-top: 5px" th:if="${compte != null}">
+                        <form class="form-inline" action="/authentification/deconnexion" method="post">
                             <button class="btn btn-outline-secondary btn-outline-danger " type="submit" name="_disconnect_"><i class="fa fa-power-off"></i> Deconnexion</button>
                         </form>
                     </li>
@@ -41,20 +41,3 @@
     </nav>
 </header>
 </html>
-<!-- SCRIPTS -->
-
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"-->
-<!--        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"-->
-<!--        crossorigin="anonymous">-->
-<!--</script>-->
-
-<!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"-->
-<!--        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"-->
-<!--        crossorigin="anonymous">-->
-
-<!--</script>-->
-
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"-->
-<!--        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"-->
-<!--        crossorigin="anonymous">-->
-<!--</script>-->

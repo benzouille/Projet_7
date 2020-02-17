@@ -43,7 +43,6 @@ public class Compte {
      * @param id_role int
      * @param id_utilisateur int
      */
-
     public Compte(@NotNull String email, @NotNull String password, @NotNull int id_role, @NotNull int id_utilisateur) {
         this.email = email;
         this.password = password;
@@ -93,9 +92,7 @@ public class Compte {
         this.id_utilisateur = id_utilisateur;
     }
 
-
     //------------------------- TO_STRING -------------------------
-
 
     @Override
     public String toString() {

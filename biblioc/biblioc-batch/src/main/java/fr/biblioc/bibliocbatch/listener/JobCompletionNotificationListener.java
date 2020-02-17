@@ -1,4 +1,4 @@
-package fr.banane.batchjsontomail;
+package fr.biblioc.bibliocbatch.listener;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +8,9 @@ import org.springframework.batch.core.listener.JobExecutionListenerSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Lister de la step mail
+ */
 @Component
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
 
@@ -20,7 +23,7 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
     @Override
     public void afterJob(JobExecution jobExecution) {
         if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
-            log.info("!!! JOB FINISHED! Time to verify the results");
+            log.info("!!! JOB FINISHED !!!");
         }
     }
 }

@@ -21,7 +21,6 @@ import java.util.Optional;
  */
 @RestController
 public class RoleController implements HealthIndicator {
-
     //------------------------- ATTRIBUTS -------------------------
 
     @Autowired
@@ -82,9 +81,9 @@ public class RoleController implements HealthIndicator {
     /**
      * Ajouter un role
      * @param role bean {@link Role}
-     * @return ResponseEntity<Role> renvoi un http status.
+     * @return ResponseEntity Role renvoi un http status.
      */
-    @PostMapping(value = "/Nroles")
+    @PostMapping(value = "/Roles")
     public ResponseEntity<Role> addRole(Role role){
 
         Role newRole = roleDao.save(role);
@@ -96,8 +95,9 @@ public class RoleController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un role existant.
+     * @param role bean {@link Role}
      **/
-    @PutMapping(value = "/Uroles")
+    @PutMapping(value = "/Roles")
     public void updateRole(@RequestBody Role role) {
 
         roleDao.save(role);

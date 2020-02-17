@@ -19,14 +19,12 @@
     <div class="row">
         <div class="col-xl-4 col-lg-4 col-md-3"></div>
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-            <form class="box" action="#" th:action="@{/authentification/connexion}" th:object="${compte}" method="post">
-                <h1 class="haha">Connexion</h1>
+            <form class="box" action="#" th:action="@{/authentification/connexion}" method="post">
+                <h1>Connexion</h1>
                 <label th:object="${erreur}" th:if="${erreur != null}" th:text="${erreur}" style="color: red"></label>
                 <label id="red" th:if="${erreur != null}" th:text="${erreur}" ></label>
-                <input type="text" th:field="*{email}" placeholder="E-mail"/>
-                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Entrez une adresse email valide.</p>
-                <input type="password" th:field="*{password}" placeholder="Mot de passe">
-                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Entrez un mot de passe valide.</p>
+                <input type="text" name="email" placeholder="E-mail"/>
+                <input type="password" name="password" placeholder="Mot de passe">
                 <input type="submit" th:value="Connexion"/>
                 <a class="link" href="/authentification/inscription">Pas encore de compte ?</a>
             </form>

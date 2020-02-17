@@ -23,6 +23,9 @@ public class Exemplaire {
     @JoinColumn(name = "id_biblio")
     private Bibliotheque bibliotheque;
 
+    @NotNull
+    private boolean disponible;
+
     //------------------------- CONSTRUCTEUR -------------------------
 
     /**
@@ -35,10 +38,12 @@ public class Exemplaire {
      * Constructeur avec paramètres
      * @param id_livre id livre
      * @param bibliotheque Objet bibliothèque
+     * @param disponible boolean
      */
-    public Exemplaire(@NotNull int id_livre, Bibliotheque bibliotheque) {
+    public Exemplaire(@NotNull int id_livre, Bibliotheque bibliotheque, boolean disponible) {
         this.id_livre = id_livre;
         this.bibliotheque = bibliotheque;
+        this.disponible = disponible;
     }
 
     //------------------------- GETTER/SETTER -------------------------
@@ -65,6 +70,14 @@ public class Exemplaire {
 
     public void setBibliotheque(Bibliotheque bibliotheque) {
         this.bibliotheque = bibliotheque;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     //------------------------- TO_STRING -------------------------

@@ -1,6 +1,8 @@
 package fr.biblioc.bibliocauthentification.web.controller;
 
 import fr.biblioc.bibliocauthentification.dao.CompteDao;
+import fr.biblioc.bibliocauthentification.dto.CompteDto;
+import fr.biblioc.bibliocauthentification.mapper.CompteMapper;
 import fr.biblioc.bibliocauthentification.model.Compte;
 import fr.biblioc.bibliocauthentification.web.exceptions.ErrorAddException;
 import fr.biblioc.bibliocauthentification.web.exceptions.ObjectNotFoundException;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +28,9 @@ public class CompteController implements HealthIndicator {
 
     @Autowired
     CompteDao compteDao;
+
+    @Autowired
+    CompteMapper compteMapper;
 
     Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -49,18 +55,33 @@ public class CompteController implements HealthIndicator {
      * @return liste {@link Compte}
      */
     @GetMapping(value = "/Comptes")
-    public List<Compte> listeDesComptes(){
+    public List<CompteDto> listeDesComptes(){
 
         List<Compte> comptes = compteDao.findAll();
+        List<CompteDto> comptesDto = new ArrayList<>();
+
+        for (Compte compte : comptes){
+            comptesDto.add(compteMapper.compteToCompteDto(compte));
+        }
 
         if(comptes.isEmpty()){
             throw new ObjectNotFoundException("Aucun compte n'a été trouvée");
         }
 
-        log.info("Récupération de la liste des comptes");
+        log.info("Récupération de la liste des comptesDto");
 
-        return comptes;
+        return comptesDto;
 
+    }
+
+    /**
+     * Verifier l'existence un compte par son id
+     * @param id int
+     * @return bean {@link Compte}
+     */
+    @GetMapping( value = "/Comptes/existe/{id}")
+    public boolean isCompte(@PathVariable int id) {
+        return compteDao.existsById_compte(id);
     }
 
     /**
@@ -88,20 +109,16 @@ public class CompteController implements HealthIndicator {
 
         Compte compte = compteDao.findByEmail(email);
 
-        //if(compte == null)  throw new ObjectNotFoundException("Le compte correspondant à l'email " + email + " n'existe pas");
-
         return compte;
     }
 
     /**
      * Ajouter un compte
      * @param compte bean {@link Compte}
-     * @return ResponseEntity<Compte> renvoi un http status.
+     * @return ResponseEntity Compte renvoi un http status.
      */
     @PostMapping(value = "/Comptes")
     public ResponseEntity<Compte> newCompte(@RequestBody Compte compte){
-
-        System.out.println();
 
         Compte newCompte = compteDao.save(compte);
 
@@ -112,6 +129,7 @@ public class CompteController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un compte existant.
+     * @param compte bean {@link Compte}
      **/
     @PutMapping(value = "/Comptes")
     public void updateCompte(@RequestBody Compte compte) {

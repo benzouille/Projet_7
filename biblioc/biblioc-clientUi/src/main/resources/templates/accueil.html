@@ -16,50 +16,32 @@
 <!--BODY-->
 <div class="container">
 
-    <h1>ACCUEIL BIBLIOC</h1>
+    <h1 class="text-center txtWhite" style="font-size: 100px; margin-top: 40px; letter-spacing: 12px;">BIBLIOC</h1>
 
-    <div class="row">
-        <p th:if="${compte != null}">Bonjour <label th:if="${compte != null}" th:text="${compte.email}"></label> !</p>
-    </div>
-
-    <div class="row">
-        <a th:href="@{|/authentification/connexion|}">
-            <p>Connexion</p>
-        </a>
-
-        <a th:if="${compte != null}" th:href="@{|/authentification/profil/${compte.id_compte}|}">
-            <p>Profil</p>
-        </a>
-
-    </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <!--    <div th:switch="${user.role}">-->
-    <!--        <p th:case="'admin'">User is an administrator</p>-->
-    <!--        <p th:case="#{roles.manager}">User is a manager</p>-->
-    <!--        <p th:case="*">User is some other thing</p>-->
-    <!--    </div>-->
-
-        <div class="row">
-            <div th:each="auteur : ${auteurs}" class="col-md-4 my-1">
-                <a th:href="@{|/details-auteur/${auteur.id}|}" >
-                    <p th:text= "${auteur.nom}"></p>
-                </a>
-            </div>
+    <div class="row txtWhite box">
+        <div>
+            <p>Bienvenue sur le site de regroupement de gestion des bibliothèque de la communauté de commune CA2M et de
+                Metz métropole <br>
+                Les Bibliothèques de Metz constituent un réseau municipal ouvert 7 jours sur 7 de 3
+                établissements comprenant :</p>
         </div>
 
+        <div class="col-12" th:each="bibliotheque : ${bibliotheques}">
+            <li class="float-left">
+                <label th:text="${bibliotheque.nom}"></label>
+                <label th:text="${bibliotheque.adresse}"></label>
+            </li>
+        </div>
+
+        <div>
+            <p>Vous pouvez aussi vous inscrire gratuitement à <a class="link" href="https://limedia.fr/">Limédia</a>, bibliothèque numérique du pôle métropolitain
+                européen du Sillon Lorrain (Epinal, Nancy, Metz, Thionville). <br>
+                35 000 personnes utilisent régulièrement les services des Bibliothèques-Médiathèques de Metz :
+                consultation et emprunt de documents (livres, revues, presse, DVD, CD, services numériques, etc.) pour
+                tous les publics.</p>
+        </div>
+    </div>
+    <div class="emptyBlock"></div>
 </div>
 
 <!--FOOTER-->

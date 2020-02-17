@@ -1,6 +1,5 @@
 package fr.biblioc.bibliocclientUi.beans.utilisateur;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 

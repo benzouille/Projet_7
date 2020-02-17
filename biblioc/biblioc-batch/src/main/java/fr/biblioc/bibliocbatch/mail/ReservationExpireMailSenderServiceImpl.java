@@ -1,4 +1,4 @@
-package fr.banane.batchjsontomail.services;
+package fr.biblioc.bibliocbatch.mail;
 
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -7,6 +7,9 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * Implementation de ReservationExpireMailSenderService permetant l'envoi de mail
+ */
 public class ReservationExpireMailSenderServiceImpl implements ReservationExpireMailSenderService {
 
     private final JavaMailSender javaMailSender;
@@ -21,7 +24,6 @@ public class ReservationExpireMailSenderServiceImpl implements ReservationExpire
 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
-        //message.setText(content, "text/html");
         helper.setText(content, true);
         helper.setFrom("nePasRepondre@biblioc.com");
         helper.setTo(mailDestination);

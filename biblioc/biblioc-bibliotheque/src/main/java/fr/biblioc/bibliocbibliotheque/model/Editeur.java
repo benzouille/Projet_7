@@ -7,7 +7,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
 /**
- * Bean editeur
+ * Bean editeur correspondant à la table editeur de la bdd
  */
 @Entity
 public class Editeur {

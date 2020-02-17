@@ -63,6 +63,16 @@ public class ExemplaireController implements HealthIndicator {
     }
 
     /**
+     * Verifier l'existence un exemplaire par son id
+     * @param id int
+     * @return bean {@link Exemplaire}
+     */
+    @GetMapping( value = "/Exemplaires/existe/{id}")
+    public boolean isExemplaire(@PathVariable int id) {
+        return exemplaireDao.existsById_exemplaire(id);
+    }
+
+    /**
      * Récuperer un exemplaire par son id
      * @param id int
      * @return bean {@link Exemplaire}
@@ -84,6 +94,24 @@ public class ExemplaireController implements HealthIndicator {
 
         List<Exemplaire> exemplaires = exemplaireDao.findAllById_livre(id);
         return getExemplaireDtos(exemplaires);
+    }
+
+    /**
+     * Récuperer un exemplaire par son id
+     * @param id int
+     * @return bean {@link Exemplaire}
+     */
+    @GetMapping( value = "/Exemplaires-livre-dispo/{id}")
+    public List<ExemplaireDto> recupererExemplairesByIdLivreDispo(@PathVariable int id) {
+
+        List<Exemplaire> exemplaires = exemplaireDao.findAllById_livre(id);
+        List<Exemplaire> exemplairesDispo = new ArrayList<>();
+        for (Exemplaire exemplaire : exemplaires){
+            if(exemplaire.isDisponible()){
+                exemplairesDispo.add(exemplaire);
+            }
+        }
+        return getExemplaireDtos(exemplairesDispo);
     }
 
     @GetMapping( value = "/Exemplaires-livre")
@@ -116,7 +144,7 @@ public class ExemplaireController implements HealthIndicator {
     /**
      * Ajouter un exemplaire
      * @param exemplaire bean {@link Exemplaire}
-     * @return ResponseEntity<Exemplaire> renvoi un http status.
+     * @return ResponseEntity Exemplaire  renvoi un http status.
      */
     @PostMapping(value = "/Exemplaires")
     public ResponseEntity<Exemplaire> addExemplaire(Exemplaire exemplaire){
@@ -130,6 +158,7 @@ public class ExemplaireController implements HealthIndicator {
 
     /**
      * Permet de mettre à jour un exemplaire existant.
+     * @param exemplaire bean {@link Exemplaire}
      **/
     @PutMapping(value = "/Exemplaires")
     public void updateExemplaire(@RequestBody Exemplaire exemplaire) {

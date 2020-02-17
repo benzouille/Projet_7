@@ -1,6 +1,5 @@
 package fr.biblioc.bibliocclientUi.beans.reservation;
 
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;

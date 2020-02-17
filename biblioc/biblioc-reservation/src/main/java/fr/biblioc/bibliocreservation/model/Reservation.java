@@ -46,6 +46,7 @@ public class Reservation {
      * @param id_compte int
      * @param date_emprunt Date
      * @param extension boolean
+     * @param rendu boolean
      * @param exemplaire Objet Exemplaire
      */
     public Reservation(@NotNull int id_compte, @NotNull Date date_emprunt, @NotNull Boolean extension, @NotNull Boolean rendu, @NotNull Exemplaire exemplaire) {
