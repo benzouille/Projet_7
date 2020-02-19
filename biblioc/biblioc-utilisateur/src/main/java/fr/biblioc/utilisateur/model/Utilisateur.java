@@ -25,7 +25,6 @@ public class Utilisateur {
     private String prenom;
 
     @NotNull
-    @Max(100)
     private long telephone;
 
     @NotNull

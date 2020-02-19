@@ -49,8 +49,16 @@
                     <td th:text="${reservation.getExemplaire().livre.titre}"></td>
                     <td th:text="${#dates.format(reservation.getDate_emprunt(), 'dd-MM-yyyy')}"></td>
                     <td th:text="${#dates.format(reservation.getDate_retour(), 'dd-MM-yyyy')}"></td>
-                    <td th:if="${reservation.getExtension() == false}" th:text="non"></td>
-                    <td th:if="${reservation.getExtension() == true}" th:text="oui"></td>
+                    <td th:if="${reservation.getExtension() == false and reservation.getRendu() == false}">
+                        <form th:switch="${reservation.getExtension()}" name="extention_pret" action="#" th:action="@{/user/extention}" method="post">
+                            <input type="hidden" name="id_reservation" th:value="${reservation.id_reservation}" />
+                            <input th:case="false" type="submit" value="Extention" class="btn btn-outline-success"/>
+                            <input th:case="true" disabled type="submit" value="Extention" class="btn btn-outline-secondary"/>
+                        </form>
+                    </td>
+                    <td th:if="${reservation.getRendu() == true}">
+                        <input disabled type="submit" value="Extention" class="btn btn-outline-secondary"/>
+                    </td>
                     <td th:if="${reservation.getRendu() == false}" th:text="non"></td>
                     <td th:if="${reservation.getRendu() == true}" th:text="oui"></td>
                 </tr>

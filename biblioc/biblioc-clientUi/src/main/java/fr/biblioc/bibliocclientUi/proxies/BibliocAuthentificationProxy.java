@@ -22,7 +22,10 @@ public interface BibliocAuthentificationProxy {
     CompteBean getCompte(@PathVariable("id") int id);
 
     @GetMapping( value = "/Comptes_mail/{email}")
-    CompteBean  getCompte(@PathVariable("email") String email);
+    CompteBean getCompte(@PathVariable("email") String email);
+
+    @PutMapping(value = "/Comptes")
+    CompteBean updateCompte(@RequestBody CompteBean compte);
 
     @PostMapping(value = "/Comptes")
     CompteBean newCompte(@RequestBody CompteBean compte);

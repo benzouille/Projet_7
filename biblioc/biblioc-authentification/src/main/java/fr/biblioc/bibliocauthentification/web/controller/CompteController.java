@@ -133,7 +133,7 @@ public class CompteController implements HealthIndicator {
      **/
     @PutMapping(value = "/Comptes")
     public void updateCompte(@RequestBody Compte compte) {
-
+        System.out.println("compte" + compte);
         compteDao.save(compte);
     }
 }

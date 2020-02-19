@@ -190,6 +190,18 @@ public class GestionController {
         return new ModelAndView("redirect:/gestion");
     }
 
+    @PostMapping(value = "/user/extention")
+    public ModelAndView extentionUser(String id_reservation){
+
+        log.info("Extention pret par l'utilisateur, id reservtion : " + id_reservation);
+
+        ReservationBean reservation = reservationProxy.getReservation(Integer.parseInt(id_reservation));
+        reservation.setExtension(true);
+        reservationProxy.updateReservation(reservation);
+
+        return new ModelAndView("redirect:/mes_emprunts");
+    }
+
     @PostMapping(value = "/gestion/utilisateur")
     public ModelAndView byUser(String id_utilisateur, RedirectAttributes redirectAttributes){
 

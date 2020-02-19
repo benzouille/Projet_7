@@ -6,10 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="biblioc-clientUi" />
-        <module name="eureka-server" />
         <module name="config-server" />
+        <module name="biblioc-clientUi" />
         <module name="utilisateur" />
+        <module name="eureka-server" />
         <module name="biblioc-batch" />
       </profile>
       <profile name="Annotation profile for biblioc-utilisateur" enabled="true">

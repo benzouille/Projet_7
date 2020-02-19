@@ -16,6 +16,9 @@ public interface BibliocUtilisateurProxy {
     @GetMapping(value = "/Utilisateurs")
     List<UtilisateurBean> listUtilisateurs();
 
+    @GetMapping( value = "/Utilisateurs-last")
+    int recupererLeDernierUtilisateur();
+
     @GetMapping(value = "/Utilisateurs/{id}")
     UtilisateurBean getUtilisateur(@PathVariable("id") int id);
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -95,36 +96,25 @@ public class AuthentificationController {
     }
 
     @PostMapping("/authentification/inscription")
-    public String inscription(String email, String password, BindingResult bindingResult, Model model){
+    public String inscription(String email, String password, Model model){
 
-        if(bindingResult.hasErrors()){
-            //TODO regarder l'erreur
-            return "inscription";
-        }
-        else{
             CompteBean compteComparator = authentificationProxy.getCompte(email);
             if(compteComparator != null){
-                System.out.println("double email : " + compteComparator.getEmail() + " et : " + email);
                 String erreur = "cette adresse email est déjà utilisée !";
 
                 model.addAttribute("erreur", erreur);
 
                 return "inscription";
             } else{
-
                 password = PasswordDigest.hashAndSalt(password);
 
                 //attribution de l'utilisateur provisoire
                 CompteBean compte = new CompteBean(email, password, 1, 1);
 
-                System.out.println(compte.toString());
-
                 authentificationProxy.newCompte(compte);
 
                 return "connexion";
             }
-
-        }
     }
 
     @RequestMapping(value= "/authentification/profil", method = RequestMethod.GET)
@@ -140,29 +130,31 @@ public class AuthentificationController {
         model.addAttribute("utilisateur", utilisateur);
         model.addAttribute("adresse", adresse);
 
-        System.out.println("compte : " + compte.toString() + " utilisateur : " + utilisateur.toString() + " adresse " + adresse.toString());
-
         return "profil";
     }
 
     @PostMapping("/authentification/profil")
-    public String profil(@ModelAttribute CompteBean compte, @ModelAttribute UtilisateurBean utilisateur,
-                         @Valid @ModelAttribute AdresseBean adresse, BindingResult bindingResult, Model model){
+    public String profil(@ModelAttribute UtilisateurBean utilisateur,
+                         @Valid @ModelAttribute AdresseBean adresse, BindingResult bindingResult, Model model, HttpServletRequest request){
+
+        CompteBean compte = (CompteBean)request.getSession().getAttribute("compte");
 
         if(bindingResult.hasErrors()){
-            System.out.println("a des erreurs !");
-        }
-        else {
-            System.out.println("a pas d'erreur");
-            if(compte.getId_utilisateur() != 1){
-                System.out.println("on update : " + utilisateur.toString() + " et " + adresse.toString());
-                //utilisateurProxy.updateUtilisateur(utilisateur);
-            } else {
-                //utilisateurProxy.newUtilisateur(utilisateur);
-                System.out.println("on crée : " + utilisateur.toString() + " et " + adresse.toString());
+            for (ObjectError error : bindingResult.getAllErrors()) {
+                System.out.println("erreurs : " + error.toString());
             }
         }
-        //utilisateurProxy.updateAdresse(adresse);
+        else {
+            if(compte.getId_utilisateur() != 1){
+                utilisateurProxy.updateUtilisateur(utilisateur);
+            } else {
+                utilisateurProxy.newUtilisateur(utilisateur);
+                int id_utilisateur = utilisateurProxy.recupererLeDernierUtilisateur();
+
+                compte.setId_utilisateur(id_utilisateur);
+                authentificationProxy.updateCompte(compte);
+            }
+        }
 
         model.addAttribute("compte", compte);
         model.addAttribute("utilisateur", utilisateur);

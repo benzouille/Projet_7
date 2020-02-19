@@ -16,7 +16,7 @@ public class AdresseBean {
     private int id_adresse;
 
     @NotNull(message = "ne peux être vide")
-    @Pattern(regexp = "[0-9]{1,3}[a-zA-Z]{0,3}", message = "3 chiffres suivi de 3 lettres maximum")
+    //@Pattern(regexp = "[0-9]{0,3}[a-zA-Z]{0,3}", message = "3 chiffres suivi de 3 lettres maximum")
     private String num;
 
     @NotNull(message = "ne peux être vide")

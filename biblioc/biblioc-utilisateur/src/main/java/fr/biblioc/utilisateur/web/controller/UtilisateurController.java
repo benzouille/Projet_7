@@ -76,6 +76,20 @@ public class UtilisateurController implements HealthIndicator {
     }
 
     /**
+     * Récuperer le dernier id_utilisateur
+     * @return int id_utilisateur
+     */
+    @GetMapping( value = "/Utilisateurs-last")
+    public int recupererLeDernierUtilisateur() {
+
+        int id_utilisateur = utilisateurDao.findLastId_compte();
+
+        if(id_utilisateur == 0)  throw new ObjectNotFoundException("L'utilisateur correspondant à l'id " + id_utilisateur + " n'existe pas");
+
+        return id_utilisateur;
+    }
+
+    /**
      * Récuperer un utilisateur par son id
      * @param id int
      * @return bean {@link Utilisateur}
@@ -96,8 +110,9 @@ public class UtilisateurController implements HealthIndicator {
      * @return ResponseEntity<Utilisateur> renvoi un http status.
      */
     @PostMapping(value = "/Utilisateurs")
-    public ResponseEntity<Utilisateur> addUtilisateur(Utilisateur utilisateur){
+    public ResponseEntity<Utilisateur> addUtilisateur(@RequestBody Utilisateur utilisateur){
 
+        System.out.println("user qui pose probleme" + utilisateur);
         Utilisateur newUtilisateur = utilisateurDao.save(utilisateur);
 
         if(newUtilisateur == null) throw new ErrorAddException("Impossible d'ajouter ce utilisateur");

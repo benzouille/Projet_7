@@ -36,3 +36,11 @@ Lancer les micros -services dans l'ordre suivant :
 <ul>BibliocUtilisateurApplication</ul>
 <ul>BibliocClientUiApplication</ul>
 <ul>BibliocBatchApplication</ul>
+
+## Lancement des micros services :
+
+Aller dans chaques microservices : <br>
+biblioc/biblioc-"MICROSERVICE"/src/main/java/fr.banane.biblioc"MICROSERVICE"/"MICROSERVICE"Application<br>
+ puis RUN.
+
+Sous intellij onglet Service en bas et démarrer les micros-services dans l'ordre ci-dessus.
